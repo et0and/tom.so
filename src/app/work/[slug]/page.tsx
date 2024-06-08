@@ -116,7 +116,8 @@ export default function Work({ params }) {
       <p className="text-md text-neutral-700 tracking-tighter">
         {post.metadata.summary}
       </p>
-
+      <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
+      </div>
       <article className="prose prose-quoteless prose-neutral">
         <CustomMDX source={post.content} />
       </article>
