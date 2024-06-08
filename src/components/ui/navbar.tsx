@@ -5,7 +5,7 @@ import { JSX, SVGProps } from "react";
 
 export function Navbar() {
   return (
-    <header className="flex items-center justify-between h-16 px-4 bg-white dark:bg-gray-950 dark:text-gray-50 md:px-6">
+    <div className="flex items-center justify-between h-16 px-4 bg-white dark:bg-gray-950 dark:text-gray-50 md:px-6">
       <Link className="text-lg font-medium" href="/">
         Tom Hackshaw
       </Link>
@@ -41,7 +41,7 @@ export function Navbar() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-    </header>
+    </div>
   );
 }
 
