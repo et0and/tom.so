@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
-import { Suspense, cache } from "react";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";   
 import { getBlogPosts } from "@/app/db/blog";
 import { unstable_noStore as noStore } from "next/cache";
 
-export async function generateMetadata({
+type Params = {
+  slug: string;
+};
+
+export async function ggenerateMetadata({
   params,
+}: {
+  params: Params;
 }): Promise<Metadata | undefined> {
   let post = getBlogPosts().find((post) => post.slug === params.slug);
   if (!post) {
@@ -79,7 +85,7 @@ function formatDate(date: string) {
   }
 }
 
-export default function Blog({ params }) {
+export default function Blog({ params }: { params: Params }) {
   let post = getBlogPosts().find((post) => post.slug === params.slug);
 
   if (!post) {

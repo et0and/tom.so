@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
-import { Suspense, cache } from "react";
 import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getWorkPosts } from "@/app/db/work";
 import { unstable_noStore as noStore } from "next/cache";
 
+type Params = {
+  slug: string;
+};
+
 export async function generateMetadata({
   params,
+}: {
+  params: Params;
 }): Promise<Metadata | undefined> {
   let post = getWorkPosts().find((post) => post.slug === params.slug);
   if (!post) {
@@ -79,7 +84,7 @@ function formatDate(date: string) {
   }
 }
 
-export default function Work({ params }) {
+export default function Work({ params }: { params: Params }) {
   let post = getWorkPosts().find((post) => post.slug === params.slug);
 
   if (!post) {
@@ -116,7 +121,7 @@ export default function Work({ params }) {
       <p className="text-md text-neutral-700 tracking-tighter">
         {post.metadata.summary}
       </p>
-      
+
       <article className="prose prose-quoteless prose-neutral">
         <CustomMDX source={post.content} />
       </article>
