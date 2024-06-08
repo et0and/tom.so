@@ -129,21 +129,25 @@ function slugify(str) {
 }
 
 function createHeading(level) {
-  return ({ children }) => {
+  const Heading = ({ children }) => {
     let slug = slugify(children);
     return React.createElement(
       `h${level}`,
       { id: slug },
       [
-        React.createElement('a', {
+        React.createElement("a", {
           href: `#${slug}`,
           key: `link-${slug}`,
-          className: 'anchor',
+          className: "anchor",
         }),
       ],
       children
     );
   };
+
+  Heading.displayName = `Heading${level}`;
+
+  return Heading;
 }
 
 let components = {
