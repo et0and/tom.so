@@ -6,14 +6,14 @@ function Navbar() {
       <Link className="text-lg font-medium hover:text-blue-700" href="/">
         Tom Hackshaw
       </Link>
-      <nav className="flex md:items-center space-x-4 text-lg font-base">
-        <Link className="underline hover:text-blue-700" href="/about">
+      <nav className="flex md:items-center space-x-4 text-lg">
+        <Link className="hover:underline hover:text-blue-700" href="/about">
           About
         </Link>
-        <Link className="underline hover:text-blue-700" href="/work">
+        <Link className="hover:underline hover:text-blue-700" href="/work">
           Work
         </Link>
-        <Link className="underline hover:text-blue-700" href="/posts">
+        <Link className="hover:underline hover:text-blue-700" href="/posts">
           Writing
         </Link>
       </nav>

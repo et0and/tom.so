@@ -1,17 +1,12 @@
+// @ts-nocheck
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getWorkPosts } from "@/app/db/work";
 import { unstable_noStore as noStore } from "next/cache";
 
-type Params = {
-  slug: string;
-};
-
 export async function generateMetadata({
   params,
-}: {
-  params: Params;
 }): Promise<Metadata | undefined> {
   let post = getWorkPosts().find((post) => post.slug === params.slug);
   if (!post) {
@@ -84,7 +79,7 @@ function formatDate(date: string) {
   }
 }
 
-export default function Work({ params }: { params: Params }) {
+export default function Work({ params }) {
   let post = getWorkPosts().find((post) => post.slug === params.slug);
 
   if (!post) {

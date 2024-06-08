@@ -3,7 +3,7 @@ import Link from "next/link"
 function Footer() {
   const currentYear = new Date().getFullYear()
   return (
-    <footer className="flex items-center tracking-tighter justify-between px-2 bg-white lg:text-md sm:text-lg text-sm text-black">
+    <footer className="flex items-center tracking-tighter justify-between px-2 bg-white pt-4 lg:text-md sm:text-lg text-sm text-black">
         <p>
           &copy; {currentYear}{" "}
           <Link
