@@ -1,0 +1,40 @@
+import Link from "next/link";
+import { getWorkPosts } from "@/app/db/work";
+
+export const metadata = {
+  title: "Writing",
+  description: "Read my thoughts.",
+};
+
+export default function WorkPage() {
+  let allWorks = getWorkPosts();
+
+  return (
+    <div className="w-full">
+      {allWorks
+        .sort((a, b) => {
+          if (a.metadata.title.toLowerCase() < b.metadata.title.toLowerCase()) {
+            return -1;
+          }
+          if (a.metadata.title.toLowerCase() > b.metadata.title.toLowerCase()) {
+            return 1;
+          }
+          return 0;
+        })
+        .map((post) => (
+          <Link
+            key={post.slug}
+            className="flex flex-col hover:text-blue-700 space-y-1 mb-4"
+            href={`/work/${post.slug}`}
+          >
+            <div className="w-full flex flex-col">
+              <p className="text-2xl font-medium tracking-tighter">
+                {post.metadata.title}
+              </p>
+              <p className="text-md">{post.metadata.summary}</p>
+            </div>
+          </Link>
+        ))}
+    </div>
+  );
+}

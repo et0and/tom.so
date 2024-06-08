@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: ["mdx", "ts", "tsx"],
+  transpilePackages: ["next-mdx-remote"],
   experimental: {
     mdxRs: true,
   },

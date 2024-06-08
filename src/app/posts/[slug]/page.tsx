@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { Suspense, cache } from "react";
 import { notFound } from "next/navigation";
-import { CustomMDX } from "@/components/mdx";
-import { getWorkPosts } from "@/app/db/work";
+import { CustomMDX } from "@/components/mdx";   
+import { getBlogPosts } from "@/app/db/blog";
 import { unstable_noStore as noStore } from "next/cache";
 
 export async function generateMetadata({
   params,
 }): Promise<Metadata | undefined> {
-  let post = getWorkPosts().find((post) => post.slug === params.slug);
+  let post = getBlogPosts().find((post) => post.slug === params.slug);
   if (!post) {
     return;
   }
@@ -31,7 +31,7 @@ export async function generateMetadata({
       description,
       type: "article",
       publishedTime,
-      url: `https://tom.so/work/${post.slug}`,
+      url: `https://tom.so/posts/${post.slug}`,
       images: [
         {
           url: ogImage,
@@ -79,8 +79,8 @@ function formatDate(date: string) {
   }
 }
 
-export default function Work({ params }) {
-  let post = getWorkPosts().find((post) => post.slug === params.slug);
+export default function Blog({ params }) {
+  let post = getBlogPosts().find((post) => post.slug === params.slug);
 
   if (!post) {
     notFound();
@@ -94,7 +94,7 @@ export default function Work({ params }) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "WorkPosting",
+            "@type": "BlogPosting",
             headline: post.metadata.title,
             datePublished: post.metadata.publishedAt,
             dateModified: post.metadata.publishedAt,
@@ -102,7 +102,7 @@ export default function Work({ params }) {
             image: post.metadata.image
               ? `https://tom.so${post.metadata.image}`
               : `https://tom.so/og?title=${post.metadata.title}`,
-            url: `https://tom.so/work/${post.slug}`,
+            url: `https://tom.so/posts/${post.slug}`,
             author: {
               "@type": "Person",
               name: "Tom Hackshaw",
@@ -116,7 +116,13 @@ export default function Work({ params }) {
       <p className="text-md text-neutral-700 tracking-tighter">
         {post.metadata.summary}
       </p>
-      
+      <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
+        <Suspense fallback={<p className="h-5" />}>
+          <p className="text-sm text-neutral-700">
+            {formatDate(post.metadata.publishedAt)}
+          </p>
+        </Suspense>
+      </div>
       <article className="prose prose-quoteless prose-neutral">
         <CustomMDX source={post.content} />
       </article>
