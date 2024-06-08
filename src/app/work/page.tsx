@@ -2,8 +2,8 @@ import Link from "next/link";
 import { getWorkPosts } from "@/app/db/work";
 
 export const metadata = {
-  title: "Writing",
-  description: "Read my thoughts.",
+  title: "Work",
+  description: "Things I have made.",
 };
 
 export default function WorkPage() {
