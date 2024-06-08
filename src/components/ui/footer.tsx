@@ -1,0 +1,31 @@
+import Link from "next/link"
+
+function Footer() {
+  const currentYear = new Date().getFullYear()
+  return (
+    <footer className="flex items-center justify-between px-2 bg-white lg:text-md sm:text-lg text-sm text-black">
+        <p>
+          &copy; {currentYear}{" "}
+          <Link
+            href="#"
+            className="underline hover:text-blue-700"
+            prefetch={false}
+          >
+            Accessibility
+          </Link>
+          . This site is part of a{" "}
+          <Link
+            href="#"
+            className="underline hover:text-blue-700"
+            prefetch={false}
+          >
+            webring
+          </Link>
+          .
+        </p>
+
+    </footer>
+  );
+}
+
+export default Footer;
