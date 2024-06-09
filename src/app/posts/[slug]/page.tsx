@@ -22,7 +22,7 @@ export async function generateMetadata({
   } = post.metadata;
   let ogImage = image
     ? `https://staging.tom.so${image}`
-    : `https://staging.tom.so/${title}`;
+    : `https://staging.tom.so/og.png`;
 
   return {
     title,
@@ -32,7 +32,7 @@ export async function generateMetadata({
       description,
       type: "article",
       publishedTime,
-      url: `https:/:staging.tom.so/posts/${post.slug}`,
+      url: `https://staging.tom.so/posts/${post.slug}`,
       images: [
         {
           url: ogImage,
