@@ -32,7 +32,7 @@ export async function generateMetadata({
       description,
       type: "article",
       publishedTime,
-      url: `https://tom.so/posts/${post.slug}`,
+      url: `https:/:staging.tom.so/posts/${post.slug}`,
       images: [
         {
           url: ogImage,
@@ -101,9 +101,9 @@ export default function Blog({ params }) {
             dateModified: post.metadata.publishedAt,
             summary: post.metadata.summary,
             image: post.metadata.image
-              ? `https://tom.so${post.metadata.image}`
-              : `https://tom.so/og?title=${post.metadata.title}`,
-            url: `https://tom.so/posts/${post.slug}`,
+              ? `https://staging.tom.so${post.metadata.image}`
+              : `https://staging.tom.so/og?title=${post.metadata.title}`,
+            url: `https://staging.tom.so/posts/${post.slug}`,
             author: {
               "@type": "Person",
               name: "Tom Hackshaw",
