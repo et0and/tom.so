@@ -40,12 +40,6 @@ export const metadata: Metadata = {
     title: "Tom Hackshaw",
     card: "summary_large_image",
   },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-  },
-  manifest: "/site.webmanifest",
 };
 
 const cx = (...classes: string[]) => classes.filter(Boolean).join(" ");
@@ -64,7 +58,9 @@ export default function RootLayout({
         GeistMono.variable
       )}
     >
-      <head></head>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body className="antialiased w-full px-4 my-8 lg:mx-auto">
         <main className="min-h-screen flex flex-col">
           <Navbar />
