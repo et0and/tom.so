@@ -24,11 +24,11 @@ export default function WorkPage() {
         .map((post) => (
           <Link
             key={post.slug}
-            className="flex flex-col hover:text-blue-700 space-y-1 mb-4"
+            className="flex flex-col hover:text-blue-700 transition-colors duration-200 space-y-1 mb-4"
             href={`/work/${post.slug}`}
           >
             <div className="w-full flex flex-col">
-              <p className="text-2xl font-medium tracking-tighter">
+              <p className="text-lg font-medium tracking-tighter">
                 {post.metadata.title}
               </p>
               <p className="text-md">{post.metadata.summary}</p>

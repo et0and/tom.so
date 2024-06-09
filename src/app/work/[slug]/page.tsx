@@ -98,7 +98,7 @@ export default function Work({ params }) {
             headline: post.metadata.title,
             datePublished: post.metadata.publishedAt,
             dateModified: post.metadata.publishedAt,
-            description: post.metadata.summary,
+            summary: post.metadata.summary,
             image: post.metadata.image
               ? `https://tom.so${post.metadata.image}`
               : `https://tom.so/og?title=${post.metadata.title}`,
@@ -116,9 +116,8 @@ export default function Work({ params }) {
       <p className="text-md text-neutral-700 tracking-tighter">
         {post.metadata.summary}
       </p>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
-      </div>
-      <article className="prose prose-quoteless prose-neutral">
+      <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]"></div>
+      <article className="prose prose-quoteless prose-neutral space-y-4 pb-8">
         <CustomMDX source={post.content} />
       </article>
     </section>

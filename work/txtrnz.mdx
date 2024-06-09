@@ -1,0 +1,19 @@
+---
+title: TXTRNZ
+publishedAt: 2022-05-30
+summary: A text-only news service
+---
+
+[TXTRNZ](https://txtrnz.tom.so) is a text-only site which serves news items from the [RNZ](https://rnz.co.nz) website.
+
+![Desktop view of TXTRNZ.](/txtrnz.webp)
+
+When New Zealand was hit with heavy flooding earlier this year, many people were faced with interrupted and unreliable Internet connections. RNZ maintained a text-only page with live updates over this period for users with limited mobile data which was fantastic to see. Inspired by this effort, as well as that of existing initiatives such as [Text NPR](https://text.npr.org/), I wanted to create a text-only version of the entire RNZ news site that removes images, JavaScript, favicons, tracking and non-critical CSS.
+
+Built with Python and GitHub Actions, this web app scrapes and builds static versions of RNZ news articles every 6 hours. As well as stripping non-text media, it uses system fonts to prioritise speed and accessibility for the end user. Should users wish to view the full original article, there are links at the top of every page that takes them to the source URL as well.
+
+This was my first major foray into using the [BeautifulSoup](https://beautiful-soup-4.readthedocs.io/en/latest/) Python package and web scraping in general. My knowledge of Python is limited, so I hope to continue improving this site over time.
+
+I would like thank RNZ for allowing me to be able to scrape their site freely without limiting or blocking my connections.
+
+The full source code is available on [GitHub](https://github.com/et0and/rnztxt)

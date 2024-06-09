@@ -1,0 +1,21 @@
+---
+title: Notion, supercharged
+summary: I spent the day today creating a database of designers from around the world on Notion
+publishedAt: 2020-07-14
+---
+
+I spent the day today creating a database of designers from around the world on [Notion](https://notion.so), a personal wiki/info management software.
+
+I've used Notion before for managing notes and files, but found it was a bit cumbersome when trying to share content or pages. While it was possible, there was no way to map custom memorable domains to pages (instead it would be default Notion links with a large generated string as the URL). If I wanted to share something with someone I would have to send them the link, which would then need to be pinned or bookmarked if used as a reference.
+
+Enter the magic of [Cloudflare Workers](https://workers.dev). With a bit of Javascript that is deployed serverlessly, I am able to map Notion pages to any domains I own! No more having to juggle long URLs, people just need one simple link.
+
+Cloudflare does all of the heavy lifting. Essentially, their servers read and scrape any content that you have published publically on Notion. It then reformats this as HTML and publishes it behind a domain of your choosing! Since all traffic goed through Notion and Cloudflare, everything is encrypted and secured at every level.
+
+Alter [this JS script](https://gist.github.com/et0and/3baca11aa135f23a7cb36c60e25d94b7#file-worker-js) to add your own domain or subdomain, then paste the script in Cloudflare and deploy!
+
+I hope you found this little hack useful!
+
+[May the road rise to meet you,](https://www.are.na/block/7769521)
+
+T.

@@ -6,7 +6,6 @@ export const metadata: Metadata = {
   description: "About Tom Hackshaw.",
 };
 
-
 export default function About() {
   return (
     <>
@@ -23,16 +22,43 @@ export default function About() {
       <p className="pb-4">
         My experience in making learning more accessible and equitable across a
         range of students from different backgrounds and abilities built the
-        foundation of my human-centered design practice. Anything I make or work
-        on is guided by{''} <Link href="/values" className="underline hover:text-blue-700">a few key values</Link>.
+        foundation of my human-centered design practice.
       </p>
       <p className="pb-4">
-        Previously I studied at the{''} <Link href="https://elamartists.ac.nz" className="underline hover:text-blue-700">Elam School of Fine Arts</Link>, where I also briefly taught the first and second year studio programme.
+        Previously I studied at the{" "}
+        <Link
+          href="https://elamartists.ac.nz"
+          className="underline hover:text-blue-700 transition-colors duration-200"
+        >
+          Elam School of Fine Arts
+        </Link>
+        , where I also briefly taught the first and second year studio
+        programme.
       </p>
       <p className="pb-4">
-        Find me on are.na, Read.cv, Merveilles. Sometimes, I am on IRC as
-        @tomupom on Libera Chat and Rizon networks. You can also find me on
-        Urbit as ~worbur-dorneb.
+        Find me on{" "}
+        <Link
+          href="https://are.na/tom"
+          className="underline hover:text-blue-700 transition-colors duration-200"
+        >
+          are.na
+        </Link>
+        ,{" "}
+        <Link
+          href="https://read.cv/hackshaw"
+          className="underline hover:text-blue-700 transition-colors duration-200"
+        >
+          Read.cv
+        </Link>
+        , and{" "}
+        <Link
+          href="https://merveilles.town/tomupom"
+          className="underline hover:text-blue-700 transition-colors duration-200"
+        >
+          Merveilles
+        </Link>
+        . Sometimes, I am on IRC as @tomupom on Libera Chat and Rizon networks.
+        You can also find me on Urbit as ~worbur-dorneb.
       </p>
       <p className="pb-4">
         I have accounts on other popular social media sites, but rarely use
@@ -44,11 +70,10 @@ export default function About() {
         Waitangi partners in Aotearoa New Zealand. I pay my respects to the mana
         whenua who are the original and continued rightful stewards of the land.
       </p>
-      <p className="pb-4">
+      <p className="pb-8">
         I would also like to acknowledge the many free and open source software
         that this website, along with many of my other projects, take advantage
-        of. For a full look at the different libraries and packages used to
-        power this website, take a look at the GitHub repo.
+        of.
       </p>
     </>
   );

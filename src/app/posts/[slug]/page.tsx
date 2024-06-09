@@ -99,7 +99,7 @@ export default function Blog({ params }) {
             headline: post.metadata.title,
             datePublished: post.metadata.publishedAt,
             dateModified: post.metadata.publishedAt,
-            description: post.metadata.summary,
+            summary: post.metadata.summary,
             image: post.metadata.image
               ? `https://tom.so${post.metadata.image}`
               : `https://tom.so/og?title=${post.metadata.title}`,
@@ -124,7 +124,7 @@ export default function Blog({ params }) {
           </p>
         </Suspense>
       </div>
-      <article className="prose prose-quoteless prose-neutral">
+      <article className="prose prose-quoteless prose-neutral space-y-4 pb-8">
         <CustomMDX source={post.content} />
       </article>
     </section>

@@ -2,3 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.prose a {
+  @apply transition-colors underline duration-200;
+}
+
+.prose a:hover {
+  @apply underline text-blue-700;
+}

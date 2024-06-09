@@ -1,0 +1,25 @@
+---
+title: New stack
+summary: Over the past few days I've completely rewritten my website and have switched to Eleventy
+publishedAt: 2020-04-29
+---
+
+Over the past few days I've completely rewritten my website and have switched to a new static site generator ([Eleventy](https://11ty.dev)).
+
+My previous site was a fork of [Hunor Karamán's website](https://hex22.org), built with [Choo](https://choo.io) and [Enoki](https://github.com/enokidotsite/enoki). I really liked the flat-file structure of the site, but began feeling like things were too abstracted and limited. For example, posts on the site didn't always play well with screen readers which created an accessibility issue. The site also didn't scale well to desktop screens, with a massive amount of unused whitespace squishing all content to the lefthand side.
+
+<figure>
+  <img
+    src="/old-site.jpg"
+    alt="Screenshot of my old site, with massive whitespace on the righthand side"
+  />
+  <figcaption>My old website - look at all that unused space!</figcaption>
+</figure>
+
+I decided to shop around for different static site generators as potential replacements. There was Jekyll, Hugo, Middleman, Pelican, Zola, Hakyll et al., all of which I have had some prior exposure to. Of all of these, Eleventy seemed like the most "logical" choice - the codebase is easy to read and understand, plus building and serving pages only takes a few seconds. I then paired this with [Sam Baldwin and Piper Haywood's](https://sb-ph.com) fantastic [Portfolio Starter](https://github.com/sb-ph/portfolio-starter) theme, customised to suit my liking (more navigation links, tree-style project pages, and so on). The end result is a site that is cleaner, easier to navigate and scale across different devices.
+
+Otherwise all other infrastructure related to the site remains unchanged. The site is hosted using [Vercel](https://vercel.com) (formerly known as ZEIT), with a security certificate issued by [Let's Encrypt](https://letsencrypt.org) and completely serverless. All pages and posts are in Markdown which is rendered into plain HTML, so I can work on the site either on my computer using [micro](https://micro-editor.github.io) or on my phone using [Working Copy](https://workingcopyapp.com).
+
+This process has been a great learning exercise for me. I have been working on the FreeCodeCamp web development course over the past few weeks, so it has been a great opportunity to test my newfound knowledge of HTML, CSS and JS. An area that I am working on further is developing ARIA tags on the site to gain further accessibility for users.
+
+T.
