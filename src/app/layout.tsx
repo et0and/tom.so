@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     siteName: "Tom Hackshaw",
     locale: "en_NZ",
     type: "website",
+    image: "/og.png",
   },
   robots: {
     index: true,
