@@ -17,10 +17,10 @@ export const metadata: Metadata = {
     default: "Tom Hackshaw",
     template: "%s | Tom Hackshaw",
   },
-  description: "Design engineer from Pōneke, Aotearoa.",
+  description: "Tom Hackshaw is a design engineer from Pōneke, Aotearoa.",
   openGraph: {
     title: "Tom Hackshaw",
-    description: "Design engineer from Pōneke, Aotearoa.",
+    description: "Tom Hackshaw is a design engineer from Pōneke, Aotearoa.",
     url: "https://tom.so",
     siteName: "Tom Hackshaw",
     locale: "en_NZ",
@@ -63,6 +63,7 @@ export default function RootLayout({
         <meta property="og:image" content="/og.png" />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:image" content="/og.png" />
+        <meta name="description" content="Tom Hackshaw is a design engineer from Pōneke, Aotearoa." />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
