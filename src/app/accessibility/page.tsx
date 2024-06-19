@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Accessibility",
@@ -27,7 +28,13 @@ export default function Accessibility() {
       </p>
       <p className="pb-4">
         If you have difficulty using or accessing any element of this website,
-        please feel free to email me at the above email and I will work with you
+        please feel free to email me at {" "}
+        <Link
+          href="mailto:access@tomhackshaw.com"
+          className="underline hover:text-blue-700 transition-colors duration-200"
+        >
+          access@tomhackshaw.com
+        </Link> and I will work with you
         to provide the information, item, or element you seek through a
         communication method that is accessible for you consistent with
         applicable law.
@@ -40,7 +47,7 @@ export default function Accessibility() {
         entire site to ensure this meets AA levels or higher.
       </p>
       <p className="pb-4">
-        Using tools such as WAVE, NVDA, axe DevTools and Lighthouse I am working
+        Using tools such as WAVE, NVDA, Axe and Lighthouse I am working
         towards greater accessibility of this website, and hope to work with an
         independent accessibility consultant sometime in the future to conduct a
         deeper audit.
