@@ -1,36 +1,14 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## tom.so
 
-## Getting Started
+This is my personal website, catalog of work and blog.
 
-First, run the development server:
+Built using Next.js with app router, Typescript, and MDX.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+All content from [my previous website](https://github.com/et0and/portfolio-redux), which used 11ty, was migrated in June 2024 when I began this rewrite.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Feel free to fork and use this as you wish. I just ask that:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- you do not reuse, sell or distribute my content without my explicit permission
+- realise that this is not a perfect project. It contains components that are very loosely typed, not entirely accessible/WCAG compliant, and needs work.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+For a better example of a personal website that uses app router and Typescript, consider studying [Lee Robinson's website](https://github.com/leerob/leerob.io).
