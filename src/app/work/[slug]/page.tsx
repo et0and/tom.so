@@ -1,13 +1,18 @@
-// @ts-nocheck
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getWorkPosts } from "@/app/db/work";
 import { unstable_noStore as noStore } from "next/cache";
 
+interface PageParams {
+  params: {
+    slug: string;
+  };
+}
+
 export async function generateMetadata({
   params,
-}): Promise<Metadata | undefined> {
+}: PageParams): Promise<Metadata | undefined> {
   let post = getWorkPosts().find((post) => post.slug === params.slug);
   if (!post) {
     return;
@@ -19,9 +24,7 @@ export async function generateMetadata({
     summary: description,
     image,
   } = post.metadata;
-  let ogImage = image
-    ? `https://tom.so${image}`
-    : `https://tom.so/og.png`;
+  let ogImage = image ? `https://tom.so${image}` : `https://tom.so/og.png`;
 
   return {
     title,
@@ -47,7 +50,7 @@ export async function generateMetadata({
   };
 }
 
-function formatDate(date: string) {
+function formatDate(date: string): string {
   noStore();
   let currentDate = new Date().getTime();
   if (!date.includes("T")) {
@@ -79,7 +82,7 @@ function formatDate(date: string) {
   }
 }
 
-export default function Work({ params }) {
+export default function Work({ params }: PageParams) {
   let post = getWorkPosts().find((post) => post.slug === params.slug);
 
   if (!post) {
@@ -94,11 +97,11 @@ export default function Work({ params }) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "WorkPosting",
+            "@type": "Article",
             headline: post.metadata.title,
             datePublished: post.metadata.publishedAt,
             dateModified: post.metadata.publishedAt,
-            summary: post.metadata.summary,
+            description: post.metadata.summary,
             image: post.metadata.image
               ? `https://tom.so${post.metadata.image}`
               : `https://tom.so/og?title=${post.metadata.title}`,

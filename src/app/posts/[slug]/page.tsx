@@ -1,14 +1,19 @@
-// @ts-nocheck
 import type { Metadata } from "next";
-import { Suspense, cache } from "react";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getBlogPosts } from "@/app/db/blog";
 import { unstable_noStore as noStore } from "next/cache";
 
+interface PageParams {
+  params: {
+    slug: string;
+  };
+}
+
 export async function generateMetadata({
   params,
-}): Promise<Metadata | undefined> {
+}: PageParams): Promise<Metadata | undefined> {
   let post = getBlogPosts().find((post) => post.slug === params.slug);
   if (!post) {
     return;
@@ -32,7 +37,7 @@ export async function generateMetadata({
       description,
       type: "article",
       publishedTime,
-      url: `https://staging.tom.so/posts/${post.slug}`,
+      url: `https://tom.so/posts/${post.slug}`,
       images: [
         {
           url: ogImage,
@@ -48,7 +53,7 @@ export async function generateMetadata({
   };
 }
 
-function formatDate(date: string) {
+function formatDate(date: string): string {
   noStore();
   let currentDate = new Date().getTime();
   if (!date.includes("T")) {
@@ -80,7 +85,7 @@ function formatDate(date: string) {
   }
 }
 
-export default function Blog({ params }) {
+export default function Blog({ params }: PageParams) {
   let post = getBlogPosts().find((post) => post.slug === params.slug);
 
   if (!post) {
@@ -99,7 +104,7 @@ export default function Blog({ params }) {
             headline: post.metadata.title,
             datePublished: post.metadata.publishedAt,
             dateModified: post.metadata.publishedAt,
-            summary: post.metadata.summary,
+            description: post.metadata.summary,
             image: post.metadata.image
               ? `https://staging.tom.so${post.metadata.image}`
               : `https://staging.tom.so/og?title=${post.metadata.title}`,

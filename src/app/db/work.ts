@@ -1,4 +1,3 @@
-// @ts-nocheck
 import fs from "fs";
 import path from "path";
 
@@ -9,10 +8,13 @@ type Metadata = {
   image?: string;
 };
 
-function parseFrontmatter(fileContent: string) {
+function parseFrontmatter(fileContent: string): {
+  metadata: Metadata;
+  content: string;
+} {
   let frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
   let match = frontmatterRegex.exec(fileContent);
-  let frontMatterBlock = match![1];
+  let frontMatterBlock = match?.[1] ?? "";
   let content = fileContent.replace(frontmatterRegex, "").trim();
   let frontMatterLines = frontMatterBlock.trim().split("\n");
   let metadata: Partial<Metadata> = {};
@@ -24,23 +26,35 @@ function parseFrontmatter(fileContent: string) {
     metadata[key.trim() as keyof Metadata] = value;
   });
 
+  if (!metadata.title || !metadata.publishedAt || !metadata.summary) {
+    throw new Error("Invalid frontmatter: missing required fields");
+  }
+
   return { metadata: metadata as Metadata, content };
 }
 
-function getMDXFiles(dir: fs.PathLike) {
+function getMDXFiles(dir: string): string[] {
   return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
 }
 
-function readMDXFile(filePath: fs.PathOrFileDescriptor) {
+function readMDXFile(filePath: string): {
+  metadata: Metadata;
+  content: string;
+} {
   let rawContent = fs.readFileSync(filePath, "utf-8");
   return parseFrontmatter(rawContent);
 }
 
-function getMDXData(dir: fs.PathLike) {
-  const dirString = dir.toString(); // Convert dir to a string
+interface MDXData {
+  metadata: Metadata;
+  slug: string;
+  content: string;
+}
+
+function getMDXData(dir: string): MDXData[] {
   let mdxFiles = getMDXFiles(dir);
   return mdxFiles.map((file) => {
-    let { metadata, content } = readMDXFile(path.join(dirString, file)); // Use dirString here
+    let { metadata, content } = readMDXFile(path.join(dir, file));
     let slug = path.basename(file, path.extname(file));
     return {
       metadata,
@@ -50,6 +64,6 @@ function getMDXData(dir: fs.PathLike) {
   });
 }
 
-export function getWorkPosts() {
+export function getWorkPosts(): MDXData[] {
   return getMDXData(path.join(process.cwd(), "work"));
 }
