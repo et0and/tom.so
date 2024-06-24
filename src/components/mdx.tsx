@@ -52,8 +52,8 @@ function CustomLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   return <a target="_blank" rel="noopener noreferrer" {...props} />;
 }
 
-function RoundedImage(props: ImageProps) {
-  return <Image alt={props.alt} className="rounded-lg" {...props} />;
+function RoundedImage({ className, ...props }: ImageProps) {
+  return <Image className={`rounded-lg ${className || ""}`} {...props} />;
 }
 
 interface CalloutProps {
