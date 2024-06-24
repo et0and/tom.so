@@ -3,7 +3,7 @@ import Image, { ImageProps } from "next/image";
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import { TweetComponent } from "./tweet";
 import { highlight } from "sugar-high";
-import React, { ReactNode } from "react";
+import React, { ComponentType, ReactNode } from "react";
 
 interface TableProps {
   data: {
@@ -135,11 +135,12 @@ function ConsCard({ title, cons }: ConsCardProps) {
 }
 
 interface CodeProps extends React.HTMLAttributes<HTMLElement> {
-  children: string;
+  children: ReactNode;
 }
 
 function Code({ children, ...props }: CodeProps) {
-  let codeHTML = highlight(children);
+  const codeString = React.Children.toArray(children).join("");
+  let codeHTML = highlight(codeString);
   return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
 }
 
@@ -172,7 +173,11 @@ function createHeading(level: number) {
   };
 }
 
-let components = {
+type ComponentsType = {
+  [key: string]: ComponentType<any>;
+};
+
+const components: ComponentsType = {
   h1: createHeading(1),
   h2: createHeading(2),
   h3: createHeading(3),
@@ -193,7 +198,10 @@ export function CustomMDX(props: MDXRemoteProps) {
   return (
     <MDXRemote
       {...props}
-      components={{ ...components, ...(props.components || {}) }}
+      components={{
+        ...components,
+        ...(props.components as ComponentsType),
+      }}
     />
   );
 }
