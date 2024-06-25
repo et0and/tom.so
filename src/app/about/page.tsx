@@ -52,7 +52,7 @@ export default function About() {
         </Link>
         , and{" "}
         <Link
-          href="https://merveilles.town/tomupom"
+          href="https://merveilles.town/@tomupom"
           className="underline hover:text-blue-700 transition-colors duration-200"
         >
           Merveilles
