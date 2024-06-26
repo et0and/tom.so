@@ -10,6 +10,7 @@ export default function WorkPage() {
   let allWorks = getWorkPosts();
 
   return (
+    <>
     <div className="w-full">
       {allWorks
         .sort((a, b) => {
@@ -28,13 +29,15 @@ export default function WorkPage() {
             href={`/work/${post.slug}`}
           >
             <div className="w-full flex flex-col">
-              <p className="text-lg font-medium tracking-tighter">
+              <p className="text-2xl font-medium tracking-tighter">
                 {post.metadata.title}
               </p>
-              <p className="text-md">{post.metadata.summary}</p>
+              <p className="text-lg">{post.metadata.summary}</p>
             </div>
+            
           </Link>
         ))}
     </div>
+    </>
   );
 }

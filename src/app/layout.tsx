@@ -8,6 +8,7 @@ import "./globals.css";
 import type { Viewport } from "next";
 import { PHProvider } from "./providers";
 import dynamic from "next/dynamic";
+import Banner from "@/components/ui/banner"
 
 const PostHogPageView = dynamic(() => import("./PostHogPageView"), {
   ssr: false,
@@ -92,11 +93,13 @@ export default function RootLayout({
         />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <PHProvider>
+      <PHProvider> 
         <body className="antialiased w-full px-4 my-8 lg:mx-auto">
           <PostHogPageView />
+          <Banner />
           <main className="min-h-screen flex flex-col">
             <Navbar />
+            
             <div className="flex-grow flex tracking-tighter flex-col px-2 mx-auto md:px-0">
               <div className="flex-grow flex flex-col">
                 <div className="max-w-3xl mx-auto px-4 md:px-0 pt-8 text-pretty">

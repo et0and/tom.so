@@ -11,11 +11,11 @@ export default function Component() {
   return (
     <>
       {showBanner && (
-        <div className="bg-black text-white p-4 relative">
+        <div className="bg-black text-white p-4 relative rounded-md m-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <InfoIcon className="h-5 w-5" />
-              <h3 className="text-lg font-bold">Important information</h3>
+              <h1 className="text-lg font-semibold">Website upgrade</h1>
             </div>
             <Button
               variant="ghost"
@@ -26,7 +26,7 @@ export default function Component() {
               <XIcon className="h-5 w-5" />
             </Button>
           </div>
-          <p className="text-sm mt-4">Please review the latest updates to our terms of service.</p>
+          <p className="text-lg mt-4">This website is running on a new stack, and may contain a few bugs until these can be fixed. <a href="https://github.com/et0and/tom.so" className="underline hover:text-gray-300">More information</a>.</p>
         </div>
       )}
     </>
