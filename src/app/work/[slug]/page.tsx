@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getWorkPosts } from "@/app/db/work";
 import { unstable_noStore as noStore } from "next/cache";
+import { Separator } from "@/components/ui/separator";
 
 interface PageParams {
   params: {
@@ -119,6 +120,7 @@ export default function Work({ params }: PageParams) {
       <p className="text-md text-neutral-700 tracking-tighter">
         {post.metadata.summary}
       </p>
+      <Separator className="my-4" />
       <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]"></div>
       <article className="prose prose-quoteless prose-neutral space-y-4 pb-8">
         <CustomMDX source={post.content} />

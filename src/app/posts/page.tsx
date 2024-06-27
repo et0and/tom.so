@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getBlogPosts } from "@/app/db/blog";
+import { Separator } from "@/components/ui/separator";
 
 export const metadata = {
   title: "Writing",
@@ -11,6 +12,8 @@ export default function BlogPage() {
 
   return (
     <div className="w-full">
+      <h1 className="font-medium text-4xl">Writing</h1>
+      <Separator className="my-4" />
       {allBlogs
         .sort((a, b) => {
           if (

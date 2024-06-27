@@ -9,6 +9,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
+import { Separator } from "@/components/ui/separator";
 
 export const metadata: Metadata = {
   title: "About",
@@ -18,8 +19,8 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <>
-      <h1 className="text-3xl pb-4">About</h1>
-      <p>Hi, I&apos;m Tom,</p>
+      <h1 className="font-medium text-4xl">About</h1>
+      <Separator className="my-4" /> <p>Hi, I&apos;m Tom,</p>
       <p className="pb-4">
         I am a designer with a background in the arts and education. Presently I
         am working as a web producer and developer in Pōneke, Te

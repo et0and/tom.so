@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getBlogPosts } from "@/app/db/blog";
 import { unstable_noStore as noStore } from "next/cache";
+import { Separator } from "@/components/ui/separator";
 
 interface PageParams {
   params: {
@@ -122,13 +123,15 @@ export default function Blog({ params }: PageParams) {
       <p className="text-md text-neutral-700 tracking-tighter">
         {post.metadata.summary}
       </p>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
-        <Suspense fallback={<p className="h-5" />}>
+
+      <div className="flex justify-between items-center mt-2 mb-6 text-sm max-w-[650px]">
+        <Suspense fallback={<p className="h-2" />}>
           <p className="text-sm text-neutral-700">
             {formatDate(post.metadata.publishedAt)}
           </p>
         </Suspense>
       </div>
+      <Separator className="mt-4 mb-8" />
       <article className="prose prose-quoteless prose-neutral space-y-4 pb-8">
         <CustomMDX source={post.content} />
       </article>

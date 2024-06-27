@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getWorkPosts } from "@/app/db/work";
+import { Separator } from "@/components/ui/separator";
 
 export const metadata = {
   title: "Work",
@@ -11,7 +12,9 @@ export default function WorkPage() {
 
   return (
     <>
-      <div className="w-full items-center">
+      <div className="w-full">
+        <h1 className="font-medium text-4xl">Work</h1>
+        <Separator className="my-4" />
         {allWorks
           .sort((a, b) => {
             if (

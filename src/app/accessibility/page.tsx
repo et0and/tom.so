@@ -1,3 +1,4 @@
+import { Separator } from "@/components/ui/separator";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -9,7 +10,8 @@ export const metadata: Metadata = {
 export default function Accessibility() {
   return (
     <>
-      <h1 className="text-3xl pb-4">Accessibility</h1>
+      <h1 className="font-medium text-4xl">Accessibility</h1>
+      <Separator className="my-4" />{" "}
       <p className="pb-4">
         I am committed to providing a website that is accessible to the widest
         possible audience in accordance with the New Zealand Web Accessibility
@@ -28,16 +30,16 @@ export default function Accessibility() {
       </p>
       <p className="pb-4">
         If you have difficulty using or accessing any element of this website,
-        please feel free to email me at {" "}
+        please feel free to email me at{" "}
         <Link
           href="mailto:access@tomhackshaw.com"
           className="underline hover:text-blue-700 transition-colors duration-200"
         >
           access@tomhackshaw.com
-        </Link> and I will work with you
-        to provide the information, item, or element you seek through a
-        communication method that is accessible for you consistent with
-        applicable law.
+        </Link>{" "}
+        and I will work with you to provide the information, item, or element
+        you seek through a communication method that is accessible for you
+        consistent with applicable law.
       </p>
       <p className="pb-4">
         I am currently taking a variety of steps and devoting resources to
@@ -47,11 +49,12 @@ export default function Accessibility() {
         entire site to ensure this meets AA levels or higher.
       </p>
       <p className="pb-4">
-        Using tools such as WAVE, NVDA, Axe and Lighthouse I am working
-        towards greater accessibility of this website, and hope to work with an
+        Using tools such as WAVE, NVDA, Axe and Lighthouse I am working towards
+        greater accessibility of this website, and hope to work with an
         independent accessibility consultant sometime in the future to conduct a
         deeper audit.
       </p>
+      <Separator className="my-4" />
       <h1 className="text-3xl pb-4">Known issues</h1>
       <ul className="pb-8 list-inside list-disc">
         <li>colour contrast is not AA level or higher in some areas</li>
