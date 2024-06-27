@@ -51,7 +51,7 @@ export default function About() {
       <HoverCardContent className="w-80">
         <div className="flex justify-between space-x-4">
           <Avatar>
-            <AvatarImage src="https://logowik.com/content/uploads/images/the-university-of-auckland1386.jpg" />
+            <AvatarImage src="/uoa.jpg" />
             <AvatarFallback>Elam</AvatarFallback>
           </Avatar>
           <div className="space-y-1">
@@ -84,7 +84,7 @@ export default function About() {
       <HoverCardContent className="w-80">
         <div className="flex justify-between space-x-4">
           <Avatar>
-            <AvatarImage src="https://i.pinimg.com/474x/62/35/ef/6235efb67be5b5fdfb2faf206fc2c330.jpg" />
+            <AvatarImage src="/arena.jpg" />
             <AvatarFallback>Are.na</AvatarFallback>
           </Avatar>
           <div className="space-y-1">
@@ -115,7 +115,7 @@ export default function About() {
       <HoverCardContent className="w-80">
         <div className="flex justify-between space-x-4">
           <Avatar>
-            <AvatarImage src="https://read.cv/logos/readcv.svg" />
+            <AvatarImage src="/readcv.svg" />
             <AvatarFallback>Read.cv</AvatarFallback>
           </Avatar>
           <div className="space-y-1">
@@ -146,7 +146,7 @@ export default function About() {
       <HoverCardContent className="w-80">
         <div className="flex justify-between space-x-4">
           <Avatar>
-            <AvatarImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSba3q5rZAOcL1y6f0Hbraizn2600yPtl9nnQpMqLjkbyqtMtxtHawR&usqp=CAE&s" />
+            <AvatarImage src="/merveilles.png" />
             <AvatarFallback>Merveilles</AvatarFallback>
           </Avatar>
           <div className="space-y-1">
