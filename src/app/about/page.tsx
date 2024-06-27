@@ -1,5 +1,18 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { CalendarDays } from "lucide-react"
+ 
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card"
 
 export const metadata: Metadata = {
   title: "About",
@@ -26,37 +39,131 @@ export default function About() {
       </p>
       <p className="pb-4">
         Previously I studied at the{" "}
-        <Link
+      <HoverCard>
+      <HoverCardTrigger asChild>
+      <Link
           href="https://elamartists.ac.nz"
           className="underline hover:text-blue-700 transition-colors duration-200"
         >
           Elam School of Fine Arts
         </Link>
-        , where I also briefly taught the first and second year studio
-        programme.
+      </HoverCardTrigger>
+      <HoverCardContent className="w-80">
+        <div className="flex justify-between space-x-4">
+          <Avatar>
+            <AvatarImage src="https://logowik.com/content/uploads/images/the-university-of-auckland1386.jpg" />
+            <AvatarFallback>Elam</AvatarFallback>
+          </Avatar>
+          <div className="space-y-1">
+            <p className="text-sm font-medium">Elam School of Fine Arts</p>
+            <p className="text-sm">
+            The Elam School of Fine Arts, founded by John Edward Elam, is part of the Faculty of Creative Arts and Industries at the University of Auckland. It offered the first Bachelor of Fine Arts programme in New Zealand starting in 1967.
+            </p>
+            <div className="flex items-center pt-2">
+              <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
+              <span className="text-sm text-muted-foreground">
+                Joined March 2014
+              </span>
+            </div>
+          </div>
+        </div>
+      </HoverCardContent>
+    </HoverCard>, where I also briefly taught the first and second year studio programme.
       </p>
       <p className="pb-4">
         Find me on{" "}
-        <Link
+      <HoverCard>
+      <HoverCardTrigger asChild>
+      <Link
           href="https://are.na/tom"
           className="underline hover:text-blue-700 transition-colors duration-200"
         >
           are.na
         </Link>
+      </HoverCardTrigger>
+      <HoverCardContent className="w-80">
+        <div className="flex justify-between space-x-4">
+          <Avatar>
+            <AvatarImage src="https://i.pinimg.com/474x/62/35/ef/6235efb67be5b5fdfb2faf206fc2c330.jpg" />
+            <AvatarFallback>Are.na</AvatarFallback>
+          </Avatar>
+          <div className="space-y-1">
+            <p className="text-sm font-medium">Are.na</p>
+            <p className="text-sm">
+            Are.na is an online social networking community and creative research platform founded by Charles Broskoski, Daniel Pianetti, Chris Barley, and Chris Sherron.
+            </p>
+            <div className="flex items-center pt-2">
+              <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
+              <span className="text-sm text-muted-foreground">
+                Joined January 2018
+              </span>
+            </div>
+          </div>
+        </div>
+      </HoverCardContent>
+    </HoverCard>
         ,{" "}
-        <Link
+        <HoverCard>
+      <HoverCardTrigger asChild>
+      <Link
           href="https://read.cv/hackshaw"
           className="underline hover:text-blue-700 transition-colors duration-200"
         >
           Read.cv
         </Link>
+      </HoverCardTrigger>
+      <HoverCardContent className="w-80">
+        <div className="flex justify-between space-x-4">
+          <Avatar>
+            <AvatarImage src="https://read.cv/logos/readcv.svg" />
+            <AvatarFallback>Read.cv</AvatarFallback>
+          </Avatar>
+          <div className="space-y-1">
+            <p className="text-sm font-medium">Read.cv</p>
+            <p className="text-sm">
+            Read.cv is a show, don&apos;t tell professional platform to form beautiful profiles and make meaningful connections with people and teams.
+            </p>
+            <div className="flex items-center pt-2">
+              <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
+              <span className="text-sm text-muted-foreground">
+                Joined January 2023
+              </span>
+            </div>
+          </div>
+        </div>
+      </HoverCardContent>
+    </HoverCard>
         , and{" "}
-        <Link
+        <HoverCard>
+      <HoverCardTrigger asChild>
+      <Link
           href="https://merveilles.town/@tomupom"
           className="underline hover:text-blue-700 transition-colors duration-200"
         >
           Merveilles
         </Link>
+      </HoverCardTrigger>
+      <HoverCardContent className="w-80">
+        <div className="flex justify-between space-x-4">
+          <Avatar>
+            <AvatarImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSba3q5rZAOcL1y6f0Hbraizn2600yPtl9nnQpMqLjkbyqtMtxtHawR&usqp=CAE&s" />
+            <AvatarFallback>Merveilles</AvatarFallback>
+          </Avatar>
+          <div className="space-y-1">
+            <p className="text-sm font-medium">Merveilles</p>
+            <p className="text-sm">
+            Merveilles is a collective of forward-thinking individuals who strive to better each other and their surroundings through constant creation and play. This community project is aimed at the establishment of new ways of speaking, seeing and organizing. A warm welcome to any like-minded people who feel these ideals resonate with them.
+            </p>
+            <div className="flex items-center pt-2">
+              <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
+              <span className="text-sm text-muted-foreground">
+                Joined May 2019
+              </span>
+            </div>
+          </div>
+        </div>
+      </HoverCardContent>
+    </HoverCard>
         . Sometimes, I am on IRC as @tomupom on Libera Chat and Rizon networks.
         You can also find me on Urbit as ~worbur-dorneb.
       </p>
