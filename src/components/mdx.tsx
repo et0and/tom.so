@@ -34,6 +34,76 @@ function Table({ data }: TableProps) {
   );
 }
 
+function LightModeWrapper({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="bg-white text-black dark:bg-white dark:text-black">
+      {children}
+    </div>
+  );
+}
+
+interface ArenaProps {
+  channelSlug: string;
+}
+
+function Arena({ channelSlug }: ArenaProps) {
+  return (
+    <LightModeWrapper>
+      <iframe
+        style={{ border: "1px solid #e5e5e5" }}
+        width="100%"
+        height="590"
+        src={`https://www.are.na/tom/${channelSlug}/embed`}
+        title={`Are.na channel ${channelSlug}`}
+      />
+    </LightModeWrapper>
+  );
+}
+
+interface YoutubeProps {
+  videoID: string;
+}
+
+function Youtube({ videoID }: YoutubeProps) {
+  return (
+    <iframe
+      width="560"
+      height="315"
+      src={`https://www.youtube.com/embed/${videoID}`}
+      title="YouTube video player"
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+    />
+  );
+}
+
+interface IframeProps {
+  src: string;
+  title: string;
+  width?: string | number;
+  height?: string | number;
+  style?: React.CSSProperties;
+}
+
+function Iframe({
+  src,
+  title,
+  width = "100%",
+  height = "590",
+  style = {},
+}: IframeProps) {
+  return (
+    <iframe
+      src={src}
+      title={title}
+      width={width}
+      height={height}
+      style={{ border: "none", ...style }}
+    />
+  );
+}
+
 function CustomLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   let href = props.href;
 
@@ -192,6 +262,9 @@ const components: ComponentsType = {
   StaticTweet: TweetComponent,
   code: Code,
   Table,
+  Arena,
+  Youtube,
+  Iframe,
 };
 
 export function CustomMDX(props: MDXRemoteProps) {

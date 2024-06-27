@@ -8,7 +8,9 @@ function Navbar() {
         href="/"
       >
         <div className="md:block hidden">Tom Hackshaw</div>
-        <div className="md:hidden block hover:bg-blue-700 w-7 h-7 bg-black rounded-full"></div>
+        <div className="md:hidden block hover:bg-blue-700 w-7 h-7 bg-black rounded-full">
+          <span className="sr-only">Tom Hackshaw</span>
+        </div>
       </Link>
       <nav className="flex md:items-center space-x-4 text-lg">
         <Link
