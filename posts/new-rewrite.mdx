@@ -1,0 +1,17 @@
+---
+title: "New rewrite"
+summary: "I recently made the switch to Next.js"
+publishedAt: "2024-06-27"
+---
+
+After nearly 4 years of using 11ty as my static site generator, I decided to bite the bullet and give Next.js a try.
+
+The 11ty site I had been using was originally a [portfolio starter template](https://portfolio-starter.sb-ph.com) by [Piper Haywood](https://piperhaywood.com) and [Sam Baldwin](https://sambaldwin.info/), the former who was kind enough to talk to me in 2020 and gave me advice on how to get started with web work as a complete newbie.
+
+I have been using Next for a number of products that we have been building at work, so felt comfortable enough to give it a try for this site rewrite. The flexibility offered by Next and React is what got me interested in the first place. My original website wasn't particularly feature-rich or complicated to begin with, so it wouldn't be too difficult to try recreate this.
+
+Having migrated all of my content and work across, the site feels noticeable faster compared to 11ty. While [11ty build times are still much, much faster by comparison](https://www.11ty.dev/docs/performance/), this doesn't really affect the end user experience. Vercel takes care of the deployment, and next/image ensures that all of my images are optimised when they are sent to the viewer which is awesome.
+
+In the future, I want to expand the functionality of this site by creating more custom components and libraries. For example, all of the Are.na channels that I have are being rendered as iframes, so it would be great if I could leverage something like [arena-ts](https://github.com/e-e-e/arena-ts) so that this loads natively with proper image optimisation. Since iframes aren't particularly accessible and are difficult to navigate using a keyboard, this would be a big plus as well.
+
+If you're interested in seeing the code, feel free to [take a look on my GitHub](https://github.com/et0and/tom.so).
