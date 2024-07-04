@@ -11,7 +11,6 @@ export default function Loading() {
               <div className="h-4 bg-gray-200 rounded w-5/6"></div>
               <div className="h-4 bg-gray-200 rounded w-4/6"></div>
             </div>
-          ))}
         </div>
       </div>
   );
