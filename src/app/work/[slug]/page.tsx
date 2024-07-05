@@ -107,13 +107,13 @@ export default function Work({ params }: PageParams) {
     <Breadcrumb>
       <BreadcrumbList>
       <BreadcrumbItem>
-          <BreadcrumbLink asChild>
+          <BreadcrumbLink>
           <Link href="/">Home</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink asChild>
+          <BreadcrumbLink>
           <Link href="/work">Work</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>

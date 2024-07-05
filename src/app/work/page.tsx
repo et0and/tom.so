@@ -26,7 +26,7 @@ export default function WorkPage() {
       <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink asChild>
+          <BreadcrumbLink>
           <Link href="/">Home</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>

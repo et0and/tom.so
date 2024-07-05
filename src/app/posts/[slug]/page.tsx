@@ -106,13 +106,14 @@ export default function Blog({ params }: PageParams) {
     <><Breadcrumb>
       <BreadcrumbList>
       <BreadcrumbItem>
-          <BreadcrumbLink asChild>
+          <BreadcrumbLink>
           <Link href="/">Home</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink asChild> <Link href="/posts">Writing</Link>
+          <BreadcrumbLink> 
+          <Link href="/posts">Writing</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />

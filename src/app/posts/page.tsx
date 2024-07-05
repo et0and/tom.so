@@ -24,7 +24,7 @@ export default function BlogPage() {
       <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink asChild>
+          <BreadcrumbLink>
           <Link href="/">Home</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
