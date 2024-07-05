@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
 import { getWorkPosts } from "@/app/db/work"
-import WorkTable from "@/components/ui/WorkTable"
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -23,28 +22,42 @@ export const metadata: Metadata = {
 }
 
 export default function WorkPage() {
-  const allWorks = getWorkPosts().map(post => ({
-    title: post.metadata.title,
-    summary: post.metadata.summary,
-    date: post.metadata.publishedAt || 'N/A',
-    slug: post.slug,
-  }))
+  let allWorks = getWorkPosts();
 
   return (
-    <div className="w-full">
-      <Breadcrumb>
-      <BreadcrumbList>
-        <BreadcrumbItem>
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          Work
-        </BreadcrumbItem>
-      </BreadcrumbList>
-    </Breadcrumb>
-      <h1 className="font-medium text-4xl mb-4 py-4">Work</h1>
-      <WorkTable works={allWorks} />
-    </div>
-  )
+    <>
+      <div className="w-full">
+        <h1 className="font-medium text-4xl">Work</h1>
+        <Separator className="my-4" />
+        {allWorks
+          .sort((a, b) => {
+            if (
+              a.metadata.title.toLowerCase() < b.metadata.title.toLowerCase()
+            ) {
+              return -1;
+            }
+            if (
+              a.metadata.title.toLowerCase() > b.metadata.title.toLowerCase()
+            ) {
+              return 1;
+            }
+            return 0;
+          })
+          .map((post) => (
+            <Link
+              key={post.slug}
+              className="flex flex-col hover:text-blue-700 transition-colors duration-200 space-y-1 mb-4"
+              href={`/work/${post.slug}`}
+            >
+              <div className="w-full flex flex-col">
+                <p className="text-2xl font-medium tracking-tighter">
+                  {post.metadata.title}
+                </p>
+                <p className="text-lg">{post.metadata.summary}</p>
+              </div>
+            </Link>
+          ))}
+      </div>
+    </>
+  );
 }
