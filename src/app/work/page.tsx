@@ -29,7 +29,18 @@ export default function WorkPage() {
   return (
     <>
       <div className="w-full">
-        <h1 className="font-medium text-4xl">Work</h1>
+      <Breadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          Work
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
+        <h1 className="font-medium text-4xl pt-4">Work</h1>
         <Separator className="my-4" />
         {allWorks
           .sort((a, b) => {
