@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getBlogPosts } from "@/app/db/blog";
 import { unstable_noStore as noStore } from "next/cache";
 import { Separator } from "@/components/ui/separator";
-import { Skeleton } from "@/components/ui/skeleton"
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -148,17 +146,17 @@ export default function Blog({ params }: PageParams) {
         </p>
 
         <div className="flex justify-between items-center mt-2 mb-6 text-sm max-w-[650px]">
-          <Suspense fallback={<Skeleton className="h-4 w-[300px]" />}>
+        
             <p className="text-sm text-neutral-700">
               {formatDate(post.metadata.publishedAt)}
             </p>
-          </Suspense>
+          
         </div>
         <Separator className="mt-4 mb-8" />
         <article className="prose prose-quoteless prose-neutral space-y-4 pb-8">
-          <Suspense fallback={<Skeleton className="h-4 w-[300px]" />}>
+          
             <CustomMDX source={post.content} />
-          </Suspense>
+          
         </article>
       </section></>
   );
