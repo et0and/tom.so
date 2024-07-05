@@ -7,9 +7,9 @@ function Navbar() {
         className="text-lg font-medium hover:text-blue-700 transition-colors duration-200"
         href="/"
       >
-        <div className="md:block hidden">Tom Hackshaw</div>
+        <h1 className="md:block hidden">Tom Hackshaw</h1>
         <div className="md:hidden block hover:bg-blue-700 w-7 h-7 bg-black rounded-full">
-          <span className="sr-only">Tom Hackshaw</span>
+          <h1 className="sr-only">Tom Hackshaw</h1>
         </div>
       </Link>
       <nav className="flex md:items-center space-x-4 text-lg">

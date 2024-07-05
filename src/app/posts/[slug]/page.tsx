@@ -6,6 +6,21 @@ import { getBlogPosts } from "@/app/db/blog";
 import { unstable_noStore as noStore } from "next/cache";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton"
+import {
+  Breadcrumb,
+  BreadcrumbEllipsis,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 interface PageParams {
   params: {
@@ -95,49 +110,62 @@ export default function Blog({ params }: PageParams) {
   }
 
   return (
-    <section>
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: post.metadata.title,
-            datePublished: post.metadata.publishedAt,
-            dateModified: post.metadata.publishedAt,
-            description: post.metadata.summary,
-            image: post.metadata.image
-              ? `https://tom.so${post.metadata.image}`
-              : `https://tom.so/og?title=${post.metadata.title}`,
-            url: `https://tom.so/posts/${post.slug}`,
-            author: {
-              "@type": "Person",
-              name: "Tom Hackshaw",
-            },
-          }),
-        }}
-      />
-      <h1 className="title font-medium text-2xl tracking-tighter max-w-[650px]">
-        {post.metadata.title}
-      </h1>
-      <p className="text-md text-neutral-700 tracking-tighter">
-        {post.metadata.summary}
-      </p>
+    <><Breadcrumb>
+      <BreadcrumbList>
+      <BreadcrumbItem>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/posts">Writing</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbPage>{post.metadata.title}</BreadcrumbPage>
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb><section>
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              headline: post.metadata.title,
+              datePublished: post.metadata.publishedAt,
+              dateModified: post.metadata.publishedAt,
+              description: post.metadata.summary,
+              image: post.metadata.image
+                ? `https://tom.so${post.metadata.image}`
+                : `https://tom.so/og?title=${post.metadata.title}`,
+              url: `https://tom.so/posts/${post.slug}`,
+              author: {
+                "@type": "Person",
+                name: "Tom Hackshaw",
+              },
+            }),
+          }} />
+        <h1 className="title pt-4 font-medium text-2xl tracking-tighter max-w-[650px]">
+          {post.metadata.title}
+        </h1>
+        <p className="text-md text-neutral-700 tracking-tighter">
+          {post.metadata.summary}
+        </p>
 
-      <div className="flex justify-between items-center mt-2 mb-6 text-sm max-w-[650px]">
-        <Suspense fallback={<Skeleton className="h-4 w-[300px]" />}>
-          <p className="text-sm text-neutral-700">
-            {formatDate(post.metadata.publishedAt)}
-          </p>
-        </Suspense>
-      </div>
-      <Separator className="mt-4 mb-8" />
-      <article className="prose prose-quoteless prose-neutral space-y-4 pb-8">
-      <Suspense fallback={<Skeleton className="h-4 w-[300px]" />}>
-        <CustomMDX source={post.content} />
-      </Suspense>
-      </article>
-    </section>
+        <div className="flex justify-between items-center mt-2 mb-6 text-sm max-w-[650px]">
+          <Suspense fallback={<Skeleton className="h-4 w-[300px]" />}>
+            <p className="text-sm text-neutral-700">
+              {formatDate(post.metadata.publishedAt)}
+            </p>
+          </Suspense>
+        </div>
+        <Separator className="mt-4 mb-8" />
+        <article className="prose prose-quoteless prose-neutral space-y-4 pb-8">
+          <Suspense fallback={<Skeleton className="h-4 w-[300px]" />}>
+            <CustomMDX source={post.content} />
+          </Suspense>
+        </article>
+      </section></>
   );
 }

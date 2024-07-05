@@ -95,9 +95,8 @@ export default function RootLayout({
       <PHProvider> 
         <body className="antialiased w-full px-4 my-8 lg:mx-auto">
           <PostHogPageView />
-          <main className="min-h-screen flex flex-col">
             <Navbar />
-            
+            <main id="main" className="min-h-screen flex flex-col">
             <div className="flex-grow flex tracking-tighter flex-col px-2 mx-auto md:px-0">
               <div className="flex-grow flex flex-col">
                 <div className="max-w-3xl mx-auto px-4 md:px-0 pt-8 text-pretty">
@@ -105,8 +104,8 @@ export default function RootLayout({
                 </div>
               </div>
             </div>
+            </main>
             <Footer />
-          </main>
         </body>
       </PHProvider>
     </html>

@@ -1,6 +1,21 @@
 import { Separator } from "@/components/ui/separator";
 import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  Breadcrumb,
+  BreadcrumbEllipsis,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 export const metadata: Metadata = {
   title: "Accessibility",
@@ -10,7 +25,18 @@ export const metadata: Metadata = {
 export default function Accessibility() {
   return (
     <>
-      <h1 className="font-medium text-4xl">Accessibility</h1>
+    <Breadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          Accessibility
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
+      <h1 className="font-medium text-4xl pt-4">Accessibility</h1>
       <Separator className="my-4" />{" "}
       <p className="pb-4">
         I am committed to providing a website that is accessible to the widest

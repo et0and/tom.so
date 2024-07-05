@@ -1,6 +1,21 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { CalendarDays } from "lucide-react";
+import {
+  Breadcrumb,
+  BreadcrumbEllipsis,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -19,7 +34,18 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <>
-      <h1 className="font-medium text-4xl">About</h1>
+    <Breadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          About
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
+      <h1 className="font-medium text-4xl pt-4">About</h1>
       <Separator className="my-4" /> <p>Hi, I&apos;m Tom,</p>
       <p className="pb-4">
         I am a designer with a background in the arts and education. Presently I
