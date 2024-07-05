@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getBlogPosts } from "@/app/db/blog";
 import { unstable_noStore as noStore } from "next/cache";
+import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import {
   Breadcrumb,
@@ -35,8 +36,8 @@ export async function generateMetadata({
     image,
   } = post.metadata;
   let ogImage = image
-    ? `https://staging.tom.so${image}`
-    : `https://staging.tom.so/og.png`;
+    ? `https://tom.so${image}`
+    : `https://tom.so/og.png`;
 
   return {
     title,
@@ -105,11 +106,14 @@ export default function Blog({ params }: PageParams) {
     <><Breadcrumb>
       <BreadcrumbList>
       <BreadcrumbItem>
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          <BreadcrumbLink asChild>
+          <Link href="/">Home</Link>
+          </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/posts">Writing</BreadcrumbLink>
+          <BreadcrumbLink asChild> <Link href="/posts">Writing</Link>
+          </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
