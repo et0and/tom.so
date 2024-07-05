@@ -4,6 +4,8 @@ import { CustomMDX } from "@/components/mdx";
 import { getWorkPosts } from "@/app/db/work";
 import { unstable_noStore as noStore } from "next/cache";
 import { Separator } from "@/components/ui/separator";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Suspense } from "react";
 
 interface PageParams {
   params: {
@@ -114,17 +116,23 @@ export default function Work({ params }: PageParams) {
           }),
         }}
       />
+      <Suspense fallback={<Skeleton className="h-4 w-[300px]" />}>
       <h1 className="title font-medium text-2xl tracking-tighter max-w-[650px]">
         {post.metadata.title}
       </h1>
+      </Suspense>
+      <Suspense fallback={<Skeleton className="h-4 w-[300px]" />}>
       <p className="text-md text-neutral-700 tracking-tighter">
         {post.metadata.summary}
       </p>
+      </Suspense>
       <Separator className="my-4" />
       <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]"></div>
+      <Suspense fallback={<Skeleton className="h-4 w-[300px]" />}>
       <article className="prose prose-quoteless prose-neutral space-y-4 pb-8">
         <CustomMDX source={post.content} />
       </article>
+      </Suspense>
     </section>
   );
 }

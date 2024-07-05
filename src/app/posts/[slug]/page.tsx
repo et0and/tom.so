@@ -5,6 +5,7 @@ import { CustomMDX } from "@/components/mdx";
 import { getBlogPosts } from "@/app/db/blog";
 import { unstable_noStore as noStore } from "next/cache";
 import { Separator } from "@/components/ui/separator";
+import { Skeleton } from "@/components/ui/skeleton"
 
 interface PageParams {
   params: {
@@ -107,9 +108,9 @@ export default function Blog({ params }: PageParams) {
             dateModified: post.metadata.publishedAt,
             description: post.metadata.summary,
             image: post.metadata.image
-              ? `https://staging.tom.so${post.metadata.image}`
-              : `https://staging.tom.so/og?title=${post.metadata.title}`,
-            url: `https://staging.tom.so/posts/${post.slug}`,
+              ? `https://tom.so${post.metadata.image}`
+              : `https://tom.so/og?title=${post.metadata.title}`,
+            url: `https://tom.so/posts/${post.slug}`,
             author: {
               "@type": "Person",
               name: "Tom Hackshaw",
@@ -125,7 +126,7 @@ export default function Blog({ params }: PageParams) {
       </p>
 
       <div className="flex justify-between items-center mt-2 mb-6 text-sm max-w-[650px]">
-        <Suspense fallback={<p className="h-2" />}>
+        <Suspense fallback={<Skeleton className="h-4 w-[300px]" />}>
           <p className="text-sm text-neutral-700">
             {formatDate(post.metadata.publishedAt)}
           </p>
@@ -133,7 +134,9 @@ export default function Blog({ params }: PageParams) {
       </div>
       <Separator className="mt-4 mb-8" />
       <article className="prose prose-quoteless prose-neutral space-y-4 pb-8">
+      <Suspense fallback={<Skeleton className="h-4 w-[300px]" />}>
         <CustomMDX source={post.content} />
+      </Suspense>
       </article>
     </section>
   );
