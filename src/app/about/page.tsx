@@ -34,17 +34,7 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <>
-    <Breadcrumb>
-      <BreadcrumbList>
-        <BreadcrumbItem>
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          About
-        </BreadcrumbItem>
-      </BreadcrumbList>
-    </Breadcrumb>
+    
       <h1 className="font-medium text-4xl pt-4">About</h1>
       <Separator className="my-4" /> <p>Hi, I&apos;m Tom,</p>
       <p className="pb-4">

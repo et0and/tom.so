@@ -104,25 +104,6 @@ export default function Work({ params }: PageParams) {
 
   return (
     <>
-    <Breadcrumb>
-      <BreadcrumbList>
-      <BreadcrumbItem>
-          <BreadcrumbLink>
-          <Link href="/">Home</Link>
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbLink>
-          <Link href="/work">Work</Link>
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbPage>{post.metadata.title}</BreadcrumbPage>
-        </BreadcrumbItem>
-      </BreadcrumbList>
-    </Breadcrumb>
     <section>
         <script
           type="application/ld+json"

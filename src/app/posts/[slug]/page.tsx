@@ -103,25 +103,8 @@ export default function Blog({ params }: PageParams) {
   }
 
   return (
-    <><Breadcrumb>
-      <BreadcrumbList>
-      <BreadcrumbItem>
-          <BreadcrumbLink>
-          <Link href="/">Home</Link>
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbLink> 
-          <Link href="/posts">Writing</Link>
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbPage>{post.metadata.title}</BreadcrumbPage>
-        </BreadcrumbItem>
-      </BreadcrumbList>
-    </Breadcrumb><section>
+    <>
+  <section>
         <script
           type="application/ld+json"
           suppressHydrationWarning

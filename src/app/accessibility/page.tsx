@@ -25,17 +25,7 @@ export const metadata: Metadata = {
 export default function Accessibility() {
   return (
     <>
-    <Breadcrumb>
-      <BreadcrumbList>
-        <BreadcrumbItem>
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          Accessibility
-        </BreadcrumbItem>
-      </BreadcrumbList>
-    </Breadcrumb>
+  
       <h1 className="font-medium text-4xl pt-4">Accessibility</h1>
       <Separator className="my-4" />{" "}
       <p className="pb-4">

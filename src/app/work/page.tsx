@@ -23,19 +23,7 @@ export default function WorkPage() {
   return (
     <>
       <div className="w-full">
-      <Breadcrumb>
-      <BreadcrumbList>
-        <BreadcrumbItem>
-          <BreadcrumbLink>
-          <Link href="/">Home</Link>
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          Work
-        </BreadcrumbItem>
-      </BreadcrumbList>
-    </Breadcrumb>
+    
         <h1 className="font-medium text-4xl pt-4">Work</h1>
         <Separator className="my-4" />
         {allWorks
