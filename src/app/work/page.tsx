@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { getWorkPosts } from "@/app/db/work"
+import { Separator } from "@/components/ui/separator";
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
