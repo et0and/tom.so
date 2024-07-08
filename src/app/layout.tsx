@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Head from "next/head";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import Navbar from "@/components/ui/navbar";
@@ -65,6 +66,7 @@ export default function RootLayout({
         GeistMono.variable
       )}
     >
+      <GoogleTagManager gtmId="GTM-5JMXBJBD" />
       <head>
         <meta property="og:image" content="/og.png" />
         <meta property="twitter:card" content="summary_large_image" />
@@ -92,11 +94,11 @@ export default function RootLayout({
         />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <PHProvider> 
+      <PHProvider>
         <body className="antialiased w-full px-4 my-8 lg:mx-auto">
           <PostHogPageView />
-            <Navbar />
-            <main id="main" className="min-h-screen flex flex-col">
+          <Navbar />
+          <main id="main" className="min-h-screen flex flex-col">
             <div className="flex-grow flex tracking-tighter flex-col px-2 mx-auto md:px-0">
               <div className="flex-grow flex flex-col">
                 <div className="max-w-3xl mx-auto px-4 md:px-0 pt-8 text-pretty">
@@ -104,8 +106,8 @@ export default function RootLayout({
                 </div>
               </div>
             </div>
-            </main>
-            <Footer />
+          </main>
+          <Footer />
         </body>
       </PHProvider>
     </html>
