@@ -2,11 +2,21 @@ import { NextResponse } from "next/server";
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
 import { JWT } from "google-auth-library";
 
-export async function GET() {
-  const propertyId = "YOUR_GA4_PROPERTY_ID";
+if (!process.env.GA4_PROPERTY_ID) {
+  throw new Error("GA4_PROPERTY_ID is not set in environment variables");
+}
 
-  // Load the service account key JSON file
-  const serviceAccountKey = require("../../../path/to/your-service-account-key.json");
+if (!process.env.GA4_SERVICE_ACCOUNT_KEY) {
+  throw new Error(
+    "GA4_SERVICE_ACCOUNT_KEY is not set in environment variables"
+  );
+}
+
+export async function GET() {
+  const propertyId = process.env.GA4_PROPERTY_ID;
+
+  // Parse the service account key from the environment variable
+  const serviceAccountKey = JSON.parse(process.env.GA4_SERVICE_ACCOUNT_KEY);
 
   // Create a JWT client
   const jwtClient = new JWT({
@@ -46,11 +56,16 @@ export async function GET() {
 
     // Process the data into the format expected by your chart component
     const chartData =
-      response.rows?.map((row) => ({
-        date: row.dimensionValues?.[0].value || "",
-        visitors: parseInt(row.metricValues?.[0].value || "0"),
-        sessions: parseInt(row.metricValues?.[1].value || "0"),
-      })) || [];
+      response.rows?.map(
+        (row: {
+          dimensionValues: { value: any }[];
+          metricValues: { value: any }[];
+        }) => ({
+          date: row.dimensionValues?.[0].value || "",
+          visitors: parseInt(row.metricValues?.[0].value || "0"),
+          sessions: parseInt(row.metricValues?.[1].value || "0"),
+        })
+      ) || [];
 
     return NextResponse.json(chartData);
   } catch (error) {

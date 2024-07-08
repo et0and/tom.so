@@ -32,7 +32,6 @@ export function GA4Dashboard() {
 
   return (
     <div>
-      <h1>GA4 Dashboard</h1>
       <AreaChart
         chartData={chartData}
         timeRange={timeRange}
