@@ -66,7 +66,7 @@ export default function RootLayout({
         GeistMono.variable
       )}
     >
-      <GoogleTagManager gtmId="GTM-5JMXBJBD" />
+      
       <head>
         <meta property="og:image" content="/og.png" />
         <meta property="twitter:card" content="summary_large_image" />
@@ -95,6 +95,7 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <PHProvider>
+        <GoogleTagManager gtmId="GTM-5JMXBJBD" />
         <body className="antialiased w-full px-4 my-8 lg:mx-auto">
           <PostHogPageView />
           <Navbar />
