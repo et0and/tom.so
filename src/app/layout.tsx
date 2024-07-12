@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Head from "next/head";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { GeistSans } from "geist/font/sans";
@@ -6,7 +6,6 @@ import { GeistMono } from "geist/font/mono";
 import Navbar from "@/components/ui/navbar";
 import Footer from "@/components/ui/footer";
 import "./globals.css";
-import type { Viewport } from "next";
 import { PHProvider } from "./providers";
 import dynamic from "next/dynamic";
 
@@ -66,7 +65,6 @@ export default function RootLayout({
         GeistMono.variable
       )}
     >
-      
       <head>
         <meta property="og:image" content="/og.png" />
         <meta property="twitter:card" content="summary_large_image" />
@@ -93,6 +91,12 @@ export default function RootLayout({
           href="/favicon-16x16.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="RSS Feed for Tom Hackshaw's blog"
+          href="/rss.xml"
+        />
       </head>
       <PHProvider>
         <GoogleTagManager gtmId="GTM-5JMXBJBD" />
