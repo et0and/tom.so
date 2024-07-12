@@ -65,8 +65,9 @@ export default function RootLayout({
         GeistMono.variable
       )}
     >
+      <GoogleTagManager gtmId="GTM-5JMXBJBD" />
       <head>
-      <meta name="msvalidate.01" content="0C22B5C633DBEB514739694102A8D398" />
+        <meta name="msvalidate.01" content="0C22B5C633DBEB514739694102A8D398" />
         <meta property="og:image" content="/og.png" />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:image" content="/og.png" />
@@ -100,7 +101,6 @@ export default function RootLayout({
         />
       </head>
       <PHProvider>
-        <GoogleTagManager gtmId="GTM-5JMXBJBD" />
         <body className="antialiased w-full px-4 my-8 lg:mx-auto">
           <PostHogPageView />
           <Navbar />
