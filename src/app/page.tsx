@@ -18,12 +18,6 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
-      <Banner
-        id="new-site-message"
-        title="Website upgrade"
-        message='This website is running on a new stack, and may contain a few bugs until these can be fixed. <a href="https://github.com/et0and/tom.so" class="underline hover:text-gray-300">More information</a>.'
-        variant="warning"
-      />
       <div className="flex-grow items-center justify-center hidden md:flex">
         <Image
           src="/d.jpg"
