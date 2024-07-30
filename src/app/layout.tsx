@@ -6,12 +6,7 @@ import { GeistMono } from "geist/font/mono";
 import Navbar from "@/components/ui/navbar";
 import Footer from "@/components/ui/footer";
 import "./globals.css";
-import { PHProvider } from "./providers";
 import dynamic from "next/dynamic";
-
-const PostHogPageView = dynamic(() => import("./PostHogPageView"), {
-  ssr: false,
-});
 
 export const viewport: Viewport = {
   themeColor: "white",
@@ -100,22 +95,19 @@ export default function RootLayout({
           href="/rss.xml"
         />
       </head>
-      <PHProvider>
-        <body className="antialiased w-full px-4 my-8 lg:mx-auto">
-          <PostHogPageView />
-          <Navbar />
-          <main id="main" className="min-h-screen flex flex-col">
-            <div className="flex-grow flex tracking-tighter flex-col px-2 mx-auto md:px-0">
-              <div className="flex-grow flex flex-col">
-                <div className="max-w-3xl mx-auto px-4 md:px-0 pt-8 text-pretty">
-                  {children}
-                </div>
+      <body className="antialiased w-full px-4 my-8 lg:mx-auto">
+        <Navbar />
+        <main id="main" className="min-h-screen flex flex-col">
+          <div className="flex-grow flex tracking-tighter flex-col px-2 mx-auto md:px-0">
+            <div className="flex-grow flex flex-col">
+              <div className="max-w-3xl mx-auto px-4 md:px-0 pt-8 text-pretty">
+                {children}
               </div>
             </div>
-          </main>
-          <Footer />
-        </body>
-      </PHProvider>
+          </div>
+        </main>
+        <Footer />
+      </body>
     </html>
   );
 }

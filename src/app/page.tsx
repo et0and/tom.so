@@ -1,3 +1,4 @@
+import Banner from "@/components/ui/banner";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -14,5 +15,13 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <div className="items-center p-2"></div>;
+  return (
+    <div className="items-center p-2">
+      <Banner
+        title="Website upgrade"
+        message='This website is running on a new stack, and may contain a few bugs until these can be fixed. <a href="https://github.com/et0and/tom.so" class="underline hover:text-gray-300">More information</a>.'
+        variant="warning"
+      />
+    </div>
+  );
 }

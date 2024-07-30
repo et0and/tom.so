@@ -15,7 +15,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
+} from "@/components/ui/breadcrumb";
 
 interface PageParams {
   params: {
@@ -104,7 +104,7 @@ export default function Work({ params }: PageParams) {
 
   return (
     <>
-    <section>
+      <section>
         <script
           type="application/ld+json"
           suppressHydrationWarning
@@ -125,7 +125,9 @@ export default function Work({ params }: PageParams) {
                 name: "Tom Hackshaw",
               },
             }),
-          }} />
+          }}
+        />
+
         <Suspense fallback={<Skeleton className="h-4 w-[300px]" />}>
           <h1 className="title pt-4 font-medium text-2xl tracking-tighter max-w-[650px]">
             {post.metadata.title}
@@ -143,6 +145,7 @@ export default function Work({ params }: PageParams) {
             <CustomMDX source={post.content} />
           </article>
         </Suspense>
-      </section></>
+      </section>
+    </>
   );
 }
