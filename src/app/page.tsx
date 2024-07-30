@@ -24,7 +24,7 @@ export default function Home() {
         message='This website is running on a new stack, and may contain a few bugs until these can be fixed. <a href="https://github.com/et0and/tom.so" class="underline hover:text-gray-300">More information</a>.'
         variant="warning"
       />
-      <div className="flex-grow flex items-center justify-center">
+      <div className="flex-grow items-center justify-center hidden md:flex">
         <Image
           src="/d.jpg"
           width={500}

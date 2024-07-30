@@ -1,15 +1,6 @@
 import Link from "next/link";
 import { getBlogPosts } from "@/app/db/blog";
 import { Separator } from "@/components/ui/separator";
-import {
-  Breadcrumb,
-  BreadcrumbEllipsis,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
 
 export const metadata = {
   title: "Writing",
@@ -21,7 +12,6 @@ export default function BlogPage() {
 
   return (
     <div className="w-full">
-    
       <h1 className="font-medium text-4xl pt-4">Writing</h1>
       <Separator className="my-4" />
       {allBlogs
