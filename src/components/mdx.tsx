@@ -50,6 +50,7 @@ function Arena({ channelSlug }: ArenaProps) {
   return (
     <LightModeWrapper>
       <iframe
+        className="bg-slate-300"
         style={{ border: "1px solid #e5e5e5" }}
         width="100%"
         height="590"
@@ -123,7 +124,14 @@ function CustomLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
 }
 
 function RoundedImage({ className, ...props }: ImageProps) {
-  return <Image className={`rounded-lg ${className || ""}`} {...props} />;
+  return (
+    <Image
+      placeholder="empty"
+      priority={true}
+      className={`rounded-lg bg-slate-400 ${className || ""}`}
+      {...props}
+    />
+  );
 }
 
 interface CalloutProps {

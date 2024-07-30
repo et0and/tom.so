@@ -14,18 +14,21 @@ function Navbar() {
       </Link>
       <nav className="flex md:items-center space-x-4 text-lg">
         <Link
+          prefetch={true}
           className="hover:underline hover:text-blue-700 transition-colors duration-200"
           href="/about"
         >
           About
         </Link>
         <Link
+          prefetch={true}
           className="hover:underline hover:text-blue-700 transition-colors duration-200"
           href="/work"
         >
           Work
         </Link>
         <Link
+          prefetch={true}
           className="hover:underline hover:text-blue-700 transition-colors duration-200"
           href="/posts"
         >

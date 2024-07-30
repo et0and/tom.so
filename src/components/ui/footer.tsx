@@ -9,7 +9,7 @@ function Footer() {
         <Link
           href="/accessibility"
           className="underline hover:text-blue-700 transition-colors duration-200"
-          prefetch={false}
+          prefetch={true}
         >
           Accessibility
         </Link>
