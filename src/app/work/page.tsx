@@ -23,8 +23,9 @@ export default function WorkPage() {
 
   return (
     <>
-      <div className="w-full">
+      <div className="w-full relative">
         <Banner
+          id="work-content-migration"
           title="Content migration"
           message="All previous work and experiments are currently being migrated onto this new website."
           variant="warning"

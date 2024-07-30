@@ -1,22 +1,36 @@
 "use client";
 
-import { SVGProps, useState } from "react";
+import { SVGProps, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
 interface BannerProps {
+  id: string;
   title: string;
   message: string;
   variant?: "info" | "warning" | "error";
+  noDismiss?: boolean;
 }
 
 export default function Banner({
+  id,
   title,
   message,
-  variant = "info",
+  variant = "warning",
+  noDismiss = false,
 }: BannerProps) {
   const [showBanner, setShowBanner] = useState(true);
+
+  useEffect(() => {
+    // Check localStorage when component mounts
+    const isBannerClosed =
+      localStorage.getItem(`banner_${id}_closed`) === "true";
+    setShowBanner(!isBannerClosed);
+  }, [id]);
+
   const handleClose = () => {
     setShowBanner(false);
+    // Save the closed state to localStorage
+    localStorage.setItem(`banner_${id}_closed`, "true");
   };
 
   const variantStyles = {
@@ -27,33 +41,31 @@ export default function Banner({
 
   const IconComponent = variantIcons[variant];
 
+  if (!showBanner) return null;
+
   return (
-    <>
-      {showBanner && (
-        <div
-          className={`${variantStyles[variant]} p-4 relative rounded-md mb-2`}
-        >
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <IconComponent className="h-5 w-5" />
-              <h1 className="text-lg font-semibold">{title}</h1>
-            </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute top-2 right-2 text-current hover:bg-opacity-20 focus:bg-opacity-20"
-              onClick={handleClose}
-            >
-              <XIcon className="h-5 w-5" />
-            </Button>
-          </div>
-          <p
-            className="text-lg mt-4"
-            dangerouslySetInnerHTML={{ __html: message }}
-          />
+    <div className={`${variantStyles[variant]} p-4 relative rounded-md mb-2`}>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <IconComponent className="h-5 w-5" />
+          <h1 className="text-lg font-semibold">{title}</h1>
         </div>
-      )}
-    </>
+        {!noDismiss && (
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute top-2 right-2 text-current hover:bg-opacity-20 focus:bg-opacity-20"
+            onClick={handleClose}
+          >
+            <XIcon className="h-5 w-5" />
+          </Button>
+        )}
+      </div>
+      <p
+        className="text-lg mt-4"
+        dangerouslySetInnerHTML={{ __html: message }}
+      />
+    </div>
   );
 }
 
