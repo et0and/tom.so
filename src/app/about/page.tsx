@@ -1,24 +1,6 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import { CalendarDays } from "lucide-react";
-import {
-  Breadcrumb,
-  BreadcrumbEllipsis,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import {
   HoverCard,
   HoverCardContent,
@@ -34,7 +16,6 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <>
-    
       <h1 className="font-medium text-4xl pt-4">About</h1>
       <Separator className="my-4" /> <p>Hi, I&apos;m Tom,</p>
       <p className="pb-4">
@@ -45,12 +26,12 @@ export default function About() {
         development of{" "}
         <HoverCard>
           <HoverCardTrigger asChild>
-            <Link
+            <a
               href="/work/te-wahi"
               className="underline hover:text-blue-700 transition-colors duration-200"
             >
               Te Wāhi Auaha
-            </Link>
+            </a>
           </HoverCardTrigger>
           <HoverCardContent className="w-80">
             <div className="flex justify-between space-x-4">
@@ -85,12 +66,12 @@ export default function About() {
         Previously I studied at the{" "}
         <HoverCard>
           <HoverCardTrigger asChild>
-            <Link
+            <a
               href="https://elamartists.ac.nz"
               className="underline hover:text-blue-700 transition-colors duration-200"
             >
               Elam School of Fine Arts
-            </Link>
+            </a>
           </HoverCardTrigger>
           <HoverCardContent className="w-80">
             <div className="flex justify-between space-x-4">
@@ -125,12 +106,12 @@ export default function About() {
         Find me on{" "}
         <HoverCard>
           <HoverCardTrigger asChild>
-            <Link
+            <a
               href="https://are.na/tom"
               className="underline hover:text-blue-700 transition-colors duration-200"
             >
               are.na
-            </Link>
+            </a>
           </HoverCardTrigger>
           <HoverCardContent className="w-80">
             <div className="flex justify-between space-x-4">
@@ -158,12 +139,12 @@ export default function About() {
         ,{" "}
         <HoverCard>
           <HoverCardTrigger asChild>
-            <Link
+            <a
               href="https://read.cv/hackshaw"
               className="underline hover:text-blue-700 transition-colors duration-200"
             >
               Read.cv
-            </Link>
+            </a>
           </HoverCardTrigger>
           <HoverCardContent className="w-80">
             <div className="flex justify-between space-x-4">
@@ -191,12 +172,12 @@ export default function About() {
         , and{" "}
         <HoverCard>
           <HoverCardTrigger asChild>
-            <Link
+            <a
               href="https://merveilles.town/@tomupom"
               className="underline hover:text-blue-700 transition-colors duration-200"
             >
               Merveilles
-            </Link>
+            </a>
           </HoverCardTrigger>
           <HoverCardContent className="w-80">
             <div className="flex justify-between space-x-4">
@@ -228,12 +209,12 @@ export default function About() {
         You can also find me on{" "}
         <HoverCard>
           <HoverCardTrigger asChild>
-            <Link
+            <a
               href="https://urbit.org"
               className="underline hover:text-blue-700 transition-colors duration-200"
             >
               Urbit
-            </Link>
+            </a>
           </HoverCardTrigger>
           <HoverCardContent className="w-80">
             <div className="flex justify-between space-x-4">
@@ -273,12 +254,12 @@ export default function About() {
         I would also like to acknowledge the many free and open source software
         that this website, along with many of my other projects, take advantage
         of. The full source code of this website can be found on my{" "}
-        <Link
+        <a
           href="https://github.com/et0and/tom.so"
           className="underline hover:text-blue-700 transition-colors duration-200"
         >
           GitHub
-        </Link>
+        </a>
         .
       </p>
     </>
