@@ -8,7 +8,7 @@ function Footer() {
         &copy; {currentYear}{" "}
         <Link
           href="/accessibility"
-          className="underline hover:text-blue-700 transition-colors duration-200"
+          className="underline focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 transition-colors duration-100"
           prefetch={true}
         >
           Accessibility
@@ -16,7 +16,7 @@ function Footer() {
         . This site is part of a{" "}
         <Link
           href="https://webring.xxiivv.com/#random"
-          className="underline hover:text-blue-700 transition-colors duration-200"
+          className="underline focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 transition-colors duration-100"
           prefetch={false}
         >
           webring

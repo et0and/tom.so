@@ -28,7 +28,7 @@ export default function About() {
           <HoverCardTrigger asChild>
             <a
               href="/work/te-wahi"
-              className="underline hover:text-blue-700 transition-colors duration-200"
+              className="underline focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 transition-colors duration-100"
             >
               Te Wāhi Auaha
             </a>
@@ -68,7 +68,7 @@ export default function About() {
           <HoverCardTrigger asChild>
             <a
               href="https://elamartists.ac.nz"
-              className="underline hover:text-blue-700 transition-colors duration-200"
+              className="underline focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 transition-colors duration-100"
             >
               Elam School of Fine Arts
             </a>
@@ -108,7 +108,7 @@ export default function About() {
           <HoverCardTrigger asChild>
             <a
               href="https://are.na/tom"
-              className="underline hover:text-blue-700 transition-colors duration-200"
+              className="underline focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 transition-colors duration-100"
             >
               are.na
             </a>
@@ -141,7 +141,7 @@ export default function About() {
           <HoverCardTrigger asChild>
             <a
               href="https://read.cv/hackshaw"
-              className="underline hover:text-blue-700 transition-colors duration-200"
+              className="underline focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 transition-colors duration-100"
             >
               Read.cv
             </a>
@@ -174,7 +174,7 @@ export default function About() {
           <HoverCardTrigger asChild>
             <a
               href="https://merveilles.town/@tomupom"
-              className="underline hover:text-blue-700 transition-colors duration-200"
+              className="underline focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 transition-colors duration-100"
             >
               Merveilles
             </a>
@@ -211,7 +211,7 @@ export default function About() {
           <HoverCardTrigger asChild>
             <a
               href="https://urbit.org"
-              className="underline hover:text-blue-700 transition-colors duration-200"
+              className="underline focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 transition-colors duration-100"
             >
               Urbit
             </a>
@@ -256,7 +256,7 @@ export default function About() {
         of. The full source code of this website can be found on my{" "}
         <a
           href="https://github.com/et0and/tom.so"
-          className="underline hover:text-blue-700 transition-colors duration-200"
+          className="underline focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 transition-colors duration-100"
         >
           GitHub
         </a>

@@ -32,7 +32,7 @@ export default function Accessibility() {
         please feel free to email me at{" "}
         <a
           href="mailto:access@tomhackshaw.com"
-          className="underline hover:text-blue-700 transition-colors duration-200"
+          className="underline focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 transition-colors duration-100"
         >
           access@tomhackshaw.com
         </a>{" "}
