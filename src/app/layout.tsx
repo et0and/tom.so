@@ -6,7 +6,7 @@ import { GeistMono } from "geist/font/mono";
 import Navbar from "@/components/ui/navbar";
 import Footer from "@/components/ui/footer";
 import "./globals.css";
-import dynamic from "next/dynamic";
+import { ViewTransitions } from "next-view-transitions";
 
 export const viewport: Viewport = {
   themeColor: "white",
@@ -52,62 +52,67 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={cx(
-        "text-black bg-white",
-        GeistSans.variable,
-        GeistMono.variable
-      )}
-    >
-      <GoogleTagManager gtmId="GTM-5JMXBJBD" />
-      <head>
-        <meta name="msvalidate.01" content="0C22B5C633DBEB514739694102A8D398" />
-        <meta property="og:image" content="/og.png" />
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:image" content="/og.png" />
-        <meta
-          name="description"
-          content="Tom Hackshaw is a design engineer from Pōneke, Aotearoa."
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link
-          rel="alternate"
-          type="application/rss+xml"
-          title="RSS Feed for Tom Hackshaw's blog"
-          href="/rss.xml"
-        />
-      </head>
-      <body className="antialiased w-full px-4 my-8 lg:mx-auto">
-        <Navbar />
-        <main id="main" className="min-h-screen flex flex-col">
-          <div className="flex-grow flex tracking-tighter flex-col px-2 mx-auto md:px-0">
-            <div className="flex-grow flex flex-col">
-              <div className="max-w-3xl mx-auto px-4 md:px-0 pt-8 text-pretty">
-                {children}
+    <ViewTransitions>
+      <html
+        lang="en"
+        className={cx(
+          "text-black bg-white",
+          GeistSans.variable,
+          GeistMono.variable
+        )}
+      >
+        <GoogleTagManager gtmId="GTM-5JMXBJBD" />
+        <head>
+          <meta
+            name="msvalidate.01"
+            content="0C22B5C633DBEB514739694102A8D398"
+          />
+          <meta property="og:image" content="/og.png" />
+          <meta property="twitter:card" content="summary_large_image" />
+          <meta property="twitter:image" content="/og.png" />
+          <meta
+            name="description"
+            content="Tom Hackshaw is a design engineer from Pōneke, Aotearoa."
+          />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+          />
+          <link rel="manifest" href="/site.webmanifest" />
+          <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="RSS Feed for Tom Hackshaw's blog"
+            href="/rss.xml"
+          />
+        </head>
+        <body className="antialiased w-full px-4 my-8 lg:mx-auto">
+          <Navbar />
+          <main id="main" className="min-h-screen flex flex-col">
+            <div className="flex-grow flex tracking-tighter flex-col px-2 mx-auto md:px-0">
+              <div className="flex-grow flex flex-col">
+                <div className="max-w-3xl mx-auto px-4 md:px-0 pt-8 text-pretty">
+                  {children}
+                </div>
               </div>
             </div>
-          </div>
-        </main>
-        <Footer />
-      </body>
-    </html>
+          </main>
+          <Footer />
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }
