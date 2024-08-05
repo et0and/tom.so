@@ -3,17 +3,7 @@ import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getBlogPosts } from "@/app/db/blog";
 import { unstable_noStore as noStore } from "next/cache";
-import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
-import {
-  Breadcrumb,
-  BreadcrumbEllipsis,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
 
 interface PageParams {
   params: {
@@ -35,9 +25,7 @@ export async function generateMetadata({
     summary: description,
     image,
   } = post.metadata;
-  let ogImage = image
-    ? `https://tom.so${image}`
-    : `https://tom.so/og.png`;
+  let ogImage = image ? `https://tom.so${image}` : `https://tom.so/og.png`;
 
   return {
     title,
@@ -104,7 +92,7 @@ export default function Blog({ params }: PageParams) {
 
   return (
     <>
-  <section>
+      <section>
         <script
           type="application/ld+json"
           suppressHydrationWarning
@@ -125,7 +113,8 @@ export default function Blog({ params }: PageParams) {
                 name: "Tom Hackshaw",
               },
             }),
-          }} />
+          }}
+        />
         <h1 className="title pt-4 font-medium text-2xl tracking-tighter max-w-[650px]">
           {post.metadata.title}
         </h1>
@@ -134,18 +123,15 @@ export default function Blog({ params }: PageParams) {
         </p>
 
         <div className="flex justify-between items-center mt-2 mb-6 text-sm max-w-[650px]">
-        
-            <p className="text-sm text-neutral-700">
-              {formatDate(post.metadata.publishedAt)}
-            </p>
-          
+          <p className="text-sm text-neutral-700">
+            {formatDate(post.metadata.publishedAt)}
+          </p>
         </div>
         <Separator className="mt-4 mb-8" />
         <article className="prose prose-quoteless prose-neutral space-y-4 pb-8">
-          
-            <CustomMDX source={post.content} />
-          
+          <CustomMDX source={post.content} />
         </article>
-      </section></>
+      </section>
+    </>
   );
 }

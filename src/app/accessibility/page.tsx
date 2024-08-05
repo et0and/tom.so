@@ -1,21 +1,5 @@
 import { Separator } from "@/components/ui/separator";
 import type { Metadata } from "next";
-import Link from "next/link";
-import {
-  Breadcrumb,
-  BreadcrumbEllipsis,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 
 export const metadata: Metadata = {
   title: "Accessibility",
@@ -25,7 +9,6 @@ export const metadata: Metadata = {
 export default function Accessibility() {
   return (
     <>
-  
       <h1 className="font-medium text-4xl pt-4">Accessibility</h1>
       <Separator className="my-4" />{" "}
       <p className="pb-4">
@@ -47,12 +30,12 @@ export default function Accessibility() {
       <p className="pb-4">
         If you have difficulty using or accessing any element of this website,
         please feel free to email me at{" "}
-        <Link
+        <a
           href="mailto:access@tomhackshaw.com"
           className="underline hover:text-blue-700 transition-colors duration-200"
         >
           access@tomhackshaw.com
-        </Link>{" "}
+        </a>{" "}
         and I will work with you to provide the information, item, or element
         you seek through a communication method that is accessible for you
         consistent with applicable law.

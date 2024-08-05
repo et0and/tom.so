@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import Head from "next/head";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
