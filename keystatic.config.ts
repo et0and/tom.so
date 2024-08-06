@@ -33,6 +33,12 @@ export default config({
         }),
         content: fields.mdx({
           label: "Content",
+          options: {
+            image: {
+              directory: "public",
+              publicPath: "/",
+            },
+          },
           components: {
             Banner: inline({
               label: "Banner",
@@ -89,6 +95,12 @@ export default config({
         }),
         content: fields.mdx({
           label: "Content",
+          options: {
+            image: {
+              directory: "public",
+              publicPath: "/",
+            },
+          },
           components: {
             Banner: inline({
               label: "Banner",
