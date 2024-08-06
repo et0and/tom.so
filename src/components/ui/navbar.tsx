@@ -1,6 +1,13 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 function Navbar() {
+  const pathname = usePathname();
+
+  if (pathname?.startsWith("/keystatic")) {
+    return null;
+  }
   return (
     <div className="flex items-center tracking-tighter justify-between h-8 px-6 bg-white">
       <Link
