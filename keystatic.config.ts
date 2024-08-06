@@ -5,6 +5,9 @@ export default config({
   storage: {
     kind: "cloud",
   },
+  cloud: {
+    project: "yufugumi/tom-so",
+  },
   ui: {
     brand: { name: "Tom Hackshaw" },
   },
