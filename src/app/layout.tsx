@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { cookies, draftMode } from "next/headers";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
@@ -50,6 +51,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const { isEnabled } = draftMode();
   return (
     <ViewTransitions>
       <html
@@ -102,6 +104,14 @@ export default function RootLayout({
           <Navbar />
           <main id="main" className="min-h-screen flex flex-col">
             {children}
+            {isEnabled && (
+              <div>
+                Draft mode ({cookies().get("ks-branch")?.value}){" "}
+                <form method="POST" action="/preview/end">
+                  <button>End preview</button>
+                </form>
+              </div>
+            )}
           </main>
           <Footer />
         </body>
