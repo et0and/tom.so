@@ -3,8 +3,7 @@ import { inline, block } from "@keystatic/core/content-components";
 
 export default config({
   storage: {
-    kind: "github",
-    repo: `et0and/tom.so`,
+    kind: "local",
   },
   ui: {
     brand: { name: "Tom Hackshaw" },
@@ -14,7 +13,6 @@ export default config({
       label: "Posts",
       slugField: "title",
       path: "posts/*",
-      previewUrl: `/preview/start?branch={branch}&to=/posts/{slug}`,
       format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
@@ -71,7 +69,6 @@ export default config({
       label: "Works",
       slugField: "title",
       path: "work/*",
-      previewUrl: `/preview/start?branch={branch}&to=/work/{slug}`,
       format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
