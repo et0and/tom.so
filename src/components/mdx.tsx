@@ -4,6 +4,8 @@ import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import { TweetComponent } from "./tweet";
 import { highlight } from "sugar-high";
 import React, { ComponentType, ReactNode } from "react";
+import { Banner, BannerProps } from "./ui/banner";
+import { YouTubeEmbed } from "@next/third-parties/google";
 
 interface TableProps {
   data: {
@@ -60,23 +62,14 @@ function Arena({ channelSlug }: ArenaProps) {
     </LightModeWrapper>
   );
 }
-
 interface YoutubeProps {
-  videoID: string;
+  videoid: string;
+  height?: number;
+  params?: string;
 }
 
-function Youtube({ videoID }: YoutubeProps) {
-  return (
-    <iframe
-      width="560"
-      height="315"
-      src={`https://www.youtube.com/embed/${videoID}`}
-      title="YouTube video player"
-      frameBorder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowFullScreen
-    />
-  );
+function Youtube({ videoid, height = 400, params }: YoutubeProps) {
+  return <YouTubeEmbed videoid={videoid} height={height} params={params} />;
 }
 
 interface IframeProps {
@@ -253,6 +246,7 @@ function createHeading(level: number) {
 
 type ComponentsType = {
   [key: string]: ComponentType<any>;
+  Banner: ComponentType<BannerProps>;
 };
 
 const components: ComponentsType = {
@@ -273,6 +267,7 @@ const components: ComponentsType = {
   Arena,
   Youtube,
   Iframe,
+  Banner: (props: BannerProps) => <Banner {...props} />,
 };
 
 export function CustomMDX(props: MDXRemoteProps) {

@@ -2,16 +2,7 @@ import { Metadata } from "next";
 import { getWorkPosts } from "@/app/db/work";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
-import Banner from "@/components/ui/banner";
-import {
-  Breadcrumb,
-  BreadcrumbEllipsis,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import { Banner } from "@/components/ui/banner";
 
 export const metadata: Metadata = {
   title: "Work",
@@ -25,10 +16,9 @@ export default function WorkPage() {
     <>
       <div className="w-full relative">
         <Banner
-          id="work-content-migration"
           title="Content migration"
           message="All previous work and experiments are currently being migrated onto this new website."
-          variant="warning"
+          variant="info"
         />
 
         <h1 className="font-medium text-4xl pt-4">Work</h1>

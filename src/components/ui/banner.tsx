@@ -1,159 +1,64 @@
-"use client";
+import React from "react";
+import classNames from "classnames";
+import { AlertCircle } from "lucide-react";
 
-import { SVGProps, useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-
-interface BannerProps {
-  id: string;
+export interface BannerProps {
   title: string;
   message: string;
-  variant?: "info" | "warning" | "error";
-  noDismiss?: boolean;
+  variant: "info" | "maintenance" | "error";
+  showIcon?: boolean;
+  linkName?: string;
+  linkUrl?: string;
 }
 
-export default function Banner({
-  id,
-  title,
-  message,
-  variant = "warning",
-  noDismiss = false,
-}: BannerProps) {
-  const [showBanner, setShowBanner] = useState(true);
-
-  useEffect(() => {
-    // Check localStorage when component mounts
-    const isBannerClosed =
-      localStorage.getItem(`banner_${id}_closed`) === "true";
-    setShowBanner(!isBannerClosed);
-  }, [id]);
-
-  const handleClose = () => {
-    setShowBanner(false);
-    // Save the closed state to localStorage
-    localStorage.setItem(`banner_${id}_closed`, "true");
-  };
-
-  const variantStyles = {
-    info: "bg-gray-100 text-black border-0.5",
-    warning: "bg-yellow-500 text-black",
-    error: "bg-red-500 text-white",
-  };
-
-  const IconComponent = variantIcons[variant];
-
-  if (!showBanner) return null;
-
-  return (
-    <div className={`${variantStyles[variant]} p-4 relative rounded-md mb-2`}>
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <IconComponent className="h-5 w-5" />
-          <h1 className="text-lg font-semibold">{title}</h1>
-        </div>
-        {!noDismiss && (
-          <Button
-            variant="ghost"
-            size="icon"
-            className="absolute top-2 right-2 text-current hover:bg-opacity-20 focus:bg-opacity-20"
-            onClick={handleClose}
-          >
-            <XIcon className="h-5 w-5" />
-          </Button>
-        )}
-      </div>
-      <p
-        className="text-lg mt-4"
-        dangerouslySetInnerHTML={{ __html: message }}
-      />
-    </div>
-  );
-}
-
-const variantIcons = {
-  info: InfoIcon,
-  warning: WarningIcon,
-  error: ErrorIcon,
+const variantStyles = {
+  info: "bg-white text-black border-gray-200",
+  maintenance: "bg-white text-black border-gray-200",
+  error: "bg-black text-white border-black",
 };
 
-function InfoIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="10" />
-      <path d="M12 16v-4" />
-      <path d="M12 8h.01" />
-    </svg>
-  );
-}
+export const Banner = ({
+  title,
+  message,
+  variant,
+  showIcon = true,
+  linkName,
+  linkUrl,
+}: BannerProps) => {
+  const outer = "leading-none relative my-4 w-full rounded-lg border px-4 py-4";
+  const inner = "max-w-3xl w-full m-auto";
 
-function WarningIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-      <path d="M12 9v4" />
-      <path d="M12 17h.01" />
-    </svg>
-  );
-}
+  const getIcon = () => {
+    switch (variant) {
+      case "info":
+        return <AlertCircle size={20} />;
+      case "maintenance":
+      case "error":
+        return <AlertCircle size={20} color="red" />;
+      default:
+        return null;
+    }
+  };
 
-function ErrorIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+    <div
+      role="region"
+      aria-labelledby="tom-hackshaw-banner"
+      className={classNames(outer, variantStyles[variant])}
     >
-      <circle cx="12" cy="12" r="10" />
-      <line x1="15" y1="9" x2="9" y2="15" />
-      <line x1="9" y1="9" x2="15" y2="15" />
-    </svg>
+      <div className={classNames(inner, "flex items-center mb-2")}>
+        {showIcon && <span className="mr-2">{getIcon()}</span>}
+        <h1 className="font-medium text-[16px]">{title}</h1>
+      </div>
+      <div className="leading-5">{message}</div>
+      {linkName && linkUrl && (
+        <a
+          href={linkUrl}
+          className="inline-flex px-6 py-4 mt-4 text-white transition rounded-full bg-blue-700 hover:bg-blue-900 hover:cursor-pointer"
+        >
+          {linkName}
+        </a>
+      )}
+    </div>
   );
-}
-
-function XIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M18 6 6 18" />
-      <path d="m6 6 12 12" />
-    </svg>
-  );
-}
+};

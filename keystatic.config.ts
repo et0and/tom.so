@@ -1,4 +1,5 @@
 import { config, fields, collection } from "@keystatic/core";
+import { inline, block } from "@keystatic/core/content-components";
 
 export default config({
   storage: {
@@ -29,7 +30,41 @@ export default config({
           label: "Comment",
           multiline: true,
         }),
-        content: fields.mdx({ label: "Content" }),
+        content: fields.mdx({
+          label: "Content",
+          components: {
+            Banner: inline({
+              label: "Banner",
+              schema: {
+                variant: fields.select({
+                  label: "Types",
+                  options: [
+                    { label: "Info", value: "info" },
+                    { label: "Maintenance", value: "maintenance" },
+                    { label: "error", value: "error" },
+                  ],
+                  defaultValue: "info",
+                }),
+                title: fields.text({ label: "Title" }),
+                message: fields.text({ label: "Message" }),
+                linkName: fields.text({ label: "Link name" }),
+                linkUrl: fields.text({ label: "Link URL" }),
+              },
+            }),
+            Arena: block({
+              label: "Arena",
+              schema: {
+                channelSlug: fields.text({ label: "Channel slug" }),
+              },
+            }),
+            YoutubeEmbed: block({
+              label: "Youtube",
+              schema: {
+                channelSlug: fields.text({ label: "Video ID" }),
+              },
+            }),
+          },
+        }),
       },
     }),
     works: collection({
@@ -52,7 +87,41 @@ export default config({
           label: "Comment",
           multiline: true,
         }),
-        content: fields.mdx({ label: "Content" }),
+        content: fields.mdx({
+          label: "Content",
+          components: {
+            Banner: inline({
+              label: "Banner",
+              schema: {
+                variant: fields.select({
+                  label: "Types",
+                  options: [
+                    { label: "Info", value: "info" },
+                    { label: "Maintenance", value: "maintenance" },
+                    { label: "error", value: "error" },
+                  ],
+                  defaultValue: "info",
+                }),
+                title: fields.text({ label: "Title" }),
+                message: fields.text({ label: "Message" }),
+                linkName: fields.text({ label: "Link name" }),
+                linkUrl: fields.text({ label: "Link URL" }),
+              },
+            }),
+            Arena: block({
+              label: "Arena",
+              schema: {
+                channelSlug: fields.text({ label: "Channel slug" }),
+              },
+            }),
+            YoutubeEmbed: block({
+              label: "Youtube",
+              schema: {
+                channelSlug: fields.text({ label: "Video ID" }),
+              },
+            }),
+          },
+        }),
       },
     }),
   },
