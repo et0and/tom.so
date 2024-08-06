@@ -3,7 +3,7 @@ import { inline, block } from "@keystatic/core/content-components";
 
 export default config({
   storage: {
-    kind: "local",
+    kind: "cloud",
   },
   ui: {
     brand: { name: "Tom Hackshaw" },
