@@ -54,7 +54,7 @@ export const Banner = ({
       {linkName && linkUrl && (
         <a
           href={linkUrl}
-          className="inline-flex px-6 py-4 mt-4 text-white transition rounded-full bg-blue-700 hover:bg-blue-900 hover:cursor-pointer"
+          className="inline-flex no-underline p-4 mt-4 text-white transition rounded-full bg-blue-700 hover:bg-blue-900 hover:text-white hover:cursor-pointer"
         >
           {linkName}
         </a>
