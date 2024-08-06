@@ -1,0 +1,12 @@
+import React from "react";
+
+export const SkipLink = () => {
+  return (
+    <a
+      className="absolute px-4 py-2 underline transition duration-75 transform -translate-x-1/2 -translate-y-full bg-white border border-t-0 border-black sr-only left-1/2 focus:translate-y-0 focus:px-4 focus:py-2 focus:not-sr-only"
+      href="#main"
+    >
+      Skip to content
+    </a>
+  );
+};

@@ -6,6 +6,7 @@ import Navbar from "@/components/ui/navbar";
 import Footer from "@/components/ui/footer";
 import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
+import { SkipLink } from "@/components/ui/skiplink";
 
 export const viewport: Viewport = {
   themeColor: "white",
@@ -99,6 +100,9 @@ export default function RootLayout({
           />
         </head>
         <body className="antialiased w-full lg:mx-auto">
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 z-50">
+            <SkipLink />
+          </div>
           <Navbar />
           <main id="main" className="min-h-screen flex flex-col">
             {children}

@@ -9,7 +9,7 @@ function Navbar() {
     return null;
   }
   return (
-    <div className="flex sticky items-center tracking-tighter justify-between h-8 px-6 pt-6 bg-white">
+    <nav className="flex items-center tracking-tighter justify-between h-8 px-6 pt-6 bg-white">
       <Link
         className="text-lg font-medium focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 transition-colors duration-100"
         href="/"
@@ -19,7 +19,7 @@ function Navbar() {
           <h1 className="sr-only">Tom Hackshaw</h1>
         </div>
       </Link>
-      <nav className="flex md:items-center space-x-4 text-lg">
+      <div className="flex md:items-center space-x-4 text-lg">
         <Link
           prefetch={true}
           className="focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 transition-colors duration-100"
@@ -41,8 +41,8 @@ function Navbar() {
         >
           Writing
         </Link>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 }
 
