@@ -31,33 +31,6 @@
           "value": "true"
         }
       ]
-    },
-    {
-      "source": "/:path*",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=15552000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/posts/:path*",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=15552000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/work/:path*",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=15552000, immutable"
-        }
-      ]
     }
   ]
 }
