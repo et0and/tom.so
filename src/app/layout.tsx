@@ -67,7 +67,7 @@ export default function RootLayout({
             name="msvalidate.01"
             content="0C22B5C633DBEB514739694102A8D398"
           />
-          <meta name="theme-color" content="rgb(28 25 23)" media="(prefers-color-scheme: dark)">
+          <meta name="theme-color" content="rgb(28 25 23)" media="(prefers-color-scheme: dark)"/>
           <meta property="og:image" content="/og.png" />
           <meta property="twitter:card" content="summary_large_image" />
           <meta property="twitter:image" content="/og.png" />
