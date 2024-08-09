@@ -40,7 +40,7 @@ export default function WorkPage() {
           .map((post) => (
             <Link
               key={post.slug}
-              className="flex flex-col hover:text-blue-700 transition-colors duration-200 space-y-1 mb-4"
+              className="flex flex-col hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-200 space-y-1 mb-4"
               href={`/work/${post.slug}`}
             >
               <div className="w-full flex flex-col">

@@ -1,7 +1,7 @@
-"use client"
-import Link from 'next/link';
+"use client";
+import Link from "next/link";
 
-import * as React from "react"
+import * as React from "react";
 import {
   ColumnDef,
   flexRender,
@@ -9,10 +9,10 @@ import {
   useReactTable,
   SortingState,
   getSortedRowModel,
-} from "@tanstack/react-table"
-import { ArrowUpDown } from "lucide-react"
+} from "@tanstack/react-table";
+import { ArrowUpDown } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -20,14 +20,14 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
 
 type Work = {
-  title: string
-  summary: string
-  date: string
-  slug: string
-}
+  title: string;
+  summary: string;
+  date: string;
+  slug: string;
+};
 
 const columns: ColumnDef<Work>[] = [
   {
@@ -41,18 +41,18 @@ const columns: ColumnDef<Work>[] = [
           Title
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
-      )
+      );
     },
     cell: ({ row }) => {
-      const work = row.original
+      const work = row.original;
       return (
-        <Link 
+        <Link
           href={`/work/${work.slug}`}
-          className="text-black font-medium underline hover:text-blue-700"
+          className="text-black font-medium underline hover:text-blue-700 dark:hover:text-teal-200"
         >
           {work.title}
         </Link>
-      )
+      );
     },
   },
   {
@@ -70,13 +70,13 @@ const columns: ColumnDef<Work>[] = [
           Date
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
-      )
+      );
     },
   },
-]
+];
 
 export default function WorkTable({ works }: { works: Work[] }) {
-  const [sorting, setSorting] = React.useState<SortingState>([])
+  const [sorting, setSorting] = React.useState<SortingState>([]);
 
   const table = useReactTable({
     data: works,
@@ -87,7 +87,7 @@ export default function WorkTable({ works }: { works: Work[] }) {
     state: {
       sorting,
     },
-  })
+  });
 
   return (
     <div className="border">
@@ -105,7 +105,7 @@ export default function WorkTable({ works }: { works: Work[] }) {
                           header.getContext()
                         )}
                   </TableHead>
-                )
+                );
               })}
             </TableRow>
           ))}
@@ -134,5 +134,5 @@ export default function WorkTable({ works }: { works: Work[] }) {
         </TableBody>
       </Table>
     </div>
-  )
+  );
 }

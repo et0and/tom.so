@@ -12,9 +12,10 @@ export interface BannerProps {
 }
 
 const variantStyles = {
-  info: "bg-white text-black border-gray-200",
+  info: "bg-white text-black border-gray-200 dark:bg-stone-700 dark:text-white",
   maintenance: "bg-white text-black border-gray-200",
-  error: "bg-black text-white border-black",
+  error:
+    "bg-black text-white border-black dark:bg-stone-700 dark:text-white dark:border-white",
 };
 
 export const Banner = ({

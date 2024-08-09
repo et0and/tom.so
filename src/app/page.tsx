@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="flex-grow items-center justify-center hidden md:flex">
+      <div className="flex-grow items-center justify-center transition grayscale dark:invert hidden md:flex">
         <Image
           src="/d.jpg"
           width={500}

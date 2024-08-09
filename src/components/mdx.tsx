@@ -257,6 +257,18 @@ const components: ComponentsType = {
   h5: createHeading(5),
   h6: createHeading(6),
   Image: RoundedImage,
+  img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
+    return (
+      <Image
+        src={props.src || ""}
+        alt={props.alt || ""}
+        width={500}
+        height={400}
+        unoptimized
+        className="grayscale"
+      />
+    );
+  },
   a: CustomLink,
   Callout,
   ProsCard,

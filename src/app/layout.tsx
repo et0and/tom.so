@@ -99,7 +99,7 @@ export default function RootLayout({
             href="/rss.xml"
           />
         </head>
-        <body className="antialiased w-full lg:mx-auto">
+        <body className="antialiased w-full lg:mx-auto dark:bg-stone-900 dark:text-white">
           <div className="absolute top-0 left-1/2 transform -translate-x-1/2 z-50">
             <SkipLink />
           </div>

@@ -118,12 +118,12 @@ export default function Blog({ params }: PageParams) {
         <h1 className="title pt-4 font-medium text-2xl tracking-tighter max-w-[650px]">
           {post.metadata.title}
         </h1>
-        <p className="text-md text-neutral-700 tracking-tighter">
+        <p className="text-md text-neutral-700 dark:text-neutral-200 tracking-tighter">
           {post.metadata.summary}
         </p>
 
         <div className="flex justify-between items-center mt-2 mb-6 text-sm max-w-[650px]">
-          <p className="text-sm text-neutral-700">
+          <p className="text-sm text-neutral-700 dark:text-neutral-200">
             {formatDate(post.metadata.publishedAt)}
           </p>
         </div>

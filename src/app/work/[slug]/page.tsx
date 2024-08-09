@@ -7,15 +7,6 @@ import { unstable_noStore as noStore } from "next/cache";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Suspense } from "react";
-import {
-  Breadcrumb,
-  BreadcrumbEllipsis,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 
 interface PageParams {
   params: {
@@ -134,7 +125,7 @@ export default function Work({ params }: PageParams) {
           </h1>
         </Suspense>
         <Suspense fallback={<Skeleton className="h-4 w-[300px]" />}>
-          <p className="text-md text-neutral-700 tracking-tighter">
+          <p className="text-md text-neutral-700 dark:text-neutral-200 tracking-tighter">
             {post.metadata.summary}
           </p>
         </Suspense>
