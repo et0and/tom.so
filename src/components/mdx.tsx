@@ -265,7 +265,7 @@ const components: ComponentsType = {
         width={500}
         height={400}
         unoptimized
-        className="grayscale"
+        className="grayscale bg-stone-300"
       />
     );
   },
