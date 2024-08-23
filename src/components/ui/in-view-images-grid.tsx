@@ -89,6 +89,7 @@ export function InViewImagesGrid({ channelSlug }: InViewImagesGridProps) {
                   >
                     <Image
                       src={imgSrc}
+                      unoptimized
                       alt={`Image from Are.na channel ${channelSlug}, index:${index}`}
                       className="bg-slate-400 grayscale size-full rounded-lg object-contain"
                       width={500}
