@@ -8,7 +8,7 @@ import React, {
   useRef,
 } from "react";
 import { motion, useAnimation } from "framer-motion";
-
+import { TRAILING_IMAGES } from "@/lib/constants";
 import { useMousePosition } from "@/hooks/useMousePosition";
 import { getDistance, lerp } from "@/lib/utils";
 
@@ -110,27 +110,12 @@ const AnimatedImage = forwardRef<AnimatedImageRef, { src: string }>(
 
 AnimatedImage.displayName = "AnimatedImage";
 
-const images = [
-  "a-drawing.jpg",
-  "angel.png",
-  "spiral.jpg",
-  "uptofriends.jpg",
-  "the-museum-without-walls.png",
-  "models.png",
-  "microme.jpg",
-  "pkg.gif",
-  "nothing-market.png",
-  "nothing-market-poster.jpg",
-  "chimera.jpg",
-  "cover.jpg",
-];
-
 const TrailingImage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   // Create a maximum of 20 trails for a smoother experience
   const trailsRef = useRef(
     Array.from(
-      { length: Math.max(20, images.length) },
+      { length: Math.max(20, TRAILING_IMAGES.length) },
       createRef<AnimatedImageRef>
     )
   );
@@ -183,13 +168,13 @@ const TrailingImage = () => {
   return (
     <div
       ref={containerRef}
-      className="storybook-fix relative flex min-h-96 w-full"
+      className="storybook-fix relative flex min-h-80 w-1/2"
     >
       {trailsRef.current.map((ref, index) => (
         <AnimatedImage
           key={index}
           ref={ref}
-          src={images[index % images.length]}
+          src={TRAILING_IMAGES[index % TRAILING_IMAGES.length]}
         />
       ))}
     </div>
