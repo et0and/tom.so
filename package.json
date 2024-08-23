@@ -28,6 +28,7 @@
     "class-variance-authority": "^0.7.0",
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
+    "framer-motion": "^11.3.29",
     "geist": "^1.3.0",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.390.0",

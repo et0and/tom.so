@@ -6,6 +6,7 @@ import { highlight } from "sugar-high";
 import React, { ComponentType, ReactNode } from "react";
 import { Banner, BannerProps } from "./ui/banner";
 import { YouTubeEmbed } from "@next/third-parties/google";
+import { InViewImagesGrid } from "./ui/in-view-images-grid";
 
 interface TableProps {
   data: {
@@ -256,6 +257,9 @@ const components: ComponentsType = {
   h4: createHeading(4),
   h5: createHeading(5),
   h6: createHeading(6),
+  InViewImagesGrid: ({ channelSlug }: { channelSlug: string }) => (
+    <InViewImagesGrid channelSlug={channelSlug} />
+  ),
   Image: RoundedImage,
   img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
     return (

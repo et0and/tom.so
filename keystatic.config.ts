@@ -1,3 +1,4 @@
+import { InViewImagesGrid } from "@/components/ui/in-view-images-grid";
 import { config, fields, collection } from "@keystatic/core";
 import { inline, block } from "@keystatic/core/content-components";
 
@@ -64,6 +65,12 @@ export default config({
                 channelSlug: fields.text({ label: "Channel slug" }),
               },
             }),
+            InViewImagesGrid: block({
+              label: "Arena grid",
+              schema: {
+                channelSlug: fields.text({ label: "Channel slug" }),
+              },
+            }),
             YoutubeEmbed: block({
               label: "Youtube",
               schema: {
@@ -122,6 +129,12 @@ export default config({
             }),
             Arena: block({
               label: "Arena",
+              schema: {
+                channelSlug: fields.text({ label: "Channel slug" }),
+              },
+            }),
+            InViewImagesGrid: block({
+              label: "Arena grid",
               schema: {
                 channelSlug: fields.text({ label: "Channel slug" }),
               },
