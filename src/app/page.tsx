@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import TrailingImage from "@/components/ui/trailing-image";
 
 export const metadata: Metadata = {
   openGraph: {
@@ -17,13 +18,8 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="flex-grow items-center justify-center transition grayscale dark:invert hidden md:flex">
-        <Image
-          src="/d.jpg"
-          width={500}
-          height={500}
-          alt="Highly grainy photograph of a classroom that I used to teach in at Westlake Boys High School."
-        />
+      <div className="flex-grow items-center justify-center transition grayscale hidden md:flex">
+        <TrailingImage />
       </div>
     </div>
   );
