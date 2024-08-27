@@ -1,12 +1,17 @@
+"use client";
 import Link from "next/link";
 import Image, { ImageProps } from "next/image";
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
-import { TweetComponent } from "./tweet";
 import { highlight } from "sugar-high";
 import React, { ComponentType, ReactNode } from "react";
 import { Banner, BannerProps } from "./ui/banner";
 import { YouTubeEmbed } from "@next/third-parties/google";
 import { InViewImagesGrid } from "./ui/in-view-images-grid";
+import Prism from 'prismjs';
+import 'prismjs/themes/prism-tomorrow.css'; 
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-jsx';
 
 interface TableProps {
   data: {
@@ -206,16 +211,34 @@ function ConsCard({ title, cons }: ConsCardProps) {
   );
 }
 
-interface CodeProps extends React.HTMLAttributes<HTMLElement> {
-  children: ReactNode;
+interface CodeProps extends React.HTMLAttributes<HTMLPreElement> {
+  children: string;
+  language?: string;
 }
 
-function Code({ children, ...props }: CodeProps) {
-  const codeString = React.Children.toArray(children).join("");
-  let codeHTML = highlight(codeString);
-  return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
-}
+function Code({ children, language = 'javascript', ...props }: CodeProps) {
+  const codeRef = React.useRef<HTMLElement>(null);
 
+  React.useEffect(() => {
+    if (codeRef.current) {
+      Prism.highlightElement(codeRef.current);
+    }
+  }, [children, language]);
+
+  return (
+    <pre className="relative overflow-x-auto p-4 bg-gray-800 rounded-lg">
+      <code ref={codeRef} className={`language-${language}`}>
+        {children}
+      </code>
+      <button
+        className="absolute top-2 right-2 text-white bg-gray-700 px-2 py-1 rounded"
+        onClick={() => navigator.clipboard.writeText(children)}
+      >
+        Copy
+      </button>
+    </pre>
+  );
+}
 function slugify(str: string): string {
   return str
     .toString()
@@ -277,7 +300,6 @@ const components: ComponentsType = {
   Callout,
   ProsCard,
   ConsCard,
-  StaticTweet: TweetComponent,
   code: Code,
   Table,
   Arena,

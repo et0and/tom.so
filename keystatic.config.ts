@@ -1,4 +1,3 @@
-import { InViewImagesGrid } from "@/components/ui/in-view-images-grid";
 import { config, fields, collection } from "@keystatic/core";
 import { inline, block } from "@keystatic/core/content-components";
 
@@ -63,6 +62,26 @@ export default config({
               label: "Arena",
               schema: {
                 channelSlug: fields.text({ label: "Channel slug" }),
+              },
+            }),
+            Code: block({
+              label: "Code Block",
+              schema: {
+                language: fields.select({
+                  label: "Language",
+                  options: [
+                    { label: "JavaScript", value: "javascript" },
+                    { label: "TypeScript", value: "typescript" },
+                    { label: "Python", value: "python" },
+                    { label: "HTML", value: "html" },
+                    { label: "CSS", value: "css" },
+                  ],
+                  defaultValue: "javascript",
+                }),
+                code: fields.text({
+                  label: "Code",
+                  multiline: true,
+                }),
               },
             }),
             InViewImagesGrid: block({
