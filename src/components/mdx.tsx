@@ -7,11 +7,11 @@ import React, { ComponentType, ReactNode } from "react";
 import { Banner, BannerProps } from "./ui/banner";
 import { YouTubeEmbed } from "@next/third-parties/google";
 import { InViewImagesGrid } from "./ui/in-view-images-grid";
-import Prism from 'prismjs';
-import 'prismjs/themes/prism-tomorrow.css'; 
-import 'prismjs/components/prism-javascript';
-import 'prismjs/components/prism-typescript';
-import 'prismjs/components/prism-jsx';
+import Prism from "prismjs";
+import "prismjs/themes/prism-tomorrow.css";
+import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-typescript";
+import "prismjs/components/prism-jsx";
 
 interface TableProps {
   data: {
@@ -40,6 +40,10 @@ function Table({ data }: TableProps) {
       <tbody>{rows}</tbody>
     </table>
   );
+}
+
+function UnorderedList(props: React.HTMLAttributes<HTMLUListElement>) {
+  return <ul className="list-disc list-inside" {...props} />;
 }
 
 function LightModeWrapper({ children }: { children: React.ReactNode }) {
@@ -216,7 +220,7 @@ interface CodeProps extends React.HTMLAttributes<HTMLPreElement> {
   language?: string;
 }
 
-function Code({ children, language = 'javascript', ...props }: CodeProps) {
+function Code({ children, language = "javascript", ...props }: CodeProps) {
   const codeRef = React.useRef<HTMLElement>(null);
 
   React.useEffect(() => {
@@ -306,6 +310,7 @@ const components: ComponentsType = {
   Youtube,
   Iframe,
   Banner: (props: BannerProps) => <Banner {...props} />,
+  ul: UnorderedList,
 };
 
 export function CustomMDX(props: MDXRemoteProps) {
