@@ -96,6 +96,22 @@ export default config({
                 channelSlug: fields.text({ label: "Video ID" }),
               },
             }),
+            Carousel: block({
+              label: "Image Carousel",
+              schema: {
+                images: fields.array(
+                  fields.image({
+                    label: "Image",
+                    directory: "public/carousel",
+                    publicPath: "/carousel",
+                  }),
+                  {
+                    label: "Carousel Images",
+                    itemLabel: (props) => props.value?.filename || "Image",
+                  }
+                ),
+              },
+            }),
           },
         }),
       },
@@ -162,6 +178,22 @@ export default config({
               label: "Youtube",
               schema: {
                 channelSlug: fields.text({ label: "Video ID" }),
+              },
+            }),
+            Carousel: block({
+              label: "Image Carousel",
+              schema: {
+                images: fields.array(
+                  fields.image({
+                    label: "Image",
+                    directory: "public/carousel",
+                    publicPath: "/carousel",
+                  }),
+                  {
+                    label: "Carousel Images",
+                    itemLabel: (props) => props.value?.filename || "Image",
+                  }
+                ),
               },
             }),
           },

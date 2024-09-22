@@ -12,6 +12,13 @@ import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-jsx";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "./ui/carousel";
 
 interface TableProps {
   data: {
@@ -311,6 +318,25 @@ const components: ComponentsType = {
   Iframe,
   Banner: (props: BannerProps) => <Banner {...props} />,
   ul: UnorderedList,
+  Carousel: ({ images }: { images: string[] }) => (
+    <Carousel>
+      <CarouselContent>
+        {images.map((src, index) => (
+          <CarouselItem key={index}>
+            <Image
+              src={src}
+              alt={`Carousel image ${index + 1}`}
+              width={500}
+              height={300}
+              className="w-full object-cover"
+            />
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
+  ),
 };
 
 export function CustomMDX(props: MDXRemoteProps) {
