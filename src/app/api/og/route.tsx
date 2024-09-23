@@ -5,14 +5,17 @@ export const runtime = "edge";
 
 // Load the fonts
 const geistSansRegular = fetch(
-  new URL("../../assets/fonts/geist/static/Geist-Regular.ttf", import.meta.url),
+  new URL(
+    "https://tom.so/assets/fonts/geist/static/Geist-Regular.ttf",
+    import.meta.url
+  )
 ).then((res) => res.arrayBuffer());
 
 const geistSansSemibold = fetch(
   new URL(
-    "../../assets/fonts/geist/static/Geist-SemiBold.ttf",
-    import.meta.url,
-  ),
+    "https://tom.so/assets/fonts/geist/static/Geist-SemiBold.ttf",
+    import.meta.url
+  )
 ).then((res) => res.arrayBuffer());
 
 export async function GET(request: NextRequest) {
@@ -79,6 +82,6 @@ export async function GET(request: NextRequest) {
           weight: 600,
         },
       ],
-    },
+    }
   );
 }
