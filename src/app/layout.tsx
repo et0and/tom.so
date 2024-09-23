@@ -18,10 +18,10 @@ export const metadata: Metadata = {
     default: "Tom Hackshaw",
     template: "%s | Tom Hackshaw",
   },
-  description: "Tom Hackshaw is a design engineer from Pōneke, Aotearoa.",
+  description: "Tom Hackshaw is a design engineer from Pōneke, Aotearoa",
   openGraph: {
     title: "Tom Hackshaw",
-    description: "Tom Hackshaw is a design engineer from Pōneke, Aotearoa.",
+    description: "Tom Hackshaw is a design engineer from Pōneke, Aotearoa",
     url: "https://tom.so",
     siteName: "Tom Hackshaw",
     locale: "en_NZ",
