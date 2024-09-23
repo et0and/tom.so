@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: "https://tom.so/api/og?title=Tom Hackshaw is a design engineer from Pōneke, Aotearoa",
+        url: "https://tom.so/api/og?title=Design engineer from Pōneke, Aotearoa",
         width: 1200,
         height: 630,
         alt: "Tom Hackshaw",
