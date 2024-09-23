@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Card/> renders Card correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="text-black"
+  >
+    Test Card
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Card/> renders CardContent correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="p-6 pt-0"
+  >
+    Test Content
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Card/> renders CardDescription correctly 1`] = `
+<DocumentFragment>
+  <p
+    class="text-sm text-gray-500 dark:text-gray-400"
+  >
+    Test Description
+  </p>
+</DocumentFragment>
+`;
+
+exports[`<Card/> renders CardFooter correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="flex items-center p-6 pt-0"
+  >
+    Test Footer
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Card/> renders CardHeader correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col space-y-1.5 p-6"
+  >
+    Test Header
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Card/> renders CardTitle correctly 1`] = `
+<DocumentFragment>
+  <h3
+    class="text-2xl font-semibold leading-none tracking-tight"
+  >
+    Test Title
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`<Card/> renders full Card structure correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="text-black"
+  >
+    <div
+      class="flex flex-col space-y-1.5 p-6"
+    >
+      <h3
+        class="text-2xl font-semibold leading-none tracking-tight"
+      >
+        Test Title
+      </h3>
+      <p
+        class="text-sm text-gray-500 dark:text-gray-400"
+      >
+        Test Description
+      </p>
+    </div>
+    <div
+      class="p-6 pt-0"
+    >
+      Test Content
+    </div>
+    <div
+      class="flex items-center p-6 pt-0"
+    >
+      Test Footer
+    </div>
+  </div>
+</DocumentFragment>
+`;

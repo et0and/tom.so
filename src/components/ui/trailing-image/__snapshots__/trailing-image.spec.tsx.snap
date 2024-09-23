@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TrailingImage/> renders correctly 1`] = `
+<div>
+  <div
+    class="storybook-fix relative flex min-h-80 w-1/2"
+  >
+    <img
+      alt="trail element"
+      class="absolute w-44 object-cover"
+      src="a-drawing.jpg"
+      style="opacity: 0; transform: none;"
+    />
+    <img
+      alt="trail element"
+      class="absolute w-44 object-cover"
+      src="angel.png"
+      style="opacity: 0; transform: none;"
+    />
+    <img
+      alt="trail element"
+      class="absolute w-44 object-cover"
+      src="spiral.jpg"
+      style="opacity: 0; transform: none;"
+    />
+    <img
+      alt="trail element"
+      class="absolute w-44 object-cover"
+      src="uptofriends.jpg"
+      style="opacity: 0; transform: none;"
+    />
+    <img
+      alt="trail element"
+      class="absolute w-44 object-cover"
+      src="the-museum-without-walls.png"
+      style="opacity: 0; transform: none;"
+    />
+    <img
+      alt="trail element"
+      class="absolute w-44 object-cover"
+      src="models.png"
+      style="opacity: 0; transform: none;"
+    />
+    <img
+      alt="trail element"
+      class="absolute w-44 object-cover"
+      src="microme.jpg"
+      style="opacity: 0; transform: none;"
+    />
+    <img
+      alt="trail element"
+      class="absolute w-44 object-cover"
+      src="pkg.gif"
+      style="opacity: 0; transform: none;"
+    />
+    <img
+      alt="trail element"
+      class="absolute w-44 object-cover"
+      src="nothing-market.png"
+      style="opacity: 0; transform: none;"
+    />
+    <img
+      alt="trail element"
+      class="absolute w-44 object-cover"
+      src="nothing-market-poster.jpg"
+      style="opacity: 0; transform: none;"
+    />
+    <img
+      alt="trail element"
+      class="absolute w-44 object-cover"
+      src="chimera.jpg"
+      style="opacity: 0; transform: none;"
+    />
+    <img
+      alt="trail element"
+      class="absolute w-44 object-cover"
+      src="cover.jpg"
+      style="opacity: 0; transform: none;"
+    />
+    <img
+      alt="trail element"
+      class="absolute w-44 object-cover"
+      src="a-drawing.jpg"
+      style="opacity: 0; transform: none;"
+    />
+    <img
+      alt="trail element"
+      class="absolute w-44 object-cover"
+      src="angel.png"
+      style="opacity: 0; transform: none;"
+    />
+    <img
+      alt="trail element"
+      class="absolute w-44 object-cover"
+      src="spiral.jpg"
+      style="opacity: 0; transform: none;"
+    />
+    <img
+      alt="trail element"
+      class="absolute w-44 object-cover"
+      src="uptofriends.jpg"
+      style="opacity: 0; transform: none;"
+    />
+    <img
+      alt="trail element"
+      class="absolute w-44 object-cover"
+      src="the-museum-without-walls.png"
+      style="opacity: 0; transform: none;"
+    />
+    <img
+      alt="trail element"
+      class="absolute w-44 object-cover"
+      src="models.png"
+      style="opacity: 0; transform: none;"
+    />
+    <img
+      alt="trail element"
+      class="absolute w-44 object-cover"
+      src="microme.jpg"
+      style="opacity: 0; transform: none;"
+    />
+    <img
+      alt="trail element"
+      class="absolute w-44 object-cover"
+      src="pkg.gif"
+      style="opacity: 0; transform: none;"
+    />
+  </div>
+</div>
+`;

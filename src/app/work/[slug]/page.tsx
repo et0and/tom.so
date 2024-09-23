@@ -4,8 +4,8 @@ import Link from "next/link";
 import { CustomMDX } from "@/components/mdx";
 import { getWorkPosts } from "@/app/db/work";
 import { unstable_noStore as noStore } from "next/cache";
-import { Separator } from "@/components/ui/separator";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Separator } from "@/components/ui/separator/separator";
+import { Skeleton } from "@/components/ui/skeleton/skeleton";
 import { Suspense } from "react";
 
 interface PageParams {

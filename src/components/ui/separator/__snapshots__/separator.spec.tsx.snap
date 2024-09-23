@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Separator/> renders correctly with custom className 1`] = `
+<div
+  class="shrink-0 bg-gray-200 dark:bg-gray-400 h-[1px] w-full custom-class"
+  data-orientation="horizontal"
+  role="none"
+/>
+`;
+
+exports[`<Separator/> renders correctly with decorative set to false 1`] = `
+<div
+  class="shrink-0 bg-gray-200 dark:bg-gray-400 h-[1px] w-full"
+  data-orientation="horizontal"
+  role="separator"
+/>
+`;
+
+exports[`<Separator/> renders correctly with default props 1`] = `
+<div
+  class="shrink-0 bg-gray-200 dark:bg-gray-400 h-[1px] w-full"
+  data-orientation="horizontal"
+  role="none"
+/>
+`;
+
+exports[`<Separator/> renders correctly with vertical orientation 1`] = `
+<div
+  class="shrink-0 bg-gray-200 dark:bg-gray-400 h-full w-[1px]"
+  data-orientation="vertical"
+  role="none"
+/>
+`;

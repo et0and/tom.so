@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getBlogPosts } from "@/app/db/blog";
-import { Separator } from "@/components/ui/separator";
+import { Separator } from "@/components/ui/separator/separator";
 
 export const metadata = {
   title: "Writing",

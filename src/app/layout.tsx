@@ -2,11 +2,11 @@ import type { Metadata, Viewport } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import Navbar from "@/components/ui/navbar";
-import Footer from "@/components/ui/footer";
+import Navbar from "@/components/ui/navbar/navbar";
+import Footer from "@/components/ui/footer/footer";
 import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
-import { SkipLink } from "@/components/ui/skiplink";
+import { SkipLink } from "@/components/ui/skiplink/skiplink";
 
 export const viewport: Viewport = {
   themeColor: "white",
@@ -67,7 +67,11 @@ export default function RootLayout({
             name="msvalidate.01"
             content="0C22B5C633DBEB514739694102A8D398"
           />
-          <meta name="theme-color" content="rgb(28 25 23)" media="(prefers-color-scheme: dark)"/>
+          <meta
+            name="theme-color"
+            content="rgb(28 25 23)"
+            media="(prefers-color-scheme: dark)"
+          />
           <meta property="og:image" content="/og.png" />
           <meta property="twitter:card" content="summary_large_image" />
           <meta property="twitter:image" content="/og.png" />

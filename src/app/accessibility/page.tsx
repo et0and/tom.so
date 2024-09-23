@@ -1,4 +1,4 @@
-import { Separator } from "@/components/ui/separator";
+import { Separator } from "@/components/ui/separator/separator";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

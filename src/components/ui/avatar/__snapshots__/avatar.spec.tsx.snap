@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Avatar/> renders Avatar correctly 1`] = `
+<DocumentFragment>
+  <span
+    class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Avatar/> renders Avatar with AvatarFallback correctly 1`] = `
+<DocumentFragment>
+  <span
+    class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
+  >
+    <span
+      class="flex h-full w-full items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800"
+    >
+      TA
+    </span>
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<Avatar/> renders Avatar with AvatarImage correctly 1`] = `
+<DocumentFragment>
+  <span
+    class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Avatar/> renders Avatar with both AvatarImage and AvatarFallback 1`] = `
+<DocumentFragment>
+  <span
+    class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
+  >
+    <span
+      class="flex h-full w-full items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800"
+    >
+      TA
+    </span>
+  </span>
+</DocumentFragment>
+`;

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getBlogPosts } from "@/app/db/blog";
 import { unstable_noStore as noStore } from "next/cache";
-import { Separator } from "@/components/ui/separator";
+import { Separator } from "@/components/ui/separator/separator";
 
 interface PageParams {
   params: {

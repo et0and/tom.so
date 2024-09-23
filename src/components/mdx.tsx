@@ -2,11 +2,10 @@
 import Link from "next/link";
 import Image, { ImageProps } from "next/image";
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
-import { highlight } from "sugar-high";
 import React, { ComponentType, ReactNode } from "react";
-import { Banner, BannerProps } from "./ui/banner";
+import { Banner, BannerProps } from "./ui/banner/banner";
 import { YouTubeEmbed } from "@next/third-parties/google";
-import { InViewImagesGrid } from "./ui/in-view-images-grid";
+import { InViewImagesGrid } from "./ui/in-view/in-view-images-grid";
 import Prism from "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-javascript";
@@ -18,7 +17,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "./ui/carousel";
+} from "./ui/carousel/carousel";
 
 interface TableProps {
   data: {

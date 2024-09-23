@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import TrailingImage from "@/components/ui/trailing-image";
+import TrailingImage from "@/components/ui/trailing-image/trailing-image";
 
 export const metadata: Metadata = {
   openGraph: {

@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import { getWorkPosts } from "@/app/db/work";
 import Link from "next/link";
-import { Separator } from "@/components/ui/separator";
-import { Banner } from "@/components/ui/banner";
+import { Separator } from "@/components/ui/separator/separator";
+import { Banner } from "@/components/ui/banner/banner";
 
 export const metadata: Metadata = {
   title: "Work",

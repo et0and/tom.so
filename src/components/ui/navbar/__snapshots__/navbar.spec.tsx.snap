@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navbar/> renders correctly 1`] = `
+<div>
+  <nav
+    class="flex items-center tracking-tighter justify-between h-8 px-6 pt-6 dark:bg-stone-900"
+  >
+    <a
+      href="/"
+    >
+      <h1
+        class="md:block hidden"
+      >
+        Tom Hackshaw
+      </h1>
+      <div
+        class="md:hidden block focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-100 w-7 h-7 bg-black dark:bg-white rounded-full"
+      >
+        <h1
+          class="sr-only"
+        >
+          Tom Hackshaw
+        </h1>
+      </div>
+    </a>
+    <div
+      class="flex md:items-center space-x-4 text-lg"
+    >
+      <a
+        href="/about"
+      >
+        About
+      </a>
+      <a
+        href="/work"
+      >
+        Work
+      </a>
+      <a
+        href="/posts"
+      >
+        Writing
+      </a>
+    </div>
+  </nav>
+</div>
+`;

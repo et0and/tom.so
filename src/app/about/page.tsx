@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import { CalendarDays } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar/avatar";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/components/ui/hover-card";
-import { Separator } from "@/components/ui/separator";
+} from "@/components/ui/card/hover-card";
+import { Separator } from "@/components/ui/separator/separator";
 
 export const metadata: Metadata = {
   title: "About",
