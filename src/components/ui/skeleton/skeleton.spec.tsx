@@ -19,7 +19,7 @@ describe("<Skeleton/>", () => {
     const { container } = render(<Skeleton data-testid="skeleton-test" />);
     expect(container.firstChild).toHaveAttribute(
       "data-testid",
-      "skeleton-test"
+      "skeleton-test",
     );
     expect(container.firstChild).toMatchSnapshot();
   });

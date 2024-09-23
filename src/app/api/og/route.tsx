@@ -20,7 +20,7 @@ export async function GET(request: Request) {
     const hasTitle = searchParams.has("title");
 
     // FONT
-      return new ImageResponse(
+    return new ImageResponse(
       (
         <div tw="h-full w-full flex flex-col justify-start items-end bg-white p-20 relative">
           {hasTitle ? (
@@ -42,7 +42,7 @@ export async function GET(request: Request) {
       {
         width: parameters.width || 1200,
         height: parameters.height || 630,
-      }
+      },
     );
   } catch (e: any) {
     console.log(`${e.message}`);

@@ -12,7 +12,7 @@ describe("<Avatar/>", () => {
     const { asFragment } = render(
       <Avatar>
         <AvatarImage src="test.jpg" alt="Test Avatar" />
-      </Avatar>
+      </Avatar>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
@@ -21,7 +21,7 @@ describe("<Avatar/>", () => {
     const { asFragment } = render(
       <Avatar>
         <AvatarFallback>TA</AvatarFallback>
-      </Avatar>
+      </Avatar>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
@@ -31,7 +31,7 @@ describe("<Avatar/>", () => {
       <Avatar>
         <AvatarImage src="test.jpg" alt="Test Avatar" />
         <AvatarFallback>TA</AvatarFallback>
-      </Avatar>
+      </Avatar>,
     );
     expect(asFragment()).toMatchSnapshot();
   });

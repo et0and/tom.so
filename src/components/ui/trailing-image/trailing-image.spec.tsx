@@ -23,7 +23,7 @@ describe("<TrailingImage/>", () => {
       "relative",
       "flex",
       "min-h-80",
-      "w-1/2"
+      "w-1/2",
     );
   });
 });

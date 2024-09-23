@@ -108,7 +108,7 @@ export default config({
                   {
                     label: "Carousel Images",
                     itemLabel: (props) => props.value?.filename || "Image",
-                  }
+                  },
                 ),
               },
             }),
@@ -192,7 +192,7 @@ export default config({
                   {
                     label: "Carousel Images",
                     itemLabel: (props) => props.value?.filename || "Image",
-                  }
+                  },
                 ),
               },
             }),

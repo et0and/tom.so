@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 export function useMousePosition(
   ref: React.RefObject<HTMLElement>,
-  callback?: ({ x, y }: { x: number; y: number }) => void
+  callback?: ({ x, y }: { x: number; y: number }) => void,
 ) {
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {

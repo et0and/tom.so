@@ -105,7 +105,7 @@ const AnimatedImage = forwardRef<AnimatedImageRef, { src: string }>(
         className="absolute w-44 object-cover"
       />
     );
-  }
+  },
 );
 
 AnimatedImage.displayName = "AnimatedImage";
@@ -116,8 +116,8 @@ const TrailingImage = () => {
   const trailsRef = useRef(
     Array.from(
       { length: Math.max(20, TRAILING_IMAGES.length) },
-      createRef<AnimatedImageRef>
-    )
+      createRef<AnimatedImageRef>,
+    ),
   );
 
   const lastPosition = useRef({ x: 0, y: 0 });
@@ -127,7 +127,7 @@ const TrailingImage = () => {
 
   const update = useCallback((cursor: { x: number; y: number }) => {
     const activeRefCount = trailsRef.current.filter((ref) =>
-      ref.current?.isActive()
+      ref.current?.isActive(),
     ).length;
     if (activeRefCount === 0) {
       // Reset zIndex since there are no active references
@@ -139,7 +139,7 @@ const TrailingImage = () => {
       cursor.x,
       cursor.y,
       lastPosition.current.x,
-      lastPosition.current.y
+      lastPosition.current.y,
     );
     const threshold = 50;
 

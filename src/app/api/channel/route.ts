@@ -7,7 +7,7 @@ export async function GET(request: Request) {
   if (!slug) {
     return NextResponse.json(
       { error: "Channel slug is required" },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -21,7 +21,7 @@ export async function GET(request: Request) {
     console.error("Error fetching Are.na channel:", error);
     return NextResponse.json(
       { error: "Failed to fetch Are.na channel" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

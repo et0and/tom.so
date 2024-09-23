@@ -10,7 +10,7 @@ describe("<HoverCard/>", () => {
         <HoverCardContent>
           <p>Hover card content</p>
         </HoverCardContent>
-      </HoverCard>
+      </HoverCard>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
@@ -19,7 +19,7 @@ describe("<HoverCard/>", () => {
     const { asFragment } = render(
       <HoverCard>
         <HoverCardTrigger>Hover me</HoverCardTrigger>
-      </HoverCard>
+      </HoverCard>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
@@ -30,7 +30,7 @@ describe("<HoverCard/>", () => {
         <HoverCardContent>
           <p>Hover card content</p>
         </HoverCardContent>
-      </HoverCard>
+      </HoverCard>,
     );
     expect(asFragment()).toMatchSnapshot();
   });

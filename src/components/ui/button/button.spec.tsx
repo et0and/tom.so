@@ -23,7 +23,7 @@ describe("<Button/>", () => {
     ];
     variants.forEach((variant) => {
       const { asFragment } = render(
-        <Button {...defaultProps} variant={variant} />
+        <Button {...defaultProps} variant={variant} />,
       );
       expect(asFragment()).toMatchSnapshot();
     });
@@ -41,14 +41,14 @@ describe("<Button/>", () => {
     const { asFragment } = render(
       <Button {...defaultProps} asChild>
         <a href="https://example.com">Link Button</a>
-      </Button>
+      </Button>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
 
   it("renders button with custom className", () => {
     const { asFragment } = render(
-      <Button {...defaultProps} className="custom-class" />
+      <Button {...defaultProps} className="custom-class" />,
     );
     expect(asFragment()).toMatchSnapshot();
   });

@@ -21,7 +21,7 @@ describe("<Banner/>", () => {
 
   it("renders maintenance banner correctly", () => {
     const { asFragment } = render(
-      <Banner {...defaultProps} variant="maintenance" />
+      <Banner {...defaultProps} variant="maintenance" />,
     );
     expect(asFragment()).toMatchSnapshot();
   });
@@ -33,7 +33,7 @@ describe("<Banner/>", () => {
 
   it("renders banner without icon", () => {
     const { asFragment } = render(
-      <Banner {...defaultProps} showIcon={false} />
+      <Banner {...defaultProps} showIcon={false} />,
     );
     expect(asFragment()).toMatchSnapshot();
   });
@@ -44,7 +44,7 @@ describe("<Banner/>", () => {
         {...defaultProps}
         linkName="Click here"
         linkUrl="https://example.com"
-      />
+      />,
     );
     expect(asFragment()).toMatchSnapshot();
   });

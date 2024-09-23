@@ -32,7 +32,7 @@ describe("<Card/>", () => {
 
   it("renders CardDescription correctly", () => {
     const { asFragment } = render(
-      <CardDescription>Test Description</CardDescription>
+      <CardDescription>Test Description</CardDescription>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
@@ -51,7 +51,7 @@ describe("<Card/>", () => {
         </CardHeader>
         <CardContent>Test Content</CardContent>
         <CardFooter>Test Footer</CardFooter>
-      </Card>
+      </Card>,
     );
     expect(asFragment()).toMatchSnapshot();
   });

@@ -1,5 +1,5 @@
 import { getBlogPosts } from "@/app/db/blog";
-import { getWorkPosts } from "@/app/db/work"; 
+import { getWorkPosts } from "@/app/db/work";
 
 export default async function sitemap() {
   const baseUrl = "https://tom.so";
@@ -24,4 +24,3 @@ export default async function sitemap() {
 
   return [...routes, ...blogPosts, ...workPosts];
 }
-

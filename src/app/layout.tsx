@@ -58,7 +58,7 @@ export default function RootLayout({
         className={cx(
           "text-black bg-white",
           GeistSans.variable,
-          GeistMono.variable
+          GeistMono.variable,
         )}
       >
         <GoogleTagManager gtmId="GTM-5JMXBJBD" />
