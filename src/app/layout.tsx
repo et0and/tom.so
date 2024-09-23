@@ -65,7 +65,7 @@ export default function RootLayout({
         className={cx(
           "text-black bg-white",
           GeistSans.variable,
-          GeistMono.variable,
+          GeistMono.variable
         )}
       >
         <GoogleTagManager gtmId="GTM-5JMXBJBD" />
@@ -79,9 +79,7 @@ export default function RootLayout({
             content="rgb(28 25 23)"
             media="(prefers-color-scheme: dark)"
           />
-          <meta property="og:image" content="/og.png" />
           <meta property="twitter:card" content="summary_large_image" />
-          <meta property="twitter:image" content="/og.png" />
           <meta
             name="description"
             content="Tom Hackshaw is a design engineer from Pōneke, Aotearoa."
