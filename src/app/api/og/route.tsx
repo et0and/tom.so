@@ -1,53 +1,35 @@
-import { ImageResponse } from "next/og";
+import { ImageResponse } from "@vercel/og";
+import { NextRequest } from "next/server";
 
 export const runtime = "edge";
 
-type Parameters = {
-  width?: number;
-  height?: number;
-  title?: string;
-};
+export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.url);
+  const title = searchParams.get("title");
 
-export async function GET(request: Request) {
-  try {
-    // SEARCH PARAMS
-    const { searchParams } = new URL(request.url);
-    const parameters: Parameters = Object.fromEntries(searchParams);
-    console.log(parameters);
-
-    // PARAMETERS
-
-    const hasTitle = searchParams.has("title");
-
-    // FONT
-    return new ImageResponse(
-      (
-        <div tw="h-full w-full flex flex-col justify-start items-end bg-white p-20 relative">
-          {hasTitle ? (
-            <div tw="flex flex-col items-end">
-              <p tw="text-4xl tracking-tighter opacity-20 mb-0">Tom Hackshaw</p>
-              {parameters.title && parameters.title.length > 20 ? (
-                <p tw="text-4xl tracking-tighter mb-0">
-                  {parameters.title.slice(0, 40)}...
-                </p>
-              ) : (
-                <p tw="text-4xl tracking-tighter mb-0">{parameters.title}</p>
-              )}
-            </div>
-          ) : (
-            <p tw="text-4xl tracking-tighter mr-4 mb-0">Tom Hackshaw</p>
-          )}
-        </div>
-      ),
-      {
-        width: parameters.width || 1200,
-        height: parameters.height || 630,
-      },
-    );
-  } catch (e: any) {
-    console.log(`${e.message}`);
-    return new Response(`Failed to generate the image`, {
-      status: 500,
-    });
-  }
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          fontSize: 50,
+          background: "white",
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          padding: 100,
+          textAlign: "left",
+          alignItems: "flex-start",
+          justifyContent: "flex-start",
+        }}
+      >
+        <p style={{ margin: 0, marginBottom: 20 }}>{title}</p>
+        <p style={{ margin: 0, fontSize: 40 }}>Tom Hackshaw</p>
+      </div>
+    ),
+    {
+      width: 1200,
+      height: 630,
+    }
+  );
 }

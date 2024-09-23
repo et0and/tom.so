@@ -26,6 +26,13 @@ export const metadata: Metadata = {
     siteName: "Tom Hackshaw",
     locale: "en_NZ",
     type: "website",
+    images: [
+      {
+        url: "https://tom.so/api/og?title=Tom Hackshaw",
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
   robots: {
     index: true,
@@ -58,7 +65,7 @@ export default function RootLayout({
         className={cx(
           "text-black bg-white",
           GeistSans.variable,
-          GeistMono.variable,
+          GeistMono.variable
         )}
       >
         <GoogleTagManager gtmId="GTM-5JMXBJBD" />

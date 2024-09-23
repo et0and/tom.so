@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: "/og.png",
+        url: "https://tom.so/api/og?title=Tom Hackshaw - Home",
         width: 1200,
         height: 630,
         alt: "Tom Hackshaw",

@@ -23,9 +23,8 @@ export async function generateMetadata({
     title,
     publishedAt: publishedTime,
     summary: description,
-    image,
   } = post.metadata;
-  let ogImage = image ? `https://tom.so${image}` : `https://tom.so/og.png`;
+  let ogImage = `https://tom.so/api/og?title=${encodeURIComponent(title)}`;
 
   return {
     title,
@@ -39,6 +38,8 @@ export async function generateMetadata({
       images: [
         {
           url: ogImage,
+          width: 1200,
+          height: 630,
         },
       ],
     },

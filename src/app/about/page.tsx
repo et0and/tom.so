@@ -15,6 +15,17 @@ import { Separator } from "@/components/ui/separator/separator";
 export const metadata: Metadata = {
   title: "About",
   description: "About Tom Hackshaw.",
+  openGraph: {
+    title: "About Tom Hackshaw",
+    description: "About Tom Hackshaw.",
+    images: [
+      {
+        url: "https://tom.so/api/og?title=About Tom Hackshaw",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 };
 
 export default function About() {

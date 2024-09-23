@@ -4,6 +4,17 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Accessibility",
   description: "Accessibility policy of Tom Hackshaw's website.",
+  openGraph: {
+    title: "Accessibility",
+    description: "Accessibility policy of Tom Hackshaw's website.",
+    images: [
+      {
+        url: "https://tom.so/api/og?title=Accessibility policy of Tom Hackshaw's website",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 };
 
 export default function Accessibility() {
