@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import TrailingImage from "@/components/ui/trailing-image/trailing-image";
 
 export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: "https://tom.so/api/og?title=Tom Hackshaw - Home",
+        url: "https://tom.so/api/og?title=Tom Hackshaw is a design engineer from Pōneke, Aotearoa",
         width: 1200,
         height: 630,
         alt: "Tom Hackshaw",
