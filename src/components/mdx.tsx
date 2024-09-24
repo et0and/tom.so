@@ -6,7 +6,6 @@ import React, { ComponentType, ReactNode } from "react";
 import { Banner, BannerProps } from "./ui/banner/banner";
 import { YouTubeEmbed } from "@next/third-parties/google";
 import { InViewImagesGrid } from "./ui/in-view/in-view-images-grid";
-import { ModelViewer } from "./ui/model-viewer/model-viewer";
 import Prism from "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-javascript";
@@ -274,7 +273,7 @@ function createHeading(level: number) {
           className: "anchor",
         }),
       ],
-      children,
+      children
     );
   };
 }
@@ -316,8 +315,6 @@ const components: ComponentsType = {
   Arena,
   Youtube,
   Iframe,
-  Model3D: ({ url }: { url: string }) => <ModelViewer url={url} />,
-
   Banner: (props: BannerProps) => <Banner {...props} />,
   ul: UnorderedList,
   Carousel: ({ images }: { images: string[] }) => (
