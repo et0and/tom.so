@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { CustomMDX } from "@/components/mdx";
 import { getWorkPosts } from "@/app/db/work";
 import { unstable_noStore as noStore } from "next/cache";
