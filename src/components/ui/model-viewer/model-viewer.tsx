@@ -19,14 +19,14 @@ function Model({ modelPath }: ModelProps) {
       console.error("Error loading model:", error);
       setError("Failed to load the model. Using fallback.");
     },
-    []
+    [],
   );
 
   const { scene: mainScene } = useGLTF(
     modelPath,
     undefined,
     undefined,
-    handleError
+    handleError,
   );
   const { scene: fallbackScene } = useGLTF("/assets/3d/Duck.glb");
 
