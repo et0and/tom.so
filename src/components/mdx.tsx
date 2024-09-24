@@ -4,6 +4,7 @@ import Image, { ImageProps } from "next/image";
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import React, { ComponentType, ReactNode } from "react";
 import { Banner, BannerProps } from "./ui/banner/banner";
+import ModelViewer from "./ui/model-viewer/model-viewer";
 import { YouTubeEmbed } from "@next/third-parties/google";
 import { InViewImagesGrid } from "./ui/in-view/in-view-images-grid";
 import { ArenaCarousel } from "./ui/carousel/arena-carousel";
@@ -274,7 +275,7 @@ function createHeading(level: number) {
           className: "anchor",
         }),
       ],
-      children,
+      children
     );
   };
 }
@@ -320,6 +321,9 @@ const components: ComponentsType = {
   Youtube,
   Iframe,
   Banner: (props: BannerProps) => <Banner {...props} />,
+  ModelViewer: ({ modelPath }: { modelPath: string }) => (
+    <ModelViewer modelPath={modelPath} />
+  ),
   ul: UnorderedList,
   Carousel: ({ images }: { images: string[] }) => (
     <Carousel>

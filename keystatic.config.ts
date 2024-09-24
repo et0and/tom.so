@@ -64,6 +64,16 @@ export default config({
                 channelSlug: fields.text({ label: "Channel slug" }),
               },
             }),
+            ModelViewer: block({
+              label: "3D Model Viewer",
+              schema: {
+                modelFile: fields.file({
+                  label: "3D Model File",
+                  directory: "public/assets/3d",
+                  publicPath: "/assets/3d",
+                }),
+              },
+            }),
             ArenaCarousel: block({
               label: "Arena Carousel",
               schema: {
@@ -114,7 +124,7 @@ export default config({
                   {
                     label: "Carousel Images",
                     itemLabel: (props) => props.value?.filename || "Image",
-                  },
+                  }
                 ),
               },
             }),
@@ -174,6 +184,16 @@ export default config({
                 channelSlug: fields.text({ label: "Channel slug" }),
               },
             }),
+            ModelViewer: block({
+              label: "3D Model Viewer",
+              schema: {
+                modelFile: fields.file({
+                  label: "3D Model File",
+                  directory: "public/assets/3d",
+                  publicPath: "/assets/3d",
+                }),
+              },
+            }),
             ArenaCarousel: block({
               label: "Arena Carousel",
               schema: {
@@ -204,7 +224,7 @@ export default config({
                   {
                     label: "Carousel Images",
                     itemLabel: (props) => props.value?.filename || "Image",
-                  },
+                  }
                 ),
               },
             }),
