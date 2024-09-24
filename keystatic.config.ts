@@ -96,6 +96,16 @@ export default config({
                 channelSlug: fields.text({ label: "Video ID" }),
               },
             }),
+            Model3D: block({
+              label: "3D Model Viewer",
+              schema: {
+                modelFile: fields.file({
+                  label: "3D Model File",
+                  directory: "public/models",
+                  publicPath: "/models",
+                }),
+              },
+            }),
             Carousel: block({
               label: "Image Carousel",
               schema: {
@@ -108,7 +118,7 @@ export default config({
                   {
                     label: "Carousel Images",
                     itemLabel: (props) => props.value?.filename || "Image",
-                  },
+                  }
                 ),
               },
             }),
@@ -174,6 +184,16 @@ export default config({
                 channelSlug: fields.text({ label: "Channel slug" }),
               },
             }),
+            Model3D: block({
+              label: "3D Model Viewer",
+              schema: {
+                modelFile: fields.file({
+                  label: "3D Model File",
+                  directory: "public/models",
+                  publicPath: "/models",
+                }),
+              },
+            }),
             YoutubeEmbed: block({
               label: "Youtube",
               schema: {
@@ -192,7 +212,7 @@ export default config({
                   {
                     label: "Carousel Images",
                     itemLabel: (props) => props.value?.filename || "Image",
-                  },
+                  }
                 ),
               },
             }),
