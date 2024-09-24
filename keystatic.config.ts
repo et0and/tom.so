@@ -96,6 +96,16 @@ export default config({
                 channelSlug: fields.text({ label: "Video ID" }),
               },
             }),
+            Model3D: block({
+              label: "3D Model Viewer",
+              schema: {
+                modelFile: fields.file({
+                  label: "3D Model File",
+                  directory: "public/models",
+                  publicPath: "/models",
+                }),
+              },
+            }),
             Carousel: block({
               label: "Image Carousel",
               schema: {
@@ -172,6 +182,16 @@ export default config({
               label: "Arena grid",
               schema: {
                 channelSlug: fields.text({ label: "Channel slug" }),
+              },
+            }),
+            Model3D: block({
+              label: "3D Model Viewer",
+              schema: {
+                modelFile: fields.file({
+                  label: "3D Model File",
+                  directory: "public/models",
+                  publicPath: "/models",
+                }),
               },
             }),
             YoutubeEmbed: block({
