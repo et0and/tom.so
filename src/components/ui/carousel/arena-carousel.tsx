@@ -33,7 +33,7 @@ function LoadingSpinner() {
 
 export function ArenaCarousel({ channelSlug }: ArenaCarouselProps) {
   const [images, setImages] = useState<Array<{ url: string; title: string }>>(
-    []
+    [],
   );
   const [loading, setLoading] = useState(true);
 
