@@ -6,6 +6,7 @@ import React, { ComponentType, ReactNode } from "react";
 import { Banner, BannerProps } from "./ui/banner/banner";
 import { YouTubeEmbed } from "@next/third-parties/google";
 import { InViewImagesGrid } from "./ui/in-view/in-view-images-grid";
+import { ArenaCarousel } from "./ui/carousel/arena-carousel";
 import Prism from "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-javascript";
@@ -273,7 +274,7 @@ function createHeading(level: number) {
           className: "anchor",
         }),
       ],
-      children,
+      children
     );
   };
 }
@@ -313,6 +314,9 @@ const components: ComponentsType = {
   code: Code,
   Table,
   Arena,
+  ArenaCarousel: ({ channelSlug }: { channelSlug: string }) => (
+    <ArenaCarousel channelSlug={channelSlug} />
+  ),
   Youtube,
   Iframe,
   Banner: (props: BannerProps) => <Banner {...props} />,
