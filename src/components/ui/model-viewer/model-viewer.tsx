@@ -19,14 +19,14 @@ function Model({ modelPath }: ModelProps) {
       console.error("Error loading model:", error);
       setError("Failed to load the model. Using fallback.");
     },
-    [],
+    []
   );
 
   const { scene: mainScene } = useGLTF(
     modelPath,
     undefined,
     undefined,
-    handleError,
+    handleError
   );
   const { scene: fallbackScene } = useGLTF("/assets/3d/Duck.glb");
 
@@ -87,7 +87,7 @@ export default function ModelViewer({
         <ambientLight intensity={0.7} />
         <directionalLight position={[5, 5, 5]} intensity={0.8} />
         <ErrorBoundary
-          fallback={<primitive object={useGLTF("/assets/3d/duck.glb").scene} />}
+          fallback={<primitive object={useGLTF("/assets/3d/duck.glb").scene} />} // this is the fallback model if none is specified by the editor
         >
           <Model modelPath={modelPath} />
         </ErrorBoundary>
