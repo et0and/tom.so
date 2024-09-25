@@ -4,7 +4,6 @@ import Image, { ImageProps } from "next/image";
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import React, { ComponentType, ReactNode } from "react";
 import { Banner, BannerProps } from "./ui/banner/banner";
-import ModelViewer from "./ui/model-viewer/model-viewer";
 import { YouTubeEmbed } from "@next/third-parties/google";
 import { InViewImagesGrid } from "./ui/in-view/in-view-images-grid";
 import { ArenaCarousel } from "./ui/carousel/arena-carousel";
@@ -20,6 +19,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "./ui/carousel/carousel";
+
+import dynamic from "next/dynamic";
+
+const ModelViewer = dynamic(() => import("./ui/model-viewer/model-viewer"), {
+  ssr: false,
+});
 
 interface TableProps {
   data: {
@@ -321,8 +326,8 @@ const components: ComponentsType = {
   Youtube,
   Iframe,
   Banner: (props: BannerProps) => <Banner {...props} />,
-  ModelViewer: ({ modelPath }: { modelPath: string }) => (
-    <ModelViewer modelPath={modelPath} />
+  ModelViewer: ({ modelFile }: { modelFile: string }) => (
+    <ModelViewer modelPath={modelFile} />
   ),
   ul: UnorderedList,
   Carousel: ({ images }: { images: string[] }) => (

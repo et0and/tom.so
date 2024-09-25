@@ -82,7 +82,7 @@ export default function ModelViewer({
   modelPath = "/assets/3d/duck.glb",
 }: ComponentProps) {
   return (
-    <div className="w-full h-scree">
+    <div className="w-[500px] h-[500px] border dark:border-slate-50 border-neutral-900">
       <Canvas>
         <ambientLight intensity={0.7} />
         <directionalLight position={[5, 5, 5]} intensity={0.8} />
