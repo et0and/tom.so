@@ -28,7 +28,7 @@ function Model({ modelPath }: ModelProps) {
     undefined,
     handleError,
   );
-  const { scene: fallbackScene } = useGLTF("/assets/3d/Duck.glb");
+  const { scene: fallbackScene } = useGLTF("/assets/3d/duck.glb");
 
   const sceneToRender = error ? fallbackScene : mainScene;
 
