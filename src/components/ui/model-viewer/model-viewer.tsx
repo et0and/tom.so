@@ -59,7 +59,7 @@ export default function ModelViewer({ modelPath }: ComponentProps) {
   }
 
   return (
-    <div className="w-[500px] h-[500px] border dark:border-slate-50 border-neutral-900 bg-stone-700">
+    <div className="w-full aspect-square border dark:border-slate-50 border-neutral-900 bg-stone-700">
       <Canvas className="bg-stone-700">
         <ambientLight intensity={0.5} />
         <hemisphereLight intensity={0.3} />
