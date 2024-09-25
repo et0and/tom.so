@@ -1,9 +1,8 @@
 "use client";
 
-import { useRef, useState, useEffect, useMemo } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { OrbitControls, useGLTF, Center } from "@react-three/drei";
-import { ErrorBoundary } from "react-error-boundary";
+import { useRef, useEffect } from "react";
+import { Canvas, useThree } from "@react-three/fiber";
+import { OrbitControls, useGLTF, Center, Environment } from "@react-three/drei";
 import * as THREE from "three";
 
 interface ModelProps {
@@ -12,31 +11,7 @@ interface ModelProps {
 
 function Model({ modelPath }: ModelProps) {
   const modelRef = useRef<THREE.Group>(null);
-  const [error, setError] = useState<string | null>(null);
-
-  const handleError = useMemo(
-    () => (error: any) => {
-      console.error("Error loading model:", error);
-      setError("Failed to load the model. Using fallback.");
-    },
-    [],
-  );
-
-  const { scene: mainScene } = useGLTF(
-    modelPath,
-    undefined,
-    undefined,
-    handleError,
-  );
-  const { scene: fallbackScene } = useGLTF("https://tom.so/assets/3d/duck.glb");
-
-  const sceneToRender = error ? fallbackScene : mainScene;
-
-  useFrame((state, delta) => {
-    if (modelRef.current) {
-      modelRef.current.rotation.y += delta * 0.5; // Rotate the model
-    }
-  });
+  const { scene } = useGLTF(modelPath);
 
   const { camera } = useThree();
 
@@ -65,37 +40,40 @@ function Model({ modelPath }: ModelProps) {
       camera.lookAt(center);
       camera.updateProjectionMatrix();
     }
-  }, [camera, sceneToRender]);
+  }, [camera, scene]);
 
   return (
     <Center>
-      <primitive ref={modelRef} object={sceneToRender} />
+      <primitive ref={modelRef} object={scene} />
     </Center>
   );
 }
 
 interface ComponentProps {
-  modelPath?: string;
+  modelPath: string;
 }
 
-export default function ModelViewer({
-  modelPath = "https://tom.so/assets/3d/duck.glb",
-}: ComponentProps) {
+export default function ModelViewer({ modelPath }: ComponentProps) {
+  if (!modelPath) {
+    return null; // Return null if no modelPath is provided
+  }
+
   return (
-    <div className="w-[500px] h-[500px] border dark:border-slate-50 border-neutral-900">
-      <Canvas>
-        <ambientLight intensity={0.7} />
-        <directionalLight position={[5, 5, 5]} intensity={0.8} />
-        <ErrorBoundary
-          fallback={
-            <primitive
-              object={useGLTF("https://tom.so/assets/3d/duck.glb").scene}
-            />
-          } // this is the fallback model if none is specified by the editor
-        >
-          <Model modelPath={modelPath} />
-        </ErrorBoundary>
+    <div className="w-[500px] h-[500px] border dark:border-slate-50 border-neutral-900 bg-stone-700">
+      <Canvas className="bg-stone-700">
+        <ambientLight intensity={0.5} />
+        <hemisphereLight intensity={0.3} />
+        <directionalLight position={[5, 5, 5]} intensity={0.5} />
+        <pointLight position={[-5, 5, -5]} intensity={0.5} />
+        <spotLight
+          position={[0, 10, 0]}
+          angle={0.3}
+          penumbra={1}
+          intensity={0.5}
+        />
+        <Model modelPath={modelPath} />
         <OrbitControls enablePan={false} />
+        <Environment preset="warehouse" background={false} />
       </Canvas>
     </div>
   );
