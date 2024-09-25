@@ -28,7 +28,7 @@ function Model({ modelPath }: ModelProps) {
     undefined,
     handleError,
   );
-  const { scene: fallbackScene } = useGLTF("/assets/3d/duck.glb");
+  const { scene: fallbackScene } = useGLTF("https://tom.so/assets/3d/duck.glb");
 
   const sceneToRender = error ? fallbackScene : mainScene;
 
@@ -79,7 +79,7 @@ interface ComponentProps {
 }
 
 export default function ModelViewer({
-  modelPath = "/assets/3d/duck.glb",
+  modelPath = "https://tom.so/assets/3d/duck.glb",
 }: ComponentProps) {
   return (
     <div className="w-[500px] h-[500px] border dark:border-slate-50 border-neutral-900">
@@ -87,7 +87,11 @@ export default function ModelViewer({
         <ambientLight intensity={0.7} />
         <directionalLight position={[5, 5, 5]} intensity={0.8} />
         <ErrorBoundary
-          fallback={<primitive object={useGLTF("/assets/3d/duck.glb").scene} />} // this is the fallback model if none is specified by the editor
+          fallback={
+            <primitive
+              object={useGLTF("https://tom.so/assets/3d/duck.glb").scene}
+            />
+          } // this is the fallback model if none is specified by the editor
         >
           <Model modelPath={modelPath} />
         </ErrorBoundary>
