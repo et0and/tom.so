@@ -15,7 +15,7 @@ const variantStyles = {
   info: "bg-white text-black border-gray-200 dark:bg-stone-700 dark:text-white",
   maintenance: "bg-white text-black border-gray-200",
   error:
-    "bg-black text-white border-black dark:bg-stone-700 dark:text-white dark:border-white",
+    "bg-black text-white border-black dark:bg-black dark:text-white dark:border-white",
 };
 
 export const Banner = ({
@@ -47,7 +47,7 @@ export const Banner = ({
       aria-labelledby="tom-hackshaw-banner"
       className={classNames(outer, variantStyles[variant])}
     >
-      <div className={classNames(inner, "flex items-center mb-2")}>
+      <div className={classNames(inner, "flex mb-2")}>
         {showIcon && <span className="mr-2">{getIcon()}</span>}
         <h1 className="font-medium text-[16px]">{title}</h1>
       </div>
