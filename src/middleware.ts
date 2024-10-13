@@ -8,7 +8,7 @@ export async function middleware(request: NextRequest) {
   // Don't record views for API routes, static files, or info pages
   if (
     !path.startsWith("/api") &&
-    !path.match(/\.(jpg|png|gif|css|js)$/) &&
+    !path.match(/\.(jpg|png|gif|css|js|webmanifest|ttf)$/) &&
     !path.startsWith("/info")
   ) {
     const filtered = shouldFilterRequest(request);
@@ -23,7 +23,7 @@ export async function middleware(request: NextRequest) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ path, filtered }),
-        },
+        }
       );
 
       if (!response.ok) {
