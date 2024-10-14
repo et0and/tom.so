@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image, { ImageProps } from "next/image";
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
-import React, { ComponentType, ReactNode } from "react";
+import React, { Suspense, ComponentType, ReactNode } from "react";
 import { Banner, BannerProps } from "./ui/banner/banner";
 import { YouTubeEmbed } from "@next/third-parties/google";
 import { InViewImagesGrid } from "./ui/in-view/in-view-images-grid";
@@ -358,6 +358,11 @@ export function CustomMDX(props: MDXRemoteProps) {
       components={{
         ...components,
         ...(props.components as ComponentsType),
+        ModelViewer: () => (
+          <Suspense fallback={<div>Loading ModelViewer...</div>}>
+            <ModelViewer modelPath={modelFile} />
+          </Suspense>
+        ),
       }}
     />
   );
