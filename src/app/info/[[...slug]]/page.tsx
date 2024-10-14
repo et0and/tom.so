@@ -3,52 +3,32 @@ import { Separator } from "@/components/ui/separator/separator";
 import { Metadata } from "next";
 
 async function getPageViews(path: string) {
-  const totalPageViews = await prisma.pageView.count({
-    where: {
-      pagePath: path,
-      filtered: false,
-    },
-  });
-
-  const last30DaysViews = await prisma.pageView.count({
-    where: {
-      pagePath: path,
-      filtered: false,
-      timestamp: {
-        gte: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
+  const [totalPageViews, last30DaysViews, viewsOverTime] = await Promise.all([
+    prisma.pageView.count({
+      where: { pagePath: path, filtered: false },
+    }),
+    prisma.pageView.count({
+      where: {
+        pagePath: path,
+        filtered: false,
+        timestamp: { gte: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000) },
       },
-    },
-  });
-
-  const viewsOverTime = await prisma.pageView.groupBy({
-    by: ["timestamp"],
-    where: {
-      pagePath: path,
-      filtered: false,
-    },
-    _count: {
-      id: true,
-    },
-    orderBy: {
-      timestamp: "asc",
-    },
-  });
-
-  const groupedViewsByMonth = viewsOverTime.reduce(
-    (acc: Record<string, number>, view) => {
-      const monthYear = view.timestamp.toISOString().slice(0, 7); // Get YYYY-MM
-      acc[monthYear] = (acc[monthYear] || 0) + view._count.id;
-      return acc;
-    },
-    {},
-  );
+    }),
+    prisma.$queryRaw`
+      SELECT DATE_TRUNC('month', timestamp) as date, COUNT(*) as count
+      FROM "PageView"
+      WHERE "pagePath" = ${path} AND filtered = false
+      GROUP BY DATE_TRUNC('month', timestamp)
+      ORDER BY date ASC
+    `,
+  ]);
 
   return {
     totalPageViews,
     last30DaysViews,
-    viewsOverTime: Object.entries(groupedViewsByMonth).map(([date, count]) => ({
-      date,
-      count,
+    viewsOverTime: viewsOverTime.map(({ date, count }) => ({
+      date: date.toISOString().slice(0, 7),
+      count: Number(count),
     })),
   };
 }
