@@ -87,7 +87,7 @@ export default async function InfoPage({
                   })}
                   : {count} views
                 </li>
-              )
+              ),
             )}
           </ul>
         </>
