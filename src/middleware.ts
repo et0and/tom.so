@@ -8,8 +8,11 @@ export async function middleware(request: NextRequest) {
   // Don't record views for API routes, static files, or info pages
   if (
     !path.startsWith("/api") &&
-    !path.match(/\.(jpg|png|gif|css|js|webmanifest|ttf)$/) &&
-    !path.startsWith("/info")
+    !path.startsWith("/_next") &&
+    !path.startsWith("/info") &&
+    !path.match(
+      /\.(jpg|jpeg|png|gif|svg|ico|css|js|woff|woff2|ttf|eot|mp4|stl|glb|webmanifest|webp|pdf|svg|asc)$/,
+    )
   ) {
     const filtered = shouldFilterRequest(request);
 
