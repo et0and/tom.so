@@ -2,10 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getWorkPosts } from "@/app/db/work";
-import { unstable_noStore as noStore } from "next/cache";
 import { Separator } from "@/components/ui/separator/separator";
-import { Skeleton } from "@/components/ui/skeleton/skeleton";
-import { Suspense } from "react";
+import { cache } from 'react';
 
 interface PageParams {
   params: {
@@ -13,20 +11,32 @@ interface PageParams {
   };
 }
 
+interface WorkPost {
+  slug: string;
+  content: string;
+  metadata: {
+    title: string;
+    publishedAt: string;
+    summary: string;
+    image?: string;
+  };
+}
+
+const getPostBySlug = cache(async (slug: string): Promise<WorkPost | undefined> => {
+  const posts = await getWorkPosts();
+  return posts.find(post => post.slug === slug);
+});
+
 export async function generateMetadata({
   params,
 }: PageParams): Promise<Metadata | undefined> {
-  let post = getWorkPosts().find((post) => post.slug === params.slug);
+  const post = await getPostBySlug(params.slug);
   if (!post) {
     return;
   }
 
-  let {
-    title,
-    publishedAt: publishedTime,
-    summary: description,
-  } = post.metadata;
-  let ogImage = `https://tom.so/api/og?title=${encodeURIComponent(title)}`;
+  const { title, publishedAt: publishedTime, summary: description } = post.metadata;
+  const ogImage = `https://tom.so/api/og?title=${encodeURIComponent(title)}`;
 
   return {
     title,
@@ -54,17 +64,20 @@ export async function generateMetadata({
   };
 }
 
-function formatDate(date: string): string {
-  noStore();
-  let currentDate = new Date().getTime();
-  if (!date.includes("T")) {
-    date = `${date}T00:00:00`;
-  }
-  let targetDate = new Date(date).getTime();
-  let timeDifference = Math.abs(currentDate - targetDate);
-  let daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+export async function generateStaticParams() {
+  const posts = await getWorkPosts();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
-  let fullDate = new Date(date).toLocaleString("en-us", {
+function formatDate(date: string): string {
+  const currentDate = new Date();
+  const targetDate = new Date(date);
+  const timeDifference = Math.abs(currentDate.getTime() - targetDate.getTime());
+  const daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+  const fullDate = targetDate.toLocaleString("en-us", {
     month: "long",
     day: "numeric",
     year: "numeric",
@@ -86,8 +99,8 @@ function formatDate(date: string): string {
   }
 }
 
-export default function Work({ params }: PageParams) {
-  let post = getWorkPosts().find((post) => post.slug === params.slug);
+export default async function Work({ params }: PageParams) {
+  const post = await getPostBySlug(params.slug);
 
   if (!post) {
     notFound();
@@ -118,24 +131,21 @@ export default function Work({ params }: PageParams) {
             }),
           }}
         />
-
-        <Suspense fallback={<Skeleton className="h-4 w-[300px]" />}>
-          <h1 className="title pt-4 font-medium text-2xl tracking-tighter max-w-[650px]">
-            {post.metadata.title}
-          </h1>
-        </Suspense>
-        <Suspense fallback={<Skeleton className="h-4 w-[300px]" />}>
-          <p className="text-md text-neutral-700 dark:text-neutral-200 tracking-tighter">
-            {post.metadata.summary}
-          </p>
-        </Suspense>
+        <h1 className="title pt-4 font-medium text-2xl tracking-tighter max-w-[650px]">
+          {post.metadata.title}
+        </h1>
+        <p className="text-md text-neutral-700 dark:text-neutral-200 tracking-tighter">
+          {post.metadata.summary}
+        </p>
         <Separator className="my-4" />
-        <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]"></div>
-        <Suspense fallback={<Skeleton className="h-4 w-[300px]" />}>
-          <article className="prose prose-quoteless prose-neutral space-y-4 pb-8">
-            <CustomMDX source={post.content} />
-          </article>
-        </Suspense>
+        <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
+          <p className="text-sm text-neutral-700 dark:text-neutral-200">
+            {formatDate(post.metadata.publishedAt)}
+          </p>
+        </div>
+        <article className="prose prose-quoteless prose-neutral space-y-4 pb-8">
+          <CustomMDX source={post.content} />
+        </article>
       </section>
     </>
   );
