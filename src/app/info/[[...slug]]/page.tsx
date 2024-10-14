@@ -1,8 +1,6 @@
-import { notFound } from "next/navigation";
 import prisma from "@/lib/prisma";
 import { Separator } from "@/components/ui/separator/separator";
 import { Metadata } from "next";
-import { revalidatePath } from "next/cache";
 
 async function getPageViews(path: string) {
   const totalPageViews = await prisma.pageView.count({
@@ -23,24 +21,7 @@ async function getPageViews(path: string) {
   });
 
   const viewsOverTime = await prisma.pageView.groupBy({
-    by: [
-      {
-        year: {
-          extract: {
-            datepart: 'year',
-            from: 'timestamp',
-          },
-        },
-      },
-      {
-        month: {
-          extract: {
-            datepart: 'month',
-            from: 'timestamp',
-          },
-        },
-      },
-    ],
+    by: ["timestamp"],
     where: {
       pagePath: path,
       filtered: false,
@@ -48,19 +29,26 @@ async function getPageViews(path: string) {
     _count: {
       id: true,
     },
-    orderBy: [
-      { year: 'desc' },
-      { month: 'desc' },
-    ],
-    take: 12, // Show last 12 months
+    orderBy: {
+      timestamp: "asc",
+    },
   });
+
+  const groupedViewsByMonth = viewsOverTime.reduce(
+    (acc: Record<string, number>, view) => {
+      const monthYear = view.timestamp.toISOString().slice(0, 7); // Get YYYY-MM
+      acc[monthYear] = (acc[monthYear] || 0) + view._count.id;
+      return acc;
+    },
+    {},
+  );
 
   return {
     totalPageViews,
     last30DaysViews,
-    viewsOverTime: viewsOverTime.map((view: any) => ({
-      date: new Date(view.year, view.month - 1, 1),
-      count: view._count.id,
+    viewsOverTime: Object.entries(groupedViewsByMonth).map(([date, count]) => ({
+      date,
+      count,
     })),
   };
 }
@@ -99,14 +87,17 @@ export default async function InfoPage({
         <p>No views recorded for this page yet.</p>
       ) : (
         <>
-          <p>Total Views: {pageViews.totalPageViews}</p>
-          <p>Views in last 30 days: {pageViews.last30DaysViews}</p>
-          <h2 className="text-2xl mt-4 mb-2">Views by Month</h2>
+          <p>Total views to date: {pageViews.totalPageViews}</p>
+          <h2 className="pt-8 text-lg font-medium">Breakdown</h2>
           <ul>
             {pageViews.viewsOverTime.map(
-              ({ date, count }: { date: Date; count: number }) => (
-                <li key={date.toISOString()}>
-                  {date.toLocaleString('default', { month: 'long', year: 'numeric' })}: {count} views
+              ({ date, count }: { date: string; count: number }) => (
+                <li key={date}>
+                  {new Date(date).toLocaleString("default", {
+                    month: "long",
+                    year: "numeric",
+                  })}
+                  : {count} views
                 </li>
               ),
             )}

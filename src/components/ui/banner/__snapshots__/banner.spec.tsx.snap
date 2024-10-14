@@ -8,7 +8,7 @@ exports[`<Banner/> renders banner with link 1`] = `
     role="region"
   >
     <div
-      class="max-w-3xl w-full m-auto flex items-center mb-2"
+      class="max-w-3xl w-full m-auto flex mb-2"
     >
       <span
         class="mr-2"
@@ -46,7 +46,7 @@ exports[`<Banner/> renders banner without icon 1`] = `
     role="region"
   >
     <div
-      class="max-w-3xl w-full m-auto flex items-center mb-2"
+      class="max-w-3xl w-full m-auto flex mb-2"
     >
       <h1
         class="font-medium text-[16px]"
@@ -67,11 +67,11 @@ exports[`<Banner/> renders error banner correctly 1`] = `
 <DocumentFragment>
   <div
     aria-labelledby="tom-hackshaw-banner"
-    class="leading-none relative my-4 w-full rounded-lg border px-4 py-4 bg-black text-white border-black dark:bg-stone-700 dark:text-white dark:border-white"
+    class="leading-none relative my-4 w-full rounded-lg border px-4 py-4 bg-black text-white border-black dark:bg-black dark:text-white dark:border-white"
     role="region"
   >
     <div
-      class="max-w-3xl w-full m-auto flex items-center mb-2"
+      class="max-w-3xl w-full m-auto flex mb-2"
     >
       <span
         class="mr-2"
@@ -103,7 +103,7 @@ exports[`<Banner/> renders info banner correctly 1`] = `
     role="region"
   >
     <div
-      class="max-w-3xl w-full m-auto flex items-center mb-2"
+      class="max-w-3xl w-full m-auto flex mb-2"
     >
       <span
         class="mr-2"
@@ -135,7 +135,7 @@ exports[`<Banner/> renders maintenance banner correctly 1`] = `
     role="region"
   >
     <div
-      class="max-w-3xl w-full m-auto flex items-center mb-2"
+      class="max-w-3xl w-full m-auto flex mb-2"
     >
       <span
         class="mr-2"
