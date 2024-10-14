@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getBlogPosts } from "@/app/db/blog";
-import { unstable_noStore as noStore } from "next/cache";
 import { Separator } from "@/components/ui/separator/separator";
+import { cache } from 'react';
 
 interface PageParams {
   params: {
@@ -11,20 +11,32 @@ interface PageParams {
   };
 }
 
+interface BlogPost {
+  slug: string;
+  content: string;
+  metadata: {
+    title: string;
+    publishedAt: string;
+    summary: string;
+    image?: string;
+  };
+}
+
+const getPostBySlug = cache(async (slug: string): Promise<BlogPost | undefined> => {
+  const posts = await getBlogPosts();
+  return posts.find(post => post.slug === slug);
+});
+
 export async function generateMetadata({
   params,
 }: PageParams): Promise<Metadata | undefined> {
-  let post = getBlogPosts().find((post) => post.slug === params.slug);
+  const post = await getPostBySlug(params.slug);
   if (!post) {
     return;
   }
 
-  let {
-    title,
-    publishedAt: publishedTime,
-    summary: description,
-  } = post.metadata;
-  let ogImage = `https://tom.so/api/og?title=${encodeURIComponent(title)}`;
+  const { title, publishedAt: publishedTime, summary: description } = post.metadata;
+  const ogImage = `https://tom.so/api/og?title=${encodeURIComponent(title)}`;
 
   return {
     title,
@@ -52,17 +64,20 @@ export async function generateMetadata({
   };
 }
 
-function formatDate(date: string): string {
-  noStore();
-  let currentDate = new Date().getTime();
-  if (!date.includes("T")) {
-    date = `${date}T00:00:00`;
-  }
-  let targetDate = new Date(date).getTime();
-  let timeDifference = Math.abs(currentDate - targetDate);
-  let daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+export async function generateStaticParams() {
+  const posts = await getBlogPosts();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
-  let fullDate = new Date(date).toLocaleString("en-us", {
+function formatDate(date: string): string {
+  const currentDate = new Date();
+  const targetDate = new Date(date);
+  const timeDifference = Math.abs(currentDate.getTime() - targetDate.getTime());
+  const daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+  const fullDate = targetDate.toLocaleString("en-us", {
     month: "long",
     day: "numeric",
     year: "numeric",
@@ -84,8 +99,8 @@ function formatDate(date: string): string {
   }
 }
 
-export default function Blog({ params }: PageParams) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug);
+export default async function Blog({ params }: PageParams) {
+  const post = await getPostBySlug(params.slug);
 
   if (!post) {
     notFound();
