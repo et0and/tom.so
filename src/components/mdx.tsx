@@ -358,7 +358,7 @@ export function CustomMDX(props: MDXRemoteProps) {
       components={{
         ...components,
         ...(props.components as ComponentsType),
-        ModelViewer: () => (
+        ModelViewer: ({ modelFile }) => (
           <Suspense fallback={<div>Loading ModelViewer...</div>}>
             <ModelViewer modelPath={modelFile} />
           </Suspense>
