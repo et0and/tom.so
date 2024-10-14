@@ -1,8 +1,17 @@
 import prisma from "@/lib/prisma";
+import redis from "@/lib/redis";
 import { Separator } from "@/components/ui/separator/separator";
 import { Metadata } from "next";
 
 async function getPageViews(path: string) {
+  const cacheKey = `pageviews:${path}`;
+
+  // Try to get data from cache
+  const cachedData = await redis.get(cacheKey);
+  if (cachedData !== null) {
+    return JSON.parse(cachedData as string);
+  }
+
   try {
     const [totalPageViews, last30DaysViews, viewsOverTime] = await Promise.all([
       prisma.pageView.count({
@@ -24,7 +33,7 @@ async function getPageViews(path: string) {
       `,
     ]);
 
-    return {
+    const result = {
       totalPageViews,
       last30DaysViews,
       viewsOverTime: viewsOverTime.map(({ date, count }) => ({
@@ -32,6 +41,11 @@ async function getPageViews(path: string) {
         count: Number(count),
       })),
     };
+
+    // Cache the result for 5 minutes
+    await redis.set(cacheKey, JSON.stringify(result), { ex: 300 });
+
+    return result;
   } catch (error) {
     console.error("Error fetching page views:", error);
     return null;
