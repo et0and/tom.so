@@ -3,34 +3,39 @@ import { Separator } from "@/components/ui/separator/separator";
 import { Metadata } from "next";
 
 async function getPageViews(path: string) {
-  const [totalPageViews, last30DaysViews, viewsOverTime] = await Promise.all([
-    prisma.pageView.count({
-      where: { pagePath: path, filtered: false },
-    }),
-    prisma.pageView.count({
-      where: {
-        pagePath: path,
-        filtered: false,
-        timestamp: { gte: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000) },
-      },
-    }),
-    prisma.$queryRaw`
-      SELECT DATE_TRUNC('month', timestamp) as date, COUNT(*) as count
-      FROM "PageView"
-      WHERE "pagePath" = ${path} AND filtered = false
-      GROUP BY DATE_TRUNC('month', timestamp)
-      ORDER BY date ASC
-    `,
-  ]);
+  try {
+    const [totalPageViews, last30DaysViews, viewsOverTime] = await Promise.all([
+      prisma.pageView.count({
+        where: { pagePath: path, filtered: false },
+      }),
+      prisma.pageView.count({
+        where: {
+          pagePath: path,
+          filtered: false,
+          timestamp: { gte: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000) },
+        },
+      }),
+      prisma.$queryRaw<Array<{ date: Date; count: BigInt }>>`
+        SELECT DATE_TRUNC('month', timestamp) as date, COUNT(*) as count
+        FROM "PageView"
+        WHERE "pagePath" = ${path} AND filtered = false
+        GROUP BY DATE_TRUNC('month', timestamp)
+        ORDER BY date ASC
+      `,
+    ]);
 
-  return {
-    totalPageViews,
-    last30DaysViews,
-    viewsOverTime: viewsOverTime.map(({ date, count }) => ({
-      date: date.toISOString().slice(0, 7),
-      count: Number(count),
-    })),
-  };
+    return {
+      totalPageViews,
+      last30DaysViews,
+      viewsOverTime: viewsOverTime.map(({ date, count }) => ({
+        date: date.toISOString().slice(0, 7),
+        count: Number(count),
+      })),
+    };
+  } catch (error) {
+    console.error("Error fetching page views:", error);
+    return null;
+  }
 }
 
 export async function generateMetadata({
@@ -53,10 +58,13 @@ export default async function InfoPage({
 }: {
   params: { slug?: string[] };
 }) {
-  // Construct the path based on the slug
   const path = params.slug ? `/${params.slug.join("/")}` : "/";
 
   const pageViews = await getPageViews(path);
+
+  if (!pageViews) {
+    return <div>Error loading page views. Please try again later.</div>;
+  }
 
   return (
     <div className="w-full">
@@ -79,7 +87,7 @@ export default async function InfoPage({
                   })}
                   : {count} views
                 </li>
-              ),
+              )
             )}
           </ul>
         </>
