@@ -6,6 +6,8 @@ import { Banner } from "./ui/banner/banner";
 import { InViewImagesGrid } from "./ui/in-view/in-view-images-grid";
 import ModelViewer from "./ui/model-viewer/model-viewer";
 import { Carousel } from "./ui/carousel/carousel";
+import { YouTubeEmbed } from "@next/third-parties/google";
+import ArenaWrapper from "./ui/arena-wrapper/arena-wrapper";
 
 // Define a type for the components that matches MDXRemote's expectations
 type MDXComponents = {
@@ -38,6 +40,8 @@ export function CustomMDX(props: MDXRemoteProps) {
         InViewImagesGrid: InViewImagesGrid,
         ModelViewer: ModelViewer,
         Carousel: Carousel,
+        YoutubeEmbed: YouTubeEmbed,
+        Arena: ArenaWrapper,
       }}
     />
   );

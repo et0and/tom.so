@@ -7,6 +7,7 @@ import { Banner, BannerProps } from "./ui/banner/banner";
 import { YouTubeEmbed } from "@next/third-parties/google";
 import { InViewImagesGrid } from "./ui/in-view/in-view-images-grid";
 import { ArenaCarousel } from "./ui/carousel/arena-carousel";
+import ArenaWrapper from "./ui/arena-wrapper/arena-wrapper";
 import Prism from "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-javascript";
@@ -67,24 +68,6 @@ function LightModeWrapper({ children }: { children: React.ReactNode }) {
   );
 }
 
-interface ArenaProps {
-  channelSlug: string;
-}
-
-function Arena({ channelSlug }: ArenaProps) {
-  return (
-    <LightModeWrapper>
-      <iframe
-        className="bg-slate-300"
-        style={{ border: "1px solid #e5e5e5" }}
-        width="100%"
-        height="590"
-        src={`https://www.are.na/tom/${channelSlug}/embed`}
-        title={`Are.na channel ${channelSlug}`}
-      />
-    </LightModeWrapper>
-  );
-}
 interface YoutubeProps {
   videoid: string;
   height?: number;
@@ -319,7 +302,7 @@ export const clientComponents = {
   ConsCard,
   code: Code,
   Table,
-  Arena,
+  Arena: ArenaWrapper,
   ArenaCarousel: ({ channelSlug }: { channelSlug: string }) => (
     <ArenaCarousel channelSlug={channelSlug} />
   ),
