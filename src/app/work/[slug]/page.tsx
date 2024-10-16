@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getWorkPosts } from "@/app/db/work";
 import { Separator } from "@/components/ui/separator/separator";
-import { cache } from 'react';
+import { cache } from "react";
 
 interface PageParams {
   params: {
@@ -22,10 +22,12 @@ interface WorkPost {
   };
 }
 
-const getPostBySlug = cache(async (slug: string): Promise<WorkPost | undefined> => {
-  const posts = await getWorkPosts();
-  return posts.find(post => post.slug === slug);
-});
+const getPostBySlug = cache(
+  async (slug: string): Promise<WorkPost | undefined> => {
+    const posts = await getWorkPosts();
+    return posts.find((post) => post.slug === slug);
+  },
+);
 
 export async function generateMetadata({
   params,
@@ -35,7 +37,11 @@ export async function generateMetadata({
     return;
   }
 
-  const { title, publishedAt: publishedTime, summary: description } = post.metadata;
+  const {
+    title,
+    publishedAt: publishedTime,
+    summary: description,
+  } = post.metadata;
   const ogImage = `https://tom.so/api/og?title=${encodeURIComponent(title)}`;
 
   return {

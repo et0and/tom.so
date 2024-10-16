@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   },
 };
 
+export function generateStaticParams() {
+  return [{}];
+}
+
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -23,18 +27,3 @@ export default function Home() {
     </div>
   );
 }
-
-const images = [
-  "a-drawing.jpg",
-  "angel.png",
-  "spiral.jpg",
-  "uptofriends.jpg",
-  "the-museum-without-walls.png",
-  "models.png",
-  "microme.jpg",
-  "pkg.gif",
-  "nothing-market.png",
-  "nothing-market-poster.jpg",
-  "chimera.jpg",
-  "cover.jpg",
-];

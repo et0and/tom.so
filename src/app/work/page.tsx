@@ -31,8 +31,10 @@ async function getStaticWorkPosts(): Promise<WorkPost[]> {
 export default async function WorkPage() {
   const allWorks = await getStaticWorkPosts();
 
-  const sortedWorks = allWorks.sort((a, b) => 
-    a.metadata.title.toLowerCase().localeCompare(b.metadata.title.toLowerCase())
+  const sortedWorks = allWorks.sort((a, b) =>
+    a.metadata.title
+      .toLowerCase()
+      .localeCompare(b.metadata.title.toLowerCase()),
   );
 
   return (
