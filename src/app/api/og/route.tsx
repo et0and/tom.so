@@ -1,4 +1,4 @@
-import { ImageResponse } from "@vercel/og";
+import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
 
 export const runtime = "edge";
@@ -32,37 +32,35 @@ export async function GET(request: NextRequest) {
     (
       <div
         style={{
-          background: "white",
-          width: "100%",
           height: "100%",
+          width: "100%",
           display: "flex",
           flexDirection: "column",
-          padding: 100,
-          textAlign: "left",
-          alignItems: "flex-start",
-          justifyContent: "flex-start",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "white",
         }}
       >
-        <p
+        <div
           style={{
-            fontFamily: '"Geist Sans Semibold"',
-            fontSize: 50,
-            margin: 0,
-            marginBottom: 5,
-            fontWeight: 600,
+            height: "100%",
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "white",
           }}
         >
-          {title}
-        </p>
-        <p
-          style={{
-            fontFamily: '"Geist Sans"',
-            fontSize: 40,
-            margin: 0,
-          }}
-        >
-          Tom Hackshaw
-        </p>
+          <div tw="flex pl-8">
+            <div tw="flex flex-col md:flex-row w-full py-12 px-4 md:items-center justify-between p-8">
+              <h2 tw="flex flex-col text-3xl sm:text-4xl font-medium tracking-tight text-gray-900 text-left">
+                <span>{title}</span>
+                <span tw="text-gray-600 text-lg">Tom Hackshaw</span>
+              </h2>
+            </div>
+          </div>
+        </div>
       </div>
     ),
     {

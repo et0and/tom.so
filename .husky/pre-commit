@@ -1,2 +1,2 @@
 next lint
-npx prettier --write "./**/*.{ts,tsx}"
+npx prettier -c "./**/*.{ts,tsx}"
