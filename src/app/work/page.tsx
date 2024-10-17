@@ -27,12 +27,12 @@ async function WorkList({ page }: { page: number }) {
           </div>
         </Link>
       ))}
-      <div className="mt-8 flex justify-between">
+      <div className="my-8 flex justify-between">
         {page > 1 && (
-          <Link href={`/work?page=${page - 1}`}>Previous</Link>
+          <Link href={`/work?page=${page - 1}`} className="hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-200">Previous</Link>
         )}
         {page < totalPages && (
-          <Link href={`/work?page=${page + 1}`}>Next</Link>
+          <Link href={`/work?page=${page + 1}`} className="hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-200">Next</Link>
         )}
       </div>
     </>
@@ -48,7 +48,7 @@ export default async function WorkPage({
 
   return (
     <div className="w-full">
-      <h1 className="font-medium text-4xl pt-4">Work</h1>
+      <h1 className="font-medium text-4xl py-4">Work</h1>
     
       <WorkList page={currentPage} />
     </div>
