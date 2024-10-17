@@ -75,7 +75,7 @@ export async function getPaginatedWorkPosts(page: number, postsPerPage: number):
 }> {
   const allPosts = getWorkPosts();
   const sortedPosts = allPosts.sort((a, b) =>
-    new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime()
+    a.metadata.title.localeCompare(b.metadata.title)
   );
   
   const totalPages = Math.ceil(sortedPosts.length / postsPerPage);
