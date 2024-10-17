@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { getPaginatedBlogPosts } from "@/app/db/blog";
-import { Separator } from "@/components/ui/separator";
 
 export const metadata = {
   title: "Writing",
@@ -51,7 +50,7 @@ export default async function BlogPage({
   return (
     <div className="w-full">
       <h1 className="font-medium text-4xl pt-4">Writing</h1>
-      <Separator className="my-4" />
+     
       <BlogList page={currentPage} />
     </div>
   );
