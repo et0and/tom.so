@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { getPaginatedWorkPosts } from "@/app/db/work";
-import { Separator } from "@/components/ui/separator";
 
 export const metadata = {
   title: "Work",
@@ -50,7 +49,7 @@ export default async function WorkPage({
   return (
     <div className="w-full">
       <h1 className="font-medium text-4xl pt-4">Work</h1>
-      <Separator className="my-4" />
+    
       <WorkList page={currentPage} />
     </div>
   );
