@@ -1,38 +1,20 @@
-import { Metadata } from "next";
-import { getWorkPosts } from "@/app/db/work";
 import Link from "next/link";
-import { Separator } from "@/components/ui/separator/separator";
-import { Banner } from "@/components/ui/banner/banner";
-import { Suspense } from "react";
+import { getPaginatedWorkPosts } from "@/app/db/work";
+import { Separator } from "@/components/ui/separator";
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Work",
   description: "Things I have made.",
 };
 
-interface WorkPost {
-  slug: string;
-  metadata: {
-    title: string;
-    summary: string;
-  };
-}
+const POSTS_PER_PAGE = 10;
 
-async function getStaticWorkPosts(): Promise<WorkPost[]> {
-  const posts = await getWorkPosts();
-  return posts.map(({ slug, metadata }) => ({
-    slug,
-    metadata: {
-      title: metadata.title,
-      summary: metadata.summary,
-    },
-  }));
-}
+async function WorkList({ page }: { page: number }) {
+  const { posts, totalPages } = await getPaginatedWorkPosts(page, POSTS_PER_PAGE);
 
-function WorkList({ works }: { works: WorkPost[] }) {
   return (
     <>
-      {works.map((post) => (
+      {posts.map((post) => (
         <Link
           key={post.slug}
           className="flex flex-col hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-200 space-y-1 mb-4"
@@ -42,51 +24,34 @@ function WorkList({ works }: { works: WorkPost[] }) {
             <p className="text-2xl font-medium tracking-tighter">
               {post.metadata.title}
             </p>
-            <p className="text-lg">{post.metadata.summary}</p>
+            <p className="text-md">{post.metadata.summary}</p>
           </div>
         </Link>
       ))}
-    </>
-  );
-}
-
-function WorkListSkeleton() {
-  return (
-    <div className="animate-pulse">
-      {[1, 2, 3].map((i) => (
-        <div key={i} className="mb-4">
-          <div className="h-6 bg-gray-200 rounded w-3/4 mb-2"></div>
-          <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-export default async function WorkPage() {
-  const allWorks = await getStaticWorkPosts();
-
-  const sortedWorks = allWorks.sort((a, b) =>
-    a.metadata.title
-      .toLowerCase()
-      .localeCompare(b.metadata.title.toLowerCase()),
-  );
-
-  return (
-    <>
-      <div className="w-full relative">
-        <Banner
-          title="Content migration"
-          message="All previous work and experiments are currently being migrated onto this new website."
-          variant="info"
-        />
-
-        <h1 className="font-medium text-4xl pt-4">Work</h1>
-        <Separator className="my-4" />
-        <Suspense fallback={<WorkListSkeleton />}>
-          <WorkList works={sortedWorks} />
-        </Suspense>
+      <div className="mt-8 flex justify-between">
+        {page > 1 && (
+          <Link href={`/work?page=${page - 1}`}>Previous</Link>
+        )}
+        {page < totalPages && (
+          <Link href={`/work?page=${page + 1}`}>Next</Link>
+        )}
       </div>
     </>
+  );
+}
+
+export default async function WorkPage({
+  searchParams,
+}: {
+  searchParams: { page?: string };
+}) {
+  const currentPage = Number(searchParams.page) || 1;
+
+  return (
+    <div className="w-full">
+      <h1 className="font-medium text-4xl pt-4">Work</h1>
+      <Separator className="my-4" />
+      <WorkList page={currentPage} />
+    </div>
   );
 }
