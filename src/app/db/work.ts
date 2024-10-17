@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { cache } from 'react';
 
 type Metadata = {
   title: string;
@@ -7,6 +8,12 @@ type Metadata = {
   summary: string;
   image?: string;
 };
+
+interface MDXData {
+  metadata: Metadata;
+  slug: string;
+  content: string;
+}
 
 function parseFrontmatter(fileContent: string): {
   metadata: Metadata;
@@ -45,13 +52,7 @@ function readMDXFile(filePath: string): {
   return parseFrontmatter(rawContent);
 }
 
-interface MDXData {
-  metadata: Metadata;
-  slug: string;
-  content: string;
-}
-
-function getMDXData(dir: string): MDXData[] {
+const getMDXData = cache((dir: string): MDXData[] => {
   let mdxFiles = getMDXFiles(dir);
   return mdxFiles.map((file) => {
     let { metadata, content } = readMDXFile(path.join(dir, file));
@@ -62,8 +63,28 @@ function getMDXData(dir: string): MDXData[] {
       content,
     };
   });
-}
+});
 
-export function getWorkPosts(): MDXData[] {
+export const getWorkPosts = cache((): MDXData[] => {
   return getMDXData(path.join(process.cwd(), "work"));
+});
+
+export async function getPaginatedWorkPosts(page: number, postsPerPage: number): Promise<{
+  posts: MDXData[];
+  totalPages: number;
+}> {
+  const allPosts = getWorkPosts();
+  const sortedPosts = allPosts.sort((a, b) =>
+    a.metadata.title.localeCompare(b.metadata.title)
+  );
+  
+  const totalPages = Math.ceil(sortedPosts.length / postsPerPage);
+  const startIndex = (page - 1) * postsPerPage;
+  const endIndex = startIndex + postsPerPage;
+  const paginatedPosts = sortedPosts.slice(startIndex, endIndex);
+
+  return {
+    posts: paginatedPosts,
+    totalPages,
+  };
 }

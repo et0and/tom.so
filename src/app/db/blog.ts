@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { cache } from "react";
 
 type Metadata = {
   title: string;
@@ -7,6 +8,12 @@ type Metadata = {
   summary: string;
   image?: string;
 };
+
+interface MDXData {
+  metadata: Metadata;
+  slug: string;
+  content: string;
+}
 
 function parseFrontmatter(fileContent: string): {
   metadata: Metadata;
@@ -45,13 +52,7 @@ function readMDXFile(filePath: string): {
   return parseFrontmatter(rawContent);
 }
 
-interface MDXData {
-  metadata: Metadata;
-  slug: string;
-  content: string;
-}
-
-function getMDXData(dir: string): MDXData[] {
+const getMDXData = cache((dir: string): MDXData[] => {
   let mdxFiles = getMDXFiles(dir);
   return mdxFiles.map((file) => {
     let { metadata, content } = readMDXFile(path.join(dir, file));
@@ -62,8 +63,29 @@ function getMDXData(dir: string): MDXData[] {
       content,
     };
   });
+});
+
+export const getBlogPosts = cache((): MDXData[] => {
+  return getMDXData(path.join(process.cwd(), "posts"));
+});
+
+export async function getPaginatedBlogPosts(page: number, postsPerPage: number): Promise<{
+  posts: MDXData[];
+  totalPages: number;
+}> {
+  const allPosts = getBlogPosts();
+  const sortedPosts = allPosts.sort((a, b) =>
+    new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime()
+  );
+  
+  const totalPages = Math.ceil(sortedPosts.length / postsPerPage);
+  const startIndex = (page - 1) * postsPerPage;
+  const endIndex = startIndex + postsPerPage;
+  const paginatedPosts = sortedPosts.slice(startIndex, endIndex);
+
+  return {
+    posts: paginatedPosts,
+    totalPages,
+  };
 }
 
-export function getBlogPosts(): MDXData[] {
-  return getMDXData(path.join(process.cwd(), "posts"));
-}
