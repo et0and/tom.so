@@ -21,21 +21,18 @@ function Navbar() {
       </Link>
       <div className="flex md:items-center space-x-4 text-lg">
         <Link
-          prefetch={true}
           className="focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-100"
           href="/about"
         >
           About
         </Link>
         <Link
-          prefetch={true}
           className="focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-100"
           href="/work"
         >
           Work
         </Link>
         <Link
-          prefetch={true}
           className="focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-100"
           href="/posts"
         >
