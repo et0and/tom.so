@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getBlogPosts } from "@/app/db/blog";
 import { Separator } from "@/components/ui/separator/separator";
-import { cache } from "react";
+import { cache, Suspense } from "react";
 
 interface PageParams {
   params: {
@@ -105,13 +105,7 @@ function formatDate(date: string): string {
   }
 }
 
-export default async function Blog({ params }: PageParams) {
-  const post = await getPostBySlug(params.slug);
-
-  if (!post) {
-    notFound();
-  }
-
+function BlogPostContent({ post }: { post: BlogPost }) {
   return (
     <>
       <section>
@@ -120,20 +114,7 @@ export default async function Blog({ params }: PageParams) {
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BlogPosting",
-              headline: post.metadata.title,
-              datePublished: post.metadata.publishedAt,
-              dateModified: post.metadata.publishedAt,
-              description: post.metadata.summary,
-              image: post.metadata.image
-                ? `https://tom.so${post.metadata.image}`
-                : `https://tom.so/og?title=${post.metadata.title}`,
-              url: `https://tom.so/posts/${post.slug}`,
-              author: {
-                "@type": "Person",
-                name: "Tom Hackshaw",
-              },
+              // ... existing code ...
             }),
           }}
         />
@@ -155,5 +136,35 @@ export default async function Blog({ params }: PageParams) {
         </article>
       </section>
     </>
+  );
+}
+
+export default async function Blog({ params }: PageParams) {
+  const post = await getPostBySlug(params.slug);
+
+  if (!post) {
+    notFound();
+  }
+
+  return (
+    <Suspense
+      fallback={
+        <div className="animate-pulse space-y-4">
+          <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
+          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/4"></div>
+          <div className="space-y-2">
+            {[...Array(5)].map((_, i) => (
+              <div
+                key={i}
+                className="h-4 bg-gray-200 dark:bg-gray-700 rounded"
+              ></div>
+            ))}
+          </div>
+        </div>
+      }
+    >
+      <BlogPostContent post={post} />
+    </Suspense>
   );
 }

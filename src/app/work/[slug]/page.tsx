@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getWorkPosts } from "@/app/db/work";
 import { Separator } from "@/components/ui/separator/separator";
-import { cache } from "react";
+import { cache, Suspense } from "react";
 
 interface PageParams {
   params: {
@@ -104,6 +104,43 @@ function formatDate(date: string): string {
     return `${fullDate} (${yearsAgo} years ago)`;
   }
 }
+function PostContent({ post }: { post: WorkPost }) {
+  return (
+    <>
+      <h1 className="title pt-4 font-medium text-2xl tracking-tighter max-w-[650px]">
+        {post.metadata.title}
+      </h1>
+      <p className="text-md text-neutral-700 dark:text-neutral-200 tracking-tighter">
+        {post.metadata.summary}
+      </p>
+      <Separator className="my-4" />
+      <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
+        <p className="text-sm text-neutral-700 dark:text-neutral-200">
+          {formatDate(post.metadata.publishedAt)}
+        </p>
+      </div>
+      <article className="prose prose-quoteless prose-neutral space-y-4 pb-8">
+        <CustomMDX source={post.content} />
+      </article>
+    </>
+  );
+}
+
+function PostSkeleton() {
+  return (
+    <div className="animate-pulse">
+      <div className="h-8 bg-gray-200 rounded w-3/4 mb-4"></div>
+      <div className="h-4 bg-gray-200 rounded w-full mb-4"></div>
+      <div className="h-px bg-gray-200 w-full my-4"></div>
+      <div className="h-4 bg-gray-200 rounded w-1/4 mb-8"></div>
+      <div className="space-y-4">
+        {[1, 2, 3, 4, 5].map((i) => (
+          <div key={i} className="h-4 bg-gray-200 rounded w-full"></div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default async function Work({ params }: PageParams) {
   const post = await getPostBySlug(params.slug);
@@ -137,21 +174,9 @@ export default async function Work({ params }: PageParams) {
             }),
           }}
         />
-        <h1 className="title pt-4 font-medium text-2xl tracking-tighter max-w-[650px]">
-          {post.metadata.title}
-        </h1>
-        <p className="text-md text-neutral-700 dark:text-neutral-200 tracking-tighter">
-          {post.metadata.summary}
-        </p>
-        <Separator className="my-4" />
-        <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
-          <p className="text-sm text-neutral-700 dark:text-neutral-200">
-            {formatDate(post.metadata.publishedAt)}
-          </p>
-        </div>
-        <article className="prose prose-quoteless prose-neutral space-y-4 pb-8">
-          <CustomMDX source={post.content} />
-        </article>
+        <Suspense fallback={<PostSkeleton />}>
+          <PostContent post={post} />
+        </Suspense>
       </section>
     </>
   );

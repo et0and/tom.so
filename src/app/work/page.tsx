@@ -3,6 +3,7 @@ import { getWorkPosts } from "@/app/db/work";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator/separator";
 import { Banner } from "@/components/ui/banner/banner";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Work",
@@ -28,6 +29,40 @@ async function getStaticWorkPosts(): Promise<WorkPost[]> {
   }));
 }
 
+function WorkList({ works }: { works: WorkPost[] }) {
+  return (
+    <>
+      {works.map((post) => (
+        <Link
+          key={post.slug}
+          className="flex flex-col hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-200 space-y-1 mb-4"
+          href={`/work/${post.slug}`}
+        >
+          <div className="w-full flex flex-col">
+            <p className="text-2xl font-medium tracking-tighter">
+              {post.metadata.title}
+            </p>
+            <p className="text-lg">{post.metadata.summary}</p>
+          </div>
+        </Link>
+      ))}
+    </>
+  );
+}
+
+function WorkListSkeleton() {
+  return (
+    <div className="animate-pulse">
+      {[1, 2, 3].map((i) => (
+        <div key={i} className="mb-4">
+          <div className="h-6 bg-gray-200 rounded w-3/4 mb-2"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default async function WorkPage() {
   const allWorks = await getStaticWorkPosts();
 
@@ -48,20 +83,9 @@ export default async function WorkPage() {
 
         <h1 className="font-medium text-4xl pt-4">Work</h1>
         <Separator className="my-4" />
-        {sortedWorks.map((post) => (
-          <Link
-            key={post.slug}
-            className="flex flex-col hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-200 space-y-1 mb-4"
-            href={`/work/${post.slug}`}
-          >
-            <div className="w-full flex flex-col">
-              <p className="text-2xl font-medium tracking-tighter">
-                {post.metadata.title}
-              </p>
-              <p className="text-lg">{post.metadata.summary}</p>
-            </div>
-          </Link>
-        ))}
+        <Suspense fallback={<WorkListSkeleton />}>
+          <WorkList works={sortedWorks} />
+        </Suspense>
       </div>
     </>
   );
