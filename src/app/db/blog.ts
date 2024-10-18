@@ -69,15 +69,20 @@ export const getBlogPosts = cache((): MDXData[] => {
   return getMDXData(path.join(process.cwd(), "posts"));
 });
 
-export async function getPaginatedBlogPosts(page: number, postsPerPage: number): Promise<{
+export async function getPaginatedBlogPosts(
+  page: number,
+  postsPerPage: number,
+): Promise<{
   posts: MDXData[];
   totalPages: number;
 }> {
   const allPosts = getBlogPosts();
-  const sortedPosts = allPosts.sort((a, b) =>
-    new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime()
+  const sortedPosts = allPosts.sort(
+    (a, b) =>
+      new Date(b.metadata.publishedAt).getTime() -
+      new Date(a.metadata.publishedAt).getTime(),
   );
-  
+
   const totalPages = Math.ceil(sortedPosts.length / postsPerPage);
   const startIndex = (page - 1) * postsPerPage;
   const endIndex = startIndex + postsPerPage;
@@ -88,4 +93,3 @@ export async function getPaginatedBlogPosts(page: number, postsPerPage: number):
     totalPages,
   };
 }
-

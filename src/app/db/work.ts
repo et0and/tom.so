@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { cache } from 'react';
+import { cache } from "react";
 
 type Metadata = {
   title: string;
@@ -69,15 +69,18 @@ export const getWorkPosts = cache((): MDXData[] => {
   return getMDXData(path.join(process.cwd(), "work"));
 });
 
-export async function getPaginatedWorkPosts(page: number, postsPerPage: number): Promise<{
+export async function getPaginatedWorkPosts(
+  page: number,
+  postsPerPage: number,
+): Promise<{
   posts: MDXData[];
   totalPages: number;
 }> {
   const allPosts = getWorkPosts();
   const sortedPosts = allPosts.sort((a, b) =>
-    a.metadata.title.localeCompare(b.metadata.title)
+    a.metadata.title.localeCompare(b.metadata.title),
   );
-  
+
   const totalPages = Math.ceil(sortedPosts.length / postsPerPage);
   const startIndex = (page - 1) * postsPerPage;
   const endIndex = startIndex + postsPerPage;

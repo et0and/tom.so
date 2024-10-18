@@ -9,7 +9,10 @@ export const metadata = {
 const POSTS_PER_PAGE = 10;
 
 async function BlogList({ page }: { page: number }) {
-  const { posts, totalPages } = await getPaginatedBlogPosts(page, POSTS_PER_PAGE);
+  const { posts, totalPages } = await getPaginatedBlogPosts(
+    page,
+    POSTS_PER_PAGE,
+  );
 
   return (
     <>
@@ -30,10 +33,20 @@ async function BlogList({ page }: { page: number }) {
       ))}
       <div className="my-8 flex justify-between">
         {page > 1 && (
-          <Link href={`/posts?page=${page - 1}`} className="hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-200">Previous</Link>
+          <Link
+            href={`/posts?page=${page - 1}`}
+            className="hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-200"
+          >
+            Previous
+          </Link>
         )}
         {page < totalPages && (
-          <Link href={`/posts?page=${page + 1}`} className="hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-200">Next</Link>
+          <Link
+            href={`/posts?page=${page + 1}`}
+            className="hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-200"
+          >
+            Next
+          </Link>
         )}
       </div>
     </>
@@ -50,7 +63,7 @@ export default async function BlogPage({
   return (
     <div className="w-full">
       <h1 className="font-medium text-4xl py-4">Writing</h1>
-     
+
       <BlogList page={currentPage} />
     </div>
   );
