@@ -5,7 +5,7 @@ export default async function sitemap() {
   const baseUrl = "https://tom.so";
 
   // Static routes
-  let routes = ["", "/posts", "/about", "/stack", "/work"].map((route) => ({
+  let routes = ["", "/posts", "/about", "/work"].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString().split("T")[0],
   }));

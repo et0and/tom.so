@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getPaginatedBlogPosts } from "@/app/db/blog";
+import { Separator } from "@/components/ui/separator/separator";
 
 export const metadata = {
   title: "Writing",
@@ -19,7 +20,7 @@ async function BlogList({ page }: { page: number }) {
       {posts.map((post) => (
         <Link
           key={post.slug}
-          className="flex flex-col hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-200 space-y-1 mb-4"
+          className="flex flex-col link space-y-1 mb-4"
           href={`/posts/${post.slug}`}
         >
           <div className="w-full flex flex-col">
@@ -33,18 +34,12 @@ async function BlogList({ page }: { page: number }) {
       ))}
       <div className="my-8 flex justify-between">
         {page > 1 && (
-          <Link
-            href={`/posts?page=${page - 1}`}
-            className="hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-200"
-          >
+          <Link href={`/posts?page=${page - 1}`} className="link">
             Previous
           </Link>
         )}
         {page < totalPages && (
-          <Link
-            href={`/posts?page=${page + 1}`}
-            className="hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-200"
-          >
+          <Link href={`/posts?page=${page + 1}`} className="link">
             Next
           </Link>
         )}
@@ -62,8 +57,9 @@ export default async function BlogPage({
 
   return (
     <div className="w-full">
-      <h1 className="font-medium text-4xl py-4">Writing</h1>
-
+      <h1 className="font-medium text-4xl pt-4">Writing</h1>
+      <h2 className="font-normal text-lg pb-4">Read my thoughts</h2>
+      <Separator className="my-4" />
       <BlogList page={currentPage} />
     </div>
   );

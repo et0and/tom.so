@@ -1,8 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image, { ImageProps } from "next/image";
-import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
-import React, { Suspense, ComponentType, ReactNode } from "react";
+import React, { ComponentType, ReactNode } from "react";
 import { Banner, BannerProps } from "./ui/banner/banner";
 import { YouTubeEmbed } from "@next/third-parties/google";
 import { InViewImagesGrid } from "./ui/in-view/in-view-images-grid";
@@ -60,14 +59,6 @@ function UnorderedList(props: React.HTMLAttributes<HTMLUListElement>) {
   return <ul className="list-disc list-inside" {...props} />;
 }
 
-function LightModeWrapper({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="bg-white text-black dark:bg-white dark:text-black">
-      {children}
-    </div>
-  );
-}
-
 interface YoutubeProps {
   videoid: string;
   height?: number;
@@ -121,18 +112,6 @@ function CustomLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
 
   return <a target="_blank" rel="noopener noreferrer" {...props} />;
 }
-
-function RoundedImage({ className, ...props }: ImageProps) {
-  return (
-    <Image
-      placeholder="empty"
-      priority={true}
-      className={`rounded-lg bg-slate-400 ${className || ""}`}
-      {...props}
-    />
-  );
-}
-
 interface CalloutProps {
   emoji: string;
   children: ReactNode;
@@ -283,7 +262,6 @@ export const clientComponents = {
   InViewImagesGrid: ({ channelSlug }: { channelSlug: string }) => (
     <InViewImagesGrid channelSlug={channelSlug} />
   ),
-  Image: RoundedImage,
   img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
     return (
       <Image

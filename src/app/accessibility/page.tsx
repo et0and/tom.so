@@ -45,10 +45,7 @@ export default function Accessibility() {
       <p className="pb-4">
         If you have difficulty using or accessing any element of this website,
         please feel free to email me at{" "}
-        <a
-          href="mailto:access@tomhackshaw.com"
-          className="underline focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-100"
-        >
+        <a href="mailto:access@tomhackshaw.com" className="link">
           access@tomhackshaw.com
         </a>{" "}
         and I will work with you to provide the information, item, or element

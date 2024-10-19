@@ -45,10 +45,7 @@ export default function About() {
         development of{" "}
         <HoverCard>
           <HoverCardTrigger asChild>
-            <a
-              href="/work/te-wahi-auaha"
-              className="underline focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-100"
-            >
+            <a href="/work/te-wahi-auaha" className="link">
               Te Wāhi Auaha
             </a>
           </HoverCardTrigger>
@@ -85,10 +82,7 @@ export default function About() {
         Previously I studied at the{" "}
         <HoverCard>
           <HoverCardTrigger asChild>
-            <a
-              href="https://elamartists.ac.nz"
-              className="underline focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-100"
-            >
+            <a href="https://elamartists.ac.nz" className="link">
               Elam School of Fine Arts
             </a>
           </HoverCardTrigger>
@@ -125,10 +119,7 @@ export default function About() {
         Find me on{" "}
         <HoverCard>
           <HoverCardTrigger asChild>
-            <a
-              href="https://are.na/tom"
-              className="underline focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-100"
-            >
+            <a href="https://are.na/tom" className="link">
               are.na
             </a>
           </HoverCardTrigger>
@@ -158,10 +149,7 @@ export default function About() {
         ,{" "}
         <HoverCard>
           <HoverCardTrigger asChild>
-            <a
-              href="https://read.cv/hackshaw"
-              className="underline focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-100"
-            >
+            <a href="https://read.cv/hackshaw" className="link">
               Read.cv
             </a>
           </HoverCardTrigger>
@@ -191,10 +179,7 @@ export default function About() {
         , and{" "}
         <HoverCard>
           <HoverCardTrigger asChild>
-            <a
-              href="https://merveilles.town/@tomupom"
-              className="underline focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-100"
-            >
+            <a href="https://merveilles.town/@tomupom" className="link">
               Merveilles
             </a>
           </HoverCardTrigger>
@@ -228,10 +213,7 @@ export default function About() {
         You can also find me on{" "}
         <HoverCard>
           <HoverCardTrigger asChild>
-            <a
-              href="https://urbit.org"
-              className="underline focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-100"
-            >
+            <a href="https://urbit.org" className="link">
               Urbit
             </a>
           </HoverCardTrigger>
@@ -273,10 +255,7 @@ export default function About() {
         I would also like to acknowledge the many free and open source software
         that this website, along with many of my other projects, take advantage
         of. The full source code of this website can be found on my{" "}
-        <a
-          href="https://github.com/et0and/tom.so"
-          className="underline focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-100"
-        >
+        <a href="https://github.com/et0and/tom.so" className="link">
           GitHub
         </a>
         .
