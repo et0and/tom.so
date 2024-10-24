@@ -12,3 +12,4 @@ Feel free to fork and use this as you wish. I just ask that:
 - realise that this is not a perfect project. It contains components that are very loosely typed, not entirely accessible/WCAG compliant, and needs work.
 
 For a better example of a personal website that uses app router and Typescript, consider studying [Lee Robinson's website](https://github.com/leerob/leerob.io).
+
