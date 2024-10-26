@@ -60,6 +60,12 @@ export default async function CataloguePage({
       <h2 className="font-normal text-lg pb-4">
         All of my work, 2014 to present{" "}
       </h2>
+      <p>
+        See also:{" "}
+        <Link href="/work/catalogue" className="link font-medium">
+          catalogue raisonné
+        </Link>
+      </p>
       <Separator className="my-4" />
       <CatalogueList page={currentPage} />
     </div>
