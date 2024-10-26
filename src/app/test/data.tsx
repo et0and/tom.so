@@ -191,7 +191,7 @@ export function Component() {
               minTickGap={32}
               tickFormatter={(value) => {
                 const date = new Date(value);
-                return date.toLocaleDateString("en-US", {
+                return date.toLocaleDateString("en-nz", {
                   month: "short",
                   day: "numeric",
                 });
@@ -203,7 +203,7 @@ export function Component() {
                   className="w-[150px]"
                   nameKey="views"
                   labelFormatter={(value) => {
-                    return new Date(value).toLocaleDateString("en-US", {
+                    return new Date(value).toLocaleDateString("en-nz", {
                       month: "short",
                       day: "numeric",
                       year: "numeric",

@@ -83,7 +83,7 @@ function formatDate(date: string): string {
   const timeDifference = Math.abs(currentDate.getTime() - targetDate.getTime());
   const daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
 
-  const fullDate = targetDate.toLocaleString("en-us", {
+  const fullDate = targetDate.toLocaleString("en-nz", {
     month: "long",
     day: "numeric",
     year: "numeric",

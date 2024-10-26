@@ -16,7 +16,7 @@
   }
 
   img {
-    @apply grayscale;
+    @apply dark:grayscale transition-all duration-300;
   }
 
   .link {
