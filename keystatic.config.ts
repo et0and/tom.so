@@ -3,11 +3,8 @@ import { inline, block } from "@keystatic/core/content-components";
 
 export default config({
   storage: {
-  kind: 'github',
-   repo: {
-     owner: et0and,
-     name: tom.so
-   },
+    kind: "github",
+    repo: "et0and/tom.so",
   },
   ui: {
     brand: { name: "Tom Hackshaw" },
