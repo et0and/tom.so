@@ -2,11 +2,13 @@ import { config, fields, collection } from "@keystatic/core";
 import { inline, block } from "@keystatic/core/content-components";
 
 export default config({
+  storage: {
   kind: 'github',
    repo: {
      owner: et0and,
      name: tom.so
    },
+  },
   ui: {
     brand: { name: "Tom Hackshaw" },
   },
