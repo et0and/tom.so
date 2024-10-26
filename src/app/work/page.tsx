@@ -60,6 +60,12 @@ export default async function WorkPage({
       <h2 className="font-normal text-lg pb-4">
         Things I have made, or am working on
       </h2>
+      <p>
+        See also:{" "}
+        <Link href="/work/catalogue" className="link font-medium">
+          catalogue raisonné
+        </Link>
+      </p>
       <Separator className="my-4" />
       <WorkList page={currentPage} />
     </div>
