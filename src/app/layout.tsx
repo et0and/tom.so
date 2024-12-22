@@ -77,11 +77,6 @@ export default function RootLayout({
           name="description"
           content="Tom Hackshaw is a design engineer from Pōneke, Aotearoa."
         />
-        <script
-          defer
-          src="https://app.denki.co.nz/script.js"
-          data-website-id="d2c39b78-1a6f-4864-a05d-989d145c2c6c"
-        ></script>
         <link
           rel="apple-touch-icon"
           sizes="180x180"
