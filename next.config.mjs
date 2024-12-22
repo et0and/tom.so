@@ -35,6 +35,7 @@ const nextConfig = {
 
 const ContentSecurityPolicy = `
   default-src 'self';
+  script-src 'self' 'unsafe-eval' 'unsafe-inline';
   style-src 'self' 'unsafe-inline' *.googleapis.com *.gstatic.com;
   img-src 'self' data: https:;
   font-src 'self' *.gstatic.com *.googleapis.com ;
