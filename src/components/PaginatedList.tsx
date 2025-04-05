@@ -27,7 +27,7 @@ export function PaginatedList({
       {posts.map((post) => (
         <Link
           key={post.slug}
-          className="flex flex-col hover:text-blue-600 dark:hover:text-teal-200 space-y-1 mb-4"
+          className="flex flex-col w-fit transition hover:text-blue-600 dark:hover:text-teal-200 space-y-1 mb-4"
           href={`${basePath}/${post.slug}`}
           prefetch={true}
         >
