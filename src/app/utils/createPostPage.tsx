@@ -54,7 +54,13 @@ export function createPostPage(type: ContentType, datePrefix?: string) {
     }
 
     return (
-      <Suspense fallback={<div className="w-full">Loading content...</div>}>
+      <Suspense
+        fallback={
+          <div className="w-full h-[50vh] flex items-center justify-center">
+            Loading content...
+          </div>
+        }
+      >
         <PostContent post={post} datePrefix={datePrefix} />
       </Suspense>
     );

@@ -65,7 +65,7 @@ export default async function BookshelfPage({
                 href={item.attachment.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border p-3 sm:p-4 hover:bg-blue-50 dark:hover:bg-gray-800 transition block cursor-pointer no-underline text-inherit"
+                className="border p-3 sm:p-4 hover:bg-blue-50 dark:hover:bg-gray-800 transition block cursor-pointer no-underline text-inherit focus-visible:ring-offset-4 focus-visible:ring-2 focus-visible:ring-blue-500 dark:focus-visible:ring-offset-2 dark:focus-visible:ring-4 dark:focus-visible:ring-white"
               >
                 {item.image && (
                   <div className="w-full h-32 sm:h-40 md:h-48 relative mb-3">
@@ -82,7 +82,7 @@ export default async function BookshelfPage({
                 <h2 className="text-base sm:text-lg md:text-xl font-medium break-words overflow-hidden mb-2">
                   {item.title}
                 </h2>
-                <div className="text-xs sm:text-sm text-gray-600 mb-3">
+                <div className="text-xs sm:text-sm text-gray-600 dark:text-white mb-3">
                   <p>Size: {item.attachment.file_size_display}</p>
                   <p>Type: {item.attachment.extension.toUpperCase()}</p>
                 </div>

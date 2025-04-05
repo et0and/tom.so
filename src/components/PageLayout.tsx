@@ -20,7 +20,13 @@ export function PageLayout({
       <h2 className="font-normal text-lg pb-4">{subtitle}</h2>
       {additionalContent}
       <Separator className="my-4" />
-      <Suspense fallback={<div className="w-full">Loading...</div>}>
+      <Suspense
+        fallback={
+          <div className="w-full h-[50vh] flex items-center justify-center">
+            Loading...
+          </div>
+        }
+      >
         {children}
       </Suspense>
     </div>
