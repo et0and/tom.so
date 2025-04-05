@@ -1,15 +1,18 @@
 import Link from "next/link";
 import { getPaginatedWorkPosts } from "@/app/db/work";
 import { Separator } from "@/components/ui/separator/separator";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Work",
   description: "Things I have made.",
 };
 
+export const revalidate = 3600;
+
 const POSTS_PER_PAGE = 10;
 
-async function WorkList({ page }: { page: number }) {
+async function WorkList({ page }: Readonly<{ page: number }>) {
   const { posts, totalPages } = await getPaginatedWorkPosts(
     page,
     POSTS_PER_PAGE,
@@ -22,6 +25,7 @@ async function WorkList({ page }: { page: number }) {
           key={post.slug}
           className="flex flex-col link space-y-1 mb-4"
           href={`/work/${post.slug}`}
+          prefetch={true}
         >
           <div className="w-full flex flex-col">
             <p className="text-2xl font-medium tracking-tighter">
@@ -38,7 +42,11 @@ async function WorkList({ page }: { page: number }) {
           </Link>
         )}
         {page < totalPages && (
-          <Link href={`/work?page=${page + 1}`} className="link">
+          <Link
+            href={`/work?page=${page + 1}`}
+            className="link"
+            prefetch={true}
+          >
             Next
           </Link>
         )}
@@ -49,9 +57,9 @@ async function WorkList({ page }: { page: number }) {
 
 export default async function WorkPage({
   searchParams,
-}: {
+}: Readonly<{
   searchParams: { page?: string };
-}) {
+}>) {
   const currentPage = Number(searchParams.page) || 1;
 
   return (
@@ -62,12 +70,18 @@ export default async function WorkPage({
       </h2>
       <p>
         See also:{" "}
-        <Link href="/work/catalogue" className="link font-medium">
+        <Link
+          href="/work/catalogue"
+          className="link font-medium"
+          prefetch={true}
+        >
           catalogue raisonné
         </Link>
       </p>
       <Separator className="my-4" />
-      <WorkList page={currentPage} />
+      <Suspense fallback={<div className="w-full">Loading works...</div>}>
+        <WorkList page={currentPage} />
+      </Suspense>
     </div>
   );
 }

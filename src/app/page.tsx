@@ -13,14 +13,10 @@ export const metadata: Metadata = {
   },
 };
 
-export function generateStaticParams() {
-  return [{}];
-}
-
 export default function Home() {
   return (
     <div className="flex flex-col h-full">
-      <div className="flex-grow items-center justify-center transition grayscale hidden md:flex max-w-5xl"></div>
+      <div className="flex-grow items-center justify-center transition grayscale hidden md:flex max-w-5xl" />
     </div>
   );
 }

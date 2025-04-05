@@ -24,7 +24,7 @@ interface BlogPost {
 
 const getPostBySlug = cache(
   async (slug: string): Promise<BlogPost | undefined> => {
-    const posts = await getBlogPosts();
+    const posts = getBlogPosts();
     return posts.find((post) => post.slug === slug);
   },
 );
@@ -71,7 +71,7 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const posts = await getBlogPosts();
+  const posts = getBlogPosts();
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -105,41 +105,30 @@ function formatDate(date: string): string {
   }
 }
 
-function BlogPostContent({ post }: { post: BlogPost }) {
+function BlogPostContent({ post }: Readonly<{ post: BlogPost }>) {
   return (
-    <>
-      <section>
-        <script
-          type="application/ld+json"
-          suppressHydrationWarning
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              // ... existing code ...
-            }),
-          }}
-        />
-        <h1 className="title pt-4 font-medium text-2xl tracking-tighter max-w-[650px]">
-          {post.metadata.title}
-        </h1>
-        <p className="text-md text-neutral-700 dark:text-neutral-200 tracking-tighter">
-          {post.metadata.summary}
-        </p>
+    <section>
+      <h1 className="title pt-4 font-medium text-2xl tracking-tighter max-w-[650px]">
+        {post.metadata.title}
+      </h1>
+      <p className="text-md text-neutral-700 dark:text-neutral-200 tracking-tighter">
+        {post.metadata.summary}
+      </p>
 
-        <div className="flex justify-between items-center mt-2 mb-6 text-sm max-w-[650px]">
-          <p className="text-sm text-neutral-700 dark:text-neutral-200">
-            {formatDate(post.metadata.publishedAt)}
-          </p>
-        </div>
-        <Separator className="mt-4 mb-8" />
-        <article className="prose prose-quoteless prose-neutral space-y-4 pb-8">
-          <CustomMDX source={post.content} />
-        </article>
-      </section>
-    </>
+      <div className="flex justify-between items-center mt-2 mb-6 text-sm max-w-[650px]">
+        <p className="text-sm text-neutral-700 dark:text-neutral-200">
+          {formatDate(post.metadata.publishedAt)}
+        </p>
+      </div>
+      <Separator className="mt-4 mb-8" />
+      <article className="prose prose-quoteless prose-neutral space-y-4 pb-8">
+        <CustomMDX source={post.content} />
+      </article>
+    </section>
   );
 }
 
-export default async function Blog({ params }: PageParams) {
+export default async function Blog({ params }: Readonly<PageParams>) {
   const post = await getPostBySlug(params.slug);
 
   if (!post) {
@@ -147,23 +136,7 @@ export default async function Blog({ params }: PageParams) {
   }
 
   return (
-    <Suspense
-      fallback={
-        <div className="animate-pulse space-y-4">
-          <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
-          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
-          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/4"></div>
-          <div className="space-y-2">
-            {[...Array(5)].map((_, i) => (
-              <div
-                key={i}
-                className="h-4 bg-gray-200 dark:bg-gray-700 rounded"
-              ></div>
-            ))}
-          </div>
-        </div>
-      }
-    >
+    <Suspense fallback={<div className="w-full">Loading post...</div>}>
       <BlogPostContent post={post} />
     </Suspense>
   );

@@ -77,7 +77,7 @@ export async function getPaginatedBlogPosts(
   totalPages: number;
 }> {
   const allPosts = getBlogPosts();
-  const sortedPosts = allPosts.sort(
+  const sortedPosts = allPosts.toSorted(
     (a, b) =>
       new Date(b.metadata.publishedAt).getTime() -
       new Date(a.metadata.publishedAt).getTime(),

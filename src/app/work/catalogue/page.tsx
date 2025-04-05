@@ -1,15 +1,18 @@
 import Link from "next/link";
 import { getPaginatedCataloguePosts } from "@/app/db/catalogue";
 import { Separator } from "@/components/ui/separator/separator";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Catalogue",
   description: "All work made since 2014",
 };
 
+export const revalidate = 3600;
+
 const POSTS_PER_PAGE = 10;
 
-async function CatalogueList({ page }: { page: number }) {
+async function CatalogueList({ page }: Readonly<{ page: number }>) {
   const { posts, totalPages } = await getPaginatedCataloguePosts(
     page,
     POSTS_PER_PAGE,
@@ -22,6 +25,7 @@ async function CatalogueList({ page }: { page: number }) {
           key={post.slug}
           className="flex flex-col link space-y-1 mb-4"
           href={`/work/catalogue/${post.slug}`}
+          prefetch={true}
         >
           <div className="w-full flex flex-col">
             <p className="text-2xl font-medium tracking-tighter">
@@ -38,7 +42,11 @@ async function CatalogueList({ page }: { page: number }) {
           </Link>
         )}
         {page < totalPages && (
-          <Link href={`/work/catalogue?page=${page + 1}`} className="link">
+          <Link
+            href={`/work/catalogue?page=${page + 1}`}
+            className="link"
+            prefetch={true}
+          >
             Next
           </Link>
         )}
@@ -49,9 +57,9 @@ async function CatalogueList({ page }: { page: number }) {
 
 export default async function CataloguePage({
   searchParams,
-}: {
+}: Readonly<{
   searchParams: { page?: string };
-}) {
+}>) {
   const currentPage = Number(searchParams.page) || 1;
 
   return (
@@ -61,7 +69,9 @@ export default async function CataloguePage({
         All of my work, 2014 to present{" "}
       </h2>
       <Separator className="my-4" />
-      <CatalogueList page={currentPage} />
+      <Suspense fallback={<div className="w-full">Loading works...</div>}>
+        <CatalogueList page={currentPage} />
+      </Suspense>
     </div>
   );
 }

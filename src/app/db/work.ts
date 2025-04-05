@@ -77,7 +77,7 @@ export async function getPaginatedWorkPosts(
   totalPages: number;
 }> {
   const allPosts = getWorkPosts();
-  const sortedPosts = allPosts.sort((a, b) =>
+  const sortedPosts = allPosts.toSorted((a, b) =>
     a.metadata.title.localeCompare(b.metadata.title),
   );
 
