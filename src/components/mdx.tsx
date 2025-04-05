@@ -1,6 +1,6 @@
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import { clientComponents } from "./mdxComponents";
-import { ComponentType, ReactNode } from "react";
+import { ComponentType } from "react";
 import { ArenaCarousel } from "./ui/carousel/arena-carousel";
 import { Banner } from "./ui/banner/banner";
 import { InViewImagesGrid } from "./ui/in-view/in-view-images-grid";
@@ -23,7 +23,7 @@ function convertComponents(components: typeof clientComponents): MDXComponents {
   return convertedComponents;
 }
 
-export function CustomMDX(props: MDXRemoteProps) {
+export function CustomMDX(props: Readonly<MDXRemoteProps>) {
   const convertedClientComponents = convertComponents(clientComponents);
   const convertedPropsComponents = props.components
     ? convertComponents(props.components as typeof clientComponents)

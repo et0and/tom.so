@@ -30,8 +30,5 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Run snapshot tests
-        run: npm test -- -u
-
       - name: Check formatting
         run: npx prettier --check "./**/*.{ts,tsx}"

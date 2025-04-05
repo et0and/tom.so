@@ -269,7 +269,6 @@ export const clientComponents = {
         alt={props.alt || ""}
         width={500}
         height={400}
-        unoptimized
         className="grayscale bg-stone-300"
       />
     );

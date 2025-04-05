@@ -2,7 +2,7 @@ interface ArenaProps {
   channelSlug: string;
 }
 
-export default function ArenaWrapper({ channelSlug }: ArenaProps) {
+export default function ArenaWrapper({ channelSlug }: Readonly<ArenaProps>) {
   return (
     <iframe
       className="bg-slate-300"

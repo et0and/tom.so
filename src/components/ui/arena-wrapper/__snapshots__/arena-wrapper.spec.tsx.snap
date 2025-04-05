@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ArenaWrapper /> renders correctly with channel slug 1`] = `
+<div>
+  <iframe
+    class="bg-slate-300"
+    height="590"
+    src="https://www.are.na/tom/example-channel/embed"
+    style="border: 1px solid #e5e5e5;"
+    title="Are.na channel example-channel"
+    width="100%"
+  />
+</div>
+`;

@@ -1,14 +1,4 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "./carousel";
+import { ArenaCarouselClient } from "./arena-carousel-client";
 
 interface ArenaBlock {
   image: {
@@ -23,71 +13,31 @@ interface ArenaCarouselProps {
   channelSlug: string;
 }
 
-function LoadingSpinner() {
-  return (
-    <div className="flex justify-center items-center h-64">
-      <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900 dark:border-gray-100"></div>
-    </div>
-  );
+async function fetchArenaChannel(slug: string) {
+  const channelUrl = `https://api.are.na/v2/channels/${slug}/contents?per=20`;
+
+  try {
+    const response = await fetch(channelUrl);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching Are.na channel:", error);
+    throw new Error("Failed to fetch Are.na channel");
+  }
 }
 
-export function ArenaCarousel({ channelSlug }: ArenaCarouselProps) {
-  const [images, setImages] = useState<Array<{ url: string; title: string }>>(
-    [],
-  );
-  const [loading, setLoading] = useState(true);
+export async function ArenaCarousel({
+  channelSlug,
+}: Readonly<ArenaCarouselProps>) {
+  const data = await fetchArenaChannel(channelSlug);
 
-  useEffect(() => {
-    const fetchImages = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch(`/api/channel?slug=${channelSlug}`);
-        const data = await response.json();
-        const imageData = data.contents
-          .filter((block: ArenaBlock) => block.image && block.image.display)
-          .map((block: ArenaBlock) => ({
-            url: block.image.display.url,
-            title: block.title,
-          }))
-          .slice(0, 5);
-        setImages(imageData);
-      } catch (error) {
-        console.error("Error fetching images:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const images = data.contents
+    .filter((block: ArenaBlock) => block.image?.display)
+    .map((block: ArenaBlock) => ({
+      url: block.image.display.url,
+      title: block.title,
+    }))
+    .slice(0, 5);
 
-    fetchImages();
-  }, [channelSlug]);
-
-  if (loading) {
-    return <LoadingSpinner />;
-  }
-
-  return (
-    <Carousel className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto relative">
-      <CarouselContent className="h-full flex items-center">
-        {images.map((img, index) => (
-          <CarouselItem
-            key={index}
-            className="h-full flex items-center justify-center"
-          >
-            <div className="py-4 h-full flex items-center justify-center">
-              <Image
-                src={img.url}
-                unoptimized
-                alt={img.title || `Image from Are.na channel ${channelSlug}`}
-                className="max-w-full max-h-full w-auto h-auto object-contain shadow-lg grayscale"
-                width={500}
-                height={500}
-              />
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
-  );
+  return <ArenaCarouselClient images={images} channelSlug={channelSlug} />;
 }
