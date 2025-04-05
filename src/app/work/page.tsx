@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { getPaginatedWorkPosts } from "@/app/db/work";
-import { Separator } from "@/components/ui/separator/separator";
-import { Suspense } from "react";
+import { fetchPaginatedContent } from "@/app/utils/dataFetcher";
+import { PageLayout } from "@/components/PageLayout";
+import { PaginatedList } from "@/components/PaginatedList";
 
 export const metadata = {
   title: "Work",
@@ -10,48 +10,15 @@ export const metadata = {
 
 export const revalidate = 3600;
 
-const POSTS_PER_PAGE = 10;
-
 async function WorkList({ page }: Readonly<{ page: number }>) {
-  const { posts, totalPages } = await getPaginatedWorkPosts(
-    page,
-    POSTS_PER_PAGE,
-  );
-
+  const { posts, totalPages } = await fetchPaginatedContent("work", page);
   return (
-    <>
-      {posts.map((post) => (
-        <Link
-          key={post.slug}
-          className="flex flex-col link space-y-1 mb-4"
-          href={`/work/${post.slug}`}
-          prefetch={true}
-        >
-          <div className="w-full flex flex-col">
-            <p className="text-2xl font-medium tracking-tighter">
-              {post.metadata.title}
-            </p>
-            <p className="text-md">{post.metadata.summary}</p>
-          </div>
-        </Link>
-      ))}
-      <div className="my-8 flex justify-between">
-        {page > 1 && (
-          <Link href={`/work?page=${page - 1}`} className="link">
-            Previous
-          </Link>
-        )}
-        {page < totalPages && (
-          <Link
-            href={`/work?page=${page + 1}`}
-            className="link"
-            prefetch={true}
-          >
-            Next
-          </Link>
-        )}
-      </div>
-    </>
+    <PaginatedList
+      posts={posts}
+      totalPages={totalPages}
+      currentPage={page}
+      basePath="/work"
+    />
   );
 }
 
@@ -62,26 +29,22 @@ export default async function WorkPage({
 }>) {
   const currentPage = Number(searchParams.page) || 1;
 
+  const additionalContent = (
+    <p>
+      See also:{" "}
+      <Link href="/work/catalogue" className="link font-medium" prefetch={true}>
+        catalogue raisonné
+      </Link>
+    </p>
+  );
+
   return (
-    <div className="w-full">
-      <h1 className="font-medium text-4xl pt-4">Work</h1>
-      <h2 className="font-normal text-lg pb-4">
-        Things I have made, or am working on
-      </h2>
-      <p>
-        See also:{" "}
-        <Link
-          href="/work/catalogue"
-          className="link font-medium"
-          prefetch={true}
-        >
-          catalogue raisonné
-        </Link>
-      </p>
-      <Separator className="my-4" />
-      <Suspense fallback={<div className="w-full">Loading works...</div>}>
-        <WorkList page={currentPage} />
-      </Suspense>
-    </div>
+    <PageLayout
+      title="Work"
+      subtitle="Things I have made, or am working on"
+      additionalContent={additionalContent}
+    >
+      <WorkList page={currentPage} />
+    </PageLayout>
   );
 }
