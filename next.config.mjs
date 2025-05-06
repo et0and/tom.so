@@ -18,6 +18,18 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/tomica/:path*',
+        destination: 'https://cars.tom.so/:path*',
+      },
+      {
+        source: '/good-sign-offs/:path*',
+        destination: 'https://good-sign-offs.work.tom.so/:path*',
+      },
+    ];
+  },
   async headers() {
     return [
       {
@@ -43,7 +55,7 @@ const ContentSecurityPolicy = `
   base-uri 'self';
   form-action 'self';
   frame-ancestors 'none';
-  connect-src 'self' *.github.com *.keystatic.com *.gstatic.com *.googleapis.com *.githubusercontent.com;
+  connect-src 'self' *.github.com *.keystatic.com *.gstatic.com *.googleapis.com *.githubusercontent.com cars.tom.so performance.vercel.app;
   block-all-mixed-content;
   upgrade-insecure-requests;
 `;
