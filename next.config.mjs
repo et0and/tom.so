@@ -25,6 +25,10 @@ const nextConfig = {
         destination: 'https://cars.tom.so/:path*',
       },
       {
+        source: '/ui/:path*',
+        destination: 'https://ui.tom.so/:path*',
+      },
+      {
         source: '/good-sign-offs/:path*',
         destination: 'https://good-sign-offs.work.tom.so/:path*',
       },
