@@ -38,7 +38,7 @@ export default function About() {
       <h1 className="font-medium text-4xl pt-4">About</h1>
       <Separator className="my-4" /> <p>Hi, I&apos;m Tom,</p>
       <p className="pb-4">
-        I am a designer with a background in the arts and education. Presently I
+        I am a design engineer with a background in the arts and education. Presently I
         am working as a web producer and developer in Pōneke, Te
         Whanganui-a-Tara. Prior to this, I taught design, art and digital
         technology at Takapuna Grammar School, where I also worked on the
