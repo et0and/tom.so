@@ -22,43 +22,43 @@ const nextConfig = {
     return [
       // Rewrite for cars.tom.so
       {
-        source: '/tomica',
-        destination: 'https://cars.tom.so',
+        source: "/tomica",
+        destination: "https://cars.tom.so",
       },
       {
-        source: '/tomica/:path*',
-        destination: 'https://cars.tom.so/:path*',
+        source: "/tomica/:path*",
+        destination: "https://cars.tom.so/:path*",
       },
       // Rewrite for ui.tom.so
       {
-        source: '/ui',
-        destination: 'https://ui.tom.so',
+        source: "/ui",
+        destination: "https://ui.tom.so",
       },
       {
-        source: '/ui/:path*',
-        destination: 'https://ui.tom.so/:path*',
+        source: "/ui/:path*",
+        destination: "https://ui.tom.so/:path*",
       },
       // Rewrite for good-sign-offs.work.tom.so
       {
-        source: '/sign-offs',
-        destination: 'https://good-sign-offs.work.tom.so',
+        source: "/sign-offs",
+        destination: "https://good-sign-offs.work.tom.so",
       },
       {
-        source: '/sign-offs/:path*',
-        destination: 'https://good-sign-offs.work.tom.so/:path*',
+        source: "/sign-offs/:path*",
+        destination: "https://good-sign-offs.work.tom.so/:path*",
       },
       // Special rewrites for _next paths (for CSS/JS assets)
       {
-        source: '/tomica/_next/:path*',
-        destination: 'https://cars.tom.so/_next/:path*',
+        source: "/tomica/_next/:path*",
+        destination: "https://cars.tom.so/_next/:path*",
       },
       {
-        source: '/ui/_next/:path*',
-        destination: 'https://ui.tom.so/_next/:path*',
+        source: "/ui/_next/:path*",
+        destination: "https://ui.tom.so/_next/:path*",
       },
       {
-        source: '/sign-offs/_next/:path*',
-        destination: 'https://good-sign-offs.work.tom.so/_next/:path*',
+        source: "/sign-offs/_next/:path*",
+        destination: "https://good-sign-offs.work.tom.so/_next/:path*",
       },
     ];
   },

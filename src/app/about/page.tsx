@@ -28,18 +28,14 @@ export const metadata: Metadata = {
   },
 };
 
-export function generateStaticParams() {
-  return [{}];
-}
-
 export default function About() {
   return (
     <>
       <h1 className="font-medium text-4xl pt-4">About</h1>
       <Separator className="my-4" /> <p>Hi, I&apos;m Tom,</p>
       <p className="pb-4">
-        I am a design engineer with a background in the arts and education. Presently I
-        am working as a web producer and developer in Pōneke, Te
+        I am a design engineer with a background in the arts and education.
+        Presently I am working as a web producer and developer in Pōneke, Te
         Whanganui-a-Tara. Prior to this, I taught design, art and digital
         technology at Takapuna Grammar School, where I also worked on the
         development of{" "}

@@ -17,10 +17,6 @@ export const metadata: Metadata = {
   },
 };
 
-export function generateStaticParams() {
-  return [{}];
-}
-
 export default function Accessibility() {
   return (
     <>
