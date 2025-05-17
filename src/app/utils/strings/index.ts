@@ -1,0 +1,1 @@
+export { StringsDict } from "./StringDict";

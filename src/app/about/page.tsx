@@ -11,6 +11,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/card/hover-card";
 import { Separator } from "@/components/ui/separator/separator";
+import { aboutPage } from "./strings";
 
 export const metadata: Metadata = {
   title: "About",
@@ -31,111 +32,97 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <>
-      <h1 className="font-medium text-4xl pt-4">About</h1>
-      <Separator className="my-4" /> <p>Hi, I&apos;m Tom,</p>
+      <h1 className="font-medium text-4xl pt-4">
+        {aboutPage.t("about.heading")}
+      </h1>
+      <Separator className="my-4" />
+      <p>{aboutPage.t("about.byline")}</p>
       <p className="pb-4">
-        I am a design engineer with a background in the arts and education.
-        Presently I am working as a web producer and developer in Pōneke, Te
-        Whanganui-a-Tara. Prior to this, I taught design, art and digital
-        technology at Takapuna Grammar School, where I also worked on the
-        development of{" "}
+        {aboutPage.t("about.intro")}
         <HoverCard>
           <HoverCardTrigger asChild>
             <a href="/work/te-wahi-auaha" className="link">
-              Te Wāhi Auaha
+              {aboutPage.t("teWahi.title")}
             </a>
           </HoverCardTrigger>
           <HoverCardContent className="w-80">
             <div className="flex justify-between space-x-4">
               <Avatar>
                 <AvatarImage src="/twa.png" />
-                <AvatarFallback>Te Wāhi</AvatarFallback>
+                <AvatarFallback>{aboutPage.t("teWahi.title")}</AvatarFallback>
               </Avatar>
               <div className="space-y-1">
-                <p className="text-sm font-semibold">Te Wāhi Auaha</p>
-                <p className="text-sm">
-                  Te Wāhi Auaha is the school maker space at Takapuna Grammar
-                  School.
+                <p className="text-sm font-semibold">
+                  {aboutPage.t("teWahi.title")}
                 </p>
+                <p className="text-sm">{aboutPage.t("teWahi.description")}</p>
                 <div className="flex items-center pt-2">
                   <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
                   <span className="text-sm text-muted-foreground">
-                    Joined January 2021
+                    {aboutPage.t("teWahi.joined")}
                   </span>
                 </div>
               </div>
             </div>
           </HoverCardContent>
         </HoverCard>
-        &nbsp;(a school maker space and innovation space).
+        {aboutPage.t("about.makerSpace")}
       </p>
+      <p className="pb-4">{aboutPage.t("about.experience")}</p>
       <p className="pb-4">
-        My experience in making learning more accessible and equitable across a
-        range of students from different backgrounds and abilities built the
-        foundation of my human-centered design practice.
-      </p>
-      <p className="pb-4">
-        Previously I studied at the{" "}
+        {aboutPage.t("about.elam.prior")}
         <HoverCard>
           <HoverCardTrigger asChild>
             <a href="https://elamartists.ac.nz" className="link">
-              Elam School of Fine Arts
+              {aboutPage.t("elam.title")}
             </a>
           </HoverCardTrigger>
           <HoverCardContent className="w-80">
             <div className="flex justify-between space-x-4">
               <Avatar>
                 <AvatarImage src="/uoa.jpg" />
-                <AvatarFallback>Elam</AvatarFallback>
+                <AvatarFallback>{aboutPage.t("elam.title")}</AvatarFallback>
               </Avatar>
               <div className="space-y-1">
                 <p className="text-sm font-semibold">
-                  Elam School of Fine Arts
+                  {aboutPage.t("elam.title")}
                 </p>
-                <p className="text-sm">
-                  The Elam School of Fine Arts, founded by John Edward Elam, is
-                  part of the Faculty of Creative Arts and Industries at the
-                  University of Auckland. It offered the first Bachelor of Fine
-                  Arts programme in New Zealand starting in 1967.
-                </p>
+                <p className="text-sm">{aboutPage.t("elam.description")}</p>
                 <div className="flex items-center pt-2">
                   <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
                   <span className="text-sm text-muted-foreground">
-                    Joined March 2014
+                    {aboutPage.t("elam.joined")}
                   </span>
                 </div>
               </div>
             </div>
           </HoverCardContent>
         </HoverCard>
-        , where I also briefly taught the first and second year studio
-        programme.
+        {aboutPage.t("about.elam")}
       </p>
       <p className="pb-4">
-        Find me on{" "}
+        {aboutPage.t("about.findMe")}
         <HoverCard>
           <HoverCardTrigger asChild>
             <a href="https://are.na/tom" className="link">
-              are.na
+              {aboutPage.t("arena.title")}
             </a>
           </HoverCardTrigger>
           <HoverCardContent className="w-80">
             <div className="flex justify-between space-x-4">
               <Avatar>
                 <AvatarImage src="/arena.jpg" />
-                <AvatarFallback>Are.na</AvatarFallback>
+                <AvatarFallback>{aboutPage.t("arena.title")}</AvatarFallback>
               </Avatar>
               <div className="space-y-1">
-                <p className="text-sm font-semibold">Are.na</p>
-                <p className="text-sm">
-                  Are.na is an online social networking community and creative
-                  research platform founded by Charles Broskoski, Daniel
-                  Pianetti, Chris Barley, and Chris Sherron.
+                <p className="text-sm font-semibold">
+                  {aboutPage.t("arena.title")}
                 </p>
+                <p className="text-sm">{aboutPage.t("arena.description")}</p>
                 <div className="flex items-center pt-2">
                   <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
                   <span className="text-sm text-muted-foreground">
-                    Joined January 2018
+                    {aboutPage.t("arena.joined")}
                   </span>
                 </div>
               </div>
@@ -146,26 +133,24 @@ export default function About() {
         <HoverCard>
           <HoverCardTrigger asChild>
             <a href="https://read.cv/hackshaw" className="link">
-              Read.cv
+              {aboutPage.t("readcv.title")}
             </a>
           </HoverCardTrigger>
           <HoverCardContent className="w-80">
             <div className="flex justify-between space-x-4">
               <Avatar>
                 <AvatarImage src="/readcv.svg" />
-                <AvatarFallback>Read.cv</AvatarFallback>
+                <AvatarFallback>{aboutPage.t("readcv.title")}</AvatarFallback>
               </Avatar>
               <div className="space-y-1">
-                <p className="text-sm font-semibold">Read.cv</p>
-                <p className="text-sm">
-                  Read.cv is a show, don&apos;t tell professional platform to
-                  form beautiful profiles and make meaningful connections with
-                  people and teams.
+                <p className="text-sm font-semibold">
+                  {aboutPage.t("readcv.title")}
                 </p>
+                <p className="text-sm">{aboutPage.t("readcv.description")}</p>
                 <div className="flex items-center pt-2">
                   <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
                   <span className="text-sm text-muted-foreground">
-                    Joined January 2023
+                    {aboutPage.t("readcv.joined")}
                   </span>
                 </div>
               </div>
@@ -176,81 +161,71 @@ export default function About() {
         <HoverCard>
           <HoverCardTrigger asChild>
             <a href="https://merveilles.town/@tomupom" className="link">
-              Merveilles
+              {aboutPage.t("merveilles.title")}
             </a>
           </HoverCardTrigger>
           <HoverCardContent className="w-80">
             <div className="flex justify-between space-x-4">
               <Avatar>
                 <AvatarImage src="/merveilles.png" />
-                <AvatarFallback>Merveilles</AvatarFallback>
+                <AvatarFallback>
+                  {aboutPage.t("merveilles.title")}
+                </AvatarFallback>
               </Avatar>
               <div className="space-y-1">
-                <p className="text-sm font-semibold">Merveilles</p>
+                <p className="text-sm font-semibold">
+                  {aboutPage.t("merveilles.title")}
+                </p>
                 <p className="text-sm">
-                  Merveilles is a collective of forward-thinking individuals who
-                  strive to better each other and their surroundings through
-                  constant creation and play. This community project is aimed at
-                  the establishment of new ways of speaking, seeing and
-                  organizing. A warm welcome to any like-minded people who feel
-                  these ideals resonate with them.
+                  {aboutPage.t("merveilles.description")}
                 </p>
                 <div className="flex items-center pt-2">
                   <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
                   <span className="text-sm text-muted-foreground">
-                    Joined May 2019
+                    {aboutPage.t("merveilles.joined")}
                   </span>
                 </div>
               </div>
             </div>
           </HoverCardContent>
         </HoverCard>
-        . Sometimes, I am on IRC as @tomupom on Libera Chat and Rizon networks.
-        You can also find me on{" "}
+        {aboutPage.t("about.irc")}{" "}
         <HoverCard>
           <HoverCardTrigger asChild>
             <a href="https://urbit.org" className="link">
-              Urbit
+              {aboutPage.t("urbit.title")}
             </a>
           </HoverCardTrigger>
           <HoverCardContent className="w-80">
             <div className="flex justify-between space-x-4">
               <Avatar>
                 <AvatarImage src="/urbit.webp" />
-                <AvatarFallback>Urbit</AvatarFallback>
+                <AvatarFallback>{aboutPage.t("urbit.title")}</AvatarFallback>
               </Avatar>
               <div className="space-y-1">
-                <p className="text-sm font-semibold">Urbit</p>
-                <p className="text-sm">
-                  Urbit is a decentralized personal server platform based on
-                  functional programming in a peer-to-peer network.
+                <p className="text-sm font-semibold">
+                  {aboutPage.t("urbit.title")}
                 </p>
+                <p className="text-sm">{aboutPage.t("urbit.description")}</p>
                 <div className="flex items-center pt-2">
                   <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
                   <span className="text-sm text-muted-foreground">
-                    Joined January 2019
+                    {aboutPage.t("urbit.joined")}
                   </span>
                 </div>
               </div>
             </div>
           </HoverCardContent>
         </HoverCard>{" "}
-        as ~worbur-dorneb.
+        {aboutPage.t("about.urbitId")}
       </p>
-      <p className="pb-4">
-        I have accounts on other popular social media sites, but rarely use
-        them.
-      </p>
-      <h1 className="text-3xl pb-4">Acknowledgements</h1>
-      <p className="pb-4">
-        I would like to acknowledge Māori as tangata whenua and Te Tiriti o
-        Waitangi partners in Aotearoa New Zealand. I pay my respects to the mana
-        whenua who are the original and continued rightful stewards of the land.
-      </p>
+      <p className="pb-4">{aboutPage.t("about.socialMedia")}</p>
+      <h1 className="text-3xl pb-4">
+        {aboutPage.t("about.acknowledgementsTitle")}
+      </h1>
+      <p className="pb-4">{aboutPage.t("about.maoriAcknowledgement")}</p>
       <p className="pb-8">
-        I would also like to acknowledge the many free and open source software
-        that this website, along with many of my other projects, take advantage
-        of. The full source code of this website can be found on my{" "}
+        {aboutPage.t("about.openSource")}
         <a href="https://github.com/et0and/tom.so" className="link">
           GitHub
         </a>
