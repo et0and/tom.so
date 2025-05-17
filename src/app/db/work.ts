@@ -66,7 +66,7 @@ const getMDXData = cache((dir: string): MDXData[] => {
 });
 
 export const getWorkPosts = cache((): MDXData[] => {
-  return getMDXData(path.join(process.cwd(), "work"));
+  return getMDXData(path.join(process.cwd(), "(content)", "work"));
 });
 
 export async function getPaginatedWorkPosts(
