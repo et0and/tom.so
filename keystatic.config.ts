@@ -13,7 +13,7 @@ export default config({
     posts: collection({
       label: "Posts",
       slugField: "title",
-      path: "posts/*",
+      path: "(content)/posts/*",
       format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
@@ -133,7 +133,7 @@ export default config({
     works: collection({
       label: "Works",
       slugField: "title",
-      path: "work/*",
+      path: "(content)/work/*",
       format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
@@ -233,7 +233,7 @@ export default config({
     catalogue: collection({
       label: "Catalogue",
       slugField: "title",
-      path: "catalogue/*",
+      path: "(content)/catalogue/*",
       format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
