@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import Image, { ImageProps } from "next/image";
-import React, { ComponentType, ReactNode } from "react";
+import Image from "next/image";
+import React, { ReactNode } from "react";
 import { Banner, BannerProps } from "./ui/banner/banner";
 import { YouTubeEmbed } from "@next/third-parties/google";
 import { InViewImagesGrid } from "./ui/in-view/in-view-images-grid";
@@ -22,10 +22,6 @@ import {
 
 import dynamic from "next/dynamic";
 
-const ModelViewer = dynamic(() => import("./ui/model-viewer/model-viewer"), {
-  ssr: false,
-});
-
 interface TableProps {
   data: {
     headers: string[];
@@ -33,18 +29,15 @@ interface TableProps {
   };
 }
 
-function Table({ data }: TableProps) {
-  let headers = data.headers.map((header, index) => (
-    <th key={index}>{header}</th>
-  ));
-  let rows = data.rows.map((row, index) => (
-    <tr key={index}>
+function Table({ data }: Readonly<TableProps>) {
+  let headers = data.headers.map((header) => <th key={header}>{header}</th>);
+  let rows = data.rows.map((row, rowIndex) => (
+    <tr key={`row-${rowIndex}-${row.join("-")}`}>
       {row.map((cell, cellIndex) => (
-        <td key={cellIndex}>{cell}</td>
+        <td key={`cell-${rowIndex}-${cellIndex}-${cell}`}>{cell}</td>
       ))}
     </tr>
   ));
-
   return (
     <table>
       <thead>
@@ -55,7 +48,9 @@ function Table({ data }: TableProps) {
   );
 }
 
-function UnorderedList(props: React.HTMLAttributes<HTMLUListElement>) {
+function UnorderedList(
+  props: Readonly<React.HTMLAttributes<HTMLUListElement>>,
+) {
   return <ul className="list-disc list-inside" {...props} />;
 }
 
@@ -65,7 +60,7 @@ interface YoutubeProps {
   params?: string;
 }
 
-function Youtube({ videoid, height = 400, params }: YoutubeProps) {
+function Youtube({ videoid, height = 400, params }: Readonly<YoutubeProps>) {
   return <YouTubeEmbed videoid={videoid} height={height} params={params} />;
 }
 
@@ -83,7 +78,7 @@ function Iframe({
   width = "100%",
   height = "590",
   style = {},
-}: IframeProps) {
+}: Readonly<IframeProps>) {
   return (
     <iframe
       src={src}
@@ -95,29 +90,38 @@ function Iframe({
   );
 }
 
-function CustomLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
+function CustomLink(
+  props: Readonly<React.AnchorHTMLAttributes<HTMLAnchorElement>>,
+) {
   let href = props.href;
 
   if (href?.startsWith("/")) {
     return (
-      <Link href={href} {...props}>
+      <Link href={href} {...props} aria-label={props.children?.toString()}>
         {props.children}
       </Link>
     );
   }
 
   if (href?.startsWith("#")) {
-    return <a {...props} />;
+    return <a {...props} aria-label={props.children?.toString()} />;
   }
 
-  return <a target="_blank" rel="noopener noreferrer" {...props} />;
+  return (
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      {...props}
+      aria-label={props.children?.toString()}
+    />
+  );
 }
 interface CalloutProps {
   emoji: string;
   children: ReactNode;
 }
 
-function Callout({ emoji, children }: CalloutProps) {
+function Callout({ emoji, children }: Readonly<CalloutProps>) {
   return (
     <div className="px-4 py-3 border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded p-1 text-sm flex items-center text-neutral-900 dark:text-neutral-100 mb-8">
       <div className="flex items-center w-4 mr-4">{emoji}</div>
@@ -247,11 +251,6 @@ function createHeading(level: number) {
   };
 }
 
-type ComponentsType = {
-  [key: string]: ComponentType<any>;
-  Banner: ComponentType<BannerProps>;
-};
-
 export const clientComponents = {
   h1: createHeading(1),
   h2: createHeading(2),
@@ -286,9 +285,6 @@ export const clientComponents = {
   Youtube,
   Iframe,
   Banner: (props: BannerProps) => <Banner {...props} />,
-  ModelViewer: ({ modelFile }: { modelFile: string }) => (
-    <ModelViewer modelPath={modelFile} />
-  ),
   ul: UnorderedList,
   Carousel: ({ images }: { images: string[] }) => (
     <Carousel>

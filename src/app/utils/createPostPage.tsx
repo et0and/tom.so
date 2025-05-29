@@ -53,16 +53,6 @@ export function createPostPage(type: ContentType, datePrefix?: string) {
       notFound();
     }
 
-    return (
-      <Suspense
-        fallback={
-          <div className="w-full h-[50vh] flex items-center justify-center">
-            Loading content...
-          </div>
-        }
-      >
-        <PostContent post={post} datePrefix={datePrefix} />
-      </Suspense>
-    );
+    return <PostContent post={post} datePrefix={datePrefix} />;
   };
 }

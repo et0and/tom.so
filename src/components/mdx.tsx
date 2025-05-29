@@ -4,7 +4,6 @@ import { ComponentType } from "react";
 import { ArenaCarousel } from "./ui/carousel/arena-carousel";
 import { Banner } from "./ui/banner/banner";
 import { InViewImagesGrid } from "./ui/in-view/in-view-images-grid";
-import ModelViewer from "./ui/model-viewer/model-viewer";
 import { Carousel } from "./ui/carousel/carousel";
 import { YouTubeEmbed } from "@next/third-parties/google";
 import ArenaWrapper from "./ui/arena-wrapper/arena-wrapper";
@@ -38,7 +37,6 @@ export function CustomMDX(props: Readonly<MDXRemoteProps>) {
         ArenaCarousel: ArenaCarousel,
         Banner: Banner,
         InViewImagesGrid: InViewImagesGrid,
-        ModelViewer: ModelViewer,
         Carousel: Carousel,
         YoutubeEmbed: YouTubeEmbed,
         Arena: ArenaWrapper,

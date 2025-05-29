@@ -19,7 +19,6 @@ export const metadata: Metadata = {
 };
 
 export default function Accessibility() {
-  const S = accessibilityPageStrings.Component; // Optional: for cleaner JSX
   return (
     <>
       <h1 className="font-medium text-4xl pt-4">

@@ -9,7 +9,7 @@ import { Template } from "./Template";
 export class StringsDict<T extends PhrasesDictionary> {
   /** Collection of phrases stored in the dictionary */
   public phrases: T;
-  /** Cache map to store processed strings for performance optimization */
+  /** Cache map to store processed strings for performance optimisation */
   private readonly memo = new Map<string, string>();
 
   /**

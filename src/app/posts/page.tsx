@@ -7,8 +7,6 @@ export const metadata = {
   description: "Read my thoughts.",
 };
 
-export const revalidate = 3600;
-
 async function BlogList({ page }: Readonly<{ page: number }>) {
   const { posts, totalPages } = await fetchPaginatedContent("blog", page);
   return (
