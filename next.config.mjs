@@ -21,6 +21,10 @@ const nextConfig = {
   async rewrites() {
     return [
       {
+        source: '/cars/:file*\\.(jpg|jpeg|png|gif|svg|webp|ico|pdf)',
+        destination: 'https://cars.tom.so/:file*'
+      },
+      {
         source: '/cars/:path*',
         destination: 'https://cars.tom.so/:path*'
       }
