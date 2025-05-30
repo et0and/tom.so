@@ -18,6 +18,14 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/cars/:path*',
+        destination: 'https://cars.tom.so/:path*'
+      }
+    ]
+  },
   async headers() {
     return [
       {
