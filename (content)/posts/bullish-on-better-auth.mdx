@@ -1,0 +1,20 @@
+---
+title: Bullish on Better Auth
+summary: Finally a way to make auth not suck
+publishedAt: 2025-06-05
+---
+I don’t enjoying dealing with auth.&#x20;
+
+I haven’t had a great deal of experience implementing this in any projects, but I’ve used Clerk, Stack Auth, and Auth.js in the past.&#x20;
+
+Each of these solutions came with their own pros and cons. For example, Clerk made it super easy to bootstrap auth with social logins, 2FA, magic keys etc, but comes at the cost of yet another service you need to pay for, and also trusting them with your user info on their infra.&#x20;
+
+Stack Auth is actually very decent - almost as easy as Clerk whilst also being cheaper and FOSS, so there’s less vendor lock in. However, you are still having to pay them if you use their cloud, and if you’re self hosting then there are better options available.&#x20;
+
+Better like Better Auth (lol). 2FA, SSO, social logins, magic keys, passwordless login, rate limiting built in - it’s literally got it all &#x20;
+
+Also - their docs are some of the best I’ve come across (as far as Typescript projects are concerned). It blows the Auth.js/NextAuth docs out of the water - you can read everything and get a pretty good understanding of what it can do in an afternoon. Their core features are solid, and can easily be extended with plugins that connect to your main auth.ts file.&#x20;
+
+Better Auth goes as far as dealing with user roles, teams and organisations. I’m currently working on a project at my day job which uses Cognito and user roles/types defined by hand. It is incredibly complex to write and follow, and makes me want to compare against Better Auth for implementation and complexity.&#x20;
+
+If you haven’t given it a try yet, give it a go!
