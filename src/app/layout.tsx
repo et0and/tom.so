@@ -107,12 +107,12 @@ export default function RootLayout({
           href="/rss.xml"
         />
       </head>
-      <body className="antialiased w-full lg:mx-auto dark:bg-stone-900 dark:text-white">
+      <body className="antialiased w-full lg:mx-auto dark:bg-stone-900 dark:text-white min-h-screen flex flex-col">
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 z-50">
           <SkipLink />
         </div>
         <Navbar />
-        <main id="main" className="min-h-screen flex flex-col">
+        <main id="main" className="flex-grow flex flex-col">
           {children}
         </main>
         <Footer />

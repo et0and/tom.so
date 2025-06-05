@@ -9,7 +9,7 @@ function Navbar() {
     return null;
   }
   return (
-    <nav className="flex items-center tracking-tighter justify-between h-8 px-6 pt-6 dark:bg-stone-900">
+    <nav className="flex items-center tracking-tighter justify-between h-16 px-6 py-4 dark:bg-stone-900 flex-shrink-0">
       <Link
         className="text-lg font-medium focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-100"
         href="/"
@@ -23,18 +23,21 @@ function Navbar() {
         <Link
           className="focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-100"
           href="/about"
+          prefetch
         >
           About
         </Link>
         <Link
           className="focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-100"
           href="/work"
+          prefetch
         >
           Work
         </Link>
         <Link
           className="focus-visible:outline-offset-2 focus-visible:outline-blue-700 outline-transparent focus-visible:border-blue-700 border-transparent border-2 hover:underline hover:text-blue-700 dark:hover:text-teal-200 transition-colors duration-100"
           href="/posts"
+          prefetch
         >
           Writing
         </Link>

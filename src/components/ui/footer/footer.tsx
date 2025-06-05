@@ -3,7 +3,7 @@ import Link from "next/link";
 function Footer() {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="flex items-center tracking-tighter justify-between px-6 dark:bg-stone-900 dark:text-white py-4 lg:text-md sm:text-lg text-sm text-black">
+    <footer className="flex items-center tracking-tighter justify-between px-6 dark:bg-stone-900 dark:text-white py-4 lg:text-md sm:text-lg text-sm text-black flex-shrink-0">
       <p>
         &copy; {currentYear}{" "}
         <Link href="/accessibility" className="link" prefetch={true}>
