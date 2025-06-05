@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<ProfileHoverCard />S > should render correctly 1`] = `
+<div>
+  <a
+    class="link"
+    data-state="closed"
+    href="https://example.com"
+  >
+    Example Link
+  </a>
+</div>
+`;
+
+exports[`<ProfileHoverCard />S > should render with custom className 1`] = `
+<div>
+  <a
+    class="custom-link"
+    data-state="closed"
+    href="https://example.com"
+  >
+    Example Link
+  </a>
+</div>
+`;

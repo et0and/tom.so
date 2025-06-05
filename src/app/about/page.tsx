@@ -1,16 +1,6 @@
 import type { Metadata } from "next";
-import { CalendarDays } from "lucide-react";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar/avatar";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/card/hover-card";
 import { Separator } from "@/components/ui/separator/separator";
+import { ProfileHoverCard } from "@/components/ui/profile-hover-card/profile-hover-card";
 import { aboutPage } from "./strings";
 
 export const metadata: Metadata = {
@@ -39,184 +29,72 @@ export default function About() {
       <p>{aboutPage.t("about.byline")}</p>
       <p className="pb-4">
         {aboutPage.t("about.intro")}
-        <HoverCard>
-          <HoverCardTrigger asChild>
-            <a href="/work/te-wahi-auaha" className="link">
-              {aboutPage.t("teWahi.title")}
-            </a>
-          </HoverCardTrigger>
-          <HoverCardContent className="w-80">
-            <div className="flex justify-between space-x-4">
-              <Avatar>
-                <AvatarImage src="/twa.png" />
-                <AvatarFallback>{aboutPage.t("teWahi.title")}</AvatarFallback>
-              </Avatar>
-              <div className="space-y-1">
-                <p className="text-sm font-semibold">
-                  {aboutPage.t("teWahi.title")}
-                </p>
-                <p className="text-sm">{aboutPage.t("teWahi.description")}</p>
-                <div className="flex items-center pt-2">
-                  <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
-                  <span className="text-sm text-muted-foreground">
-                    {aboutPage.t("teWahi.joined")}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </HoverCardContent>
-        </HoverCard>
+        <ProfileHoverCard
+          href="/work/te-wahi-auaha"
+          linkTitle={aboutPage.t("teWahi.title")}
+          avatarSrc="/twa.png"
+          avatarFallback={aboutPage.t("teWahi.title")}
+          title={aboutPage.t("teWahi.title")}
+          description={aboutPage.t("teWahi.description")}
+          joinedDate={aboutPage.t("teWahi.joined")}
+        />
         {aboutPage.t("about.makerSpace")}
       </p>
       <p className="pb-4">{aboutPage.t("about.experience")}</p>
       <p className="pb-4">
         {aboutPage.t("about.elam.prior")}
-        <HoverCard>
-          <HoverCardTrigger asChild>
-            <a href="https://elamartists.ac.nz" className="link">
-              {aboutPage.t("elam.title")}
-            </a>
-          </HoverCardTrigger>
-          <HoverCardContent className="w-80">
-            <div className="flex justify-between space-x-4">
-              <Avatar>
-                <AvatarImage src="/uoa.jpg" />
-                <AvatarFallback>{aboutPage.t("elam.title")}</AvatarFallback>
-              </Avatar>
-              <div className="space-y-1">
-                <p className="text-sm font-semibold">
-                  {aboutPage.t("elam.title")}
-                </p>
-                <p className="text-sm">{aboutPage.t("elam.description")}</p>
-                <div className="flex items-center pt-2">
-                  <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
-                  <span className="text-sm text-muted-foreground">
-                    {aboutPage.t("elam.joined")}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </HoverCardContent>
-        </HoverCard>
+        <ProfileHoverCard
+          href="https://elamartists.ac.nz"
+          linkTitle={aboutPage.t("elam.title")}
+          avatarSrc="/uoa.jpg"
+          avatarFallback={aboutPage.t("elam.title")}
+          title={aboutPage.t("elam.title")}
+          description={aboutPage.t("elam.description")}
+          joinedDate={aboutPage.t("elam.joined")}
+        />
         {aboutPage.t("about.elam")}
       </p>
       <p className="pb-4">
         {aboutPage.t("about.findMe")}
-        <HoverCard>
-          <HoverCardTrigger asChild>
-            <a href="https://are.na/tom" className="link">
-              {aboutPage.t("arena.title")}
-            </a>
-          </HoverCardTrigger>
-          <HoverCardContent className="w-80">
-            <div className="flex justify-between space-x-4">
-              <Avatar>
-                <AvatarImage src="/arena.jpg" />
-                <AvatarFallback>{aboutPage.t("arena.title")}</AvatarFallback>
-              </Avatar>
-              <div className="space-y-1">
-                <p className="text-sm font-semibold">
-                  {aboutPage.t("arena.title")}
-                </p>
-                <p className="text-sm">{aboutPage.t("arena.description")}</p>
-                <div className="flex items-center pt-2">
-                  <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
-                  <span className="text-sm text-muted-foreground">
-                    {aboutPage.t("arena.joined")}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </HoverCardContent>
-        </HoverCard>
+        <ProfileHoverCard
+          href="https://are.na/tom"
+          linkTitle={aboutPage.t("arena.title")}
+          avatarSrc="/arena.jpg"
+          avatarFallback={aboutPage.t("arena.title")}
+          title={aboutPage.t("arena.title")}
+          description={aboutPage.t("arena.description")}
+          joinedDate={aboutPage.t("arena.joined")}
+        />
         ,{" "}
-        <HoverCard>
-          <HoverCardTrigger asChild>
-            <a href="https://read.cv/hackshaw" className="link">
-              {aboutPage.t("readcv.title")}
-            </a>
-          </HoverCardTrigger>
-          <HoverCardContent className="w-80">
-            <div className="flex justify-between space-x-4">
-              <Avatar>
-                <AvatarImage src="/readcv.svg" />
-                <AvatarFallback>{aboutPage.t("readcv.title")}</AvatarFallback>
-              </Avatar>
-              <div className="space-y-1">
-                <p className="text-sm font-semibold">
-                  {aboutPage.t("readcv.title")}
-                </p>
-                <p className="text-sm">{aboutPage.t("readcv.description")}</p>
-                <div className="flex items-center pt-2">
-                  <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
-                  <span className="text-sm text-muted-foreground">
-                    {aboutPage.t("readcv.joined")}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </HoverCardContent>
-        </HoverCard>
+        <ProfileHoverCard
+          href="https://read.cv/hackshaw"
+          linkTitle={aboutPage.t("readcv.title")}
+          avatarSrc="/readcv.svg"
+          avatarFallback={aboutPage.t("readcv.title")}
+          title={aboutPage.t("readcv.title")}
+          description={aboutPage.t("readcv.description")}
+          joinedDate={aboutPage.t("readcv.joined")}
+        />
         , and{" "}
-        <HoverCard>
-          <HoverCardTrigger asChild>
-            <a href="https://merveilles.town/@tomupom" className="link">
-              {aboutPage.t("merveilles.title")}
-            </a>
-          </HoverCardTrigger>
-          <HoverCardContent className="w-80">
-            <div className="flex justify-between space-x-4">
-              <Avatar>
-                <AvatarImage src="/merveilles.png" />
-                <AvatarFallback>
-                  {aboutPage.t("merveilles.title")}
-                </AvatarFallback>
-              </Avatar>
-              <div className="space-y-1">
-                <p className="text-sm font-semibold">
-                  {aboutPage.t("merveilles.title")}
-                </p>
-                <p className="text-sm">
-                  {aboutPage.t("merveilles.description")}
-                </p>
-                <div className="flex items-center pt-2">
-                  <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
-                  <span className="text-sm text-muted-foreground">
-                    {aboutPage.t("merveilles.joined")}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </HoverCardContent>
-        </HoverCard>
+        <ProfileHoverCard
+          href="https://merveilles.town/@tomupom"
+          linkTitle={aboutPage.t("merveilles.title")}
+          avatarSrc="/merveilles.png"
+          avatarFallback={aboutPage.t("merveilles.title")}
+          title={aboutPage.t("merveilles.title")}
+          description={aboutPage.t("merveilles.description")}
+          joinedDate={aboutPage.t("merveilles.joined")}
+        />
         {aboutPage.t("about.irc")}{" "}
-        <HoverCard>
-          <HoverCardTrigger asChild>
-            <a href="https://urbit.org" className="link">
-              {aboutPage.t("urbit.title")}
-            </a>
-          </HoverCardTrigger>
-          <HoverCardContent className="w-80">
-            <div className="flex justify-between space-x-4">
-              <Avatar>
-                <AvatarImage src="/urbit.webp" />
-                <AvatarFallback>{aboutPage.t("urbit.title")}</AvatarFallback>
-              </Avatar>
-              <div className="space-y-1">
-                <p className="text-sm font-semibold">
-                  {aboutPage.t("urbit.title")}
-                </p>
-                <p className="text-sm">{aboutPage.t("urbit.description")}</p>
-                <div className="flex items-center pt-2">
-                  <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
-                  <span className="text-sm text-muted-foreground">
-                    {aboutPage.t("urbit.joined")}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </HoverCardContent>
-        </HoverCard>{" "}
+        <ProfileHoverCard
+          href="https://urbit.org"
+          linkTitle={aboutPage.t("urbit.title")}
+          avatarSrc="/urbit.webp"
+          avatarFallback={aboutPage.t("urbit.title")}
+          title={aboutPage.t("urbit.title")}
+          description={aboutPage.t("urbit.description")}
+          joinedDate={aboutPage.t("urbit.joined")}
+        />{" "}
         {aboutPage.t("about.urbitId")}
       </p>
       <p className="pb-4">{aboutPage.t("about.socialMedia")}</p>
