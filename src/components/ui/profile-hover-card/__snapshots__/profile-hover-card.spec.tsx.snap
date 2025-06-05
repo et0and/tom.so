@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<ProfileHoverCard />S > should render correctly 1`] = `
+exports[`<ProfileHoverCard /> > should render correctly 1`] = `
 <div>
   <a
     class="link"
@@ -12,7 +12,7 @@ exports[`<ProfileHoverCard />S > should render correctly 1`] = `
 </div>
 `;
 
-exports[`<ProfileHoverCard />S > should render with custom className 1`] = `
+exports[`<ProfileHoverCard /> > should render with custom className 1`] = `
 <div>
   <a
     class="custom-link"

@@ -3,7 +3,7 @@
 exports[`<Footer/> > renders correctly 1`] = `
 <div>
   <footer
-    class="flex items-center tracking-tighter justify-between px-6 dark:bg-stone-900 dark:text-white py-4 lg:text-md sm:text-lg text-sm text-black"
+    class="flex items-center tracking-tighter justify-between px-6 dark:bg-stone-900 dark:text-white py-4 lg:text-md sm:text-lg text-sm text-black flex-shrink-0"
   >
     <p>
       © 
