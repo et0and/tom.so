@@ -66,6 +66,7 @@ export default function RootLayout({
       )}
     >
       <head>
+        <script defer src="https://sibyl.tom.so/script.js" data-website-id="ba3db00d-7ec8-4f95-a801-2a93e4802951"></script>
         <meta name="msvalidate.01" content="0C22B5C633DBEB514739694102A8D398" />
         <meta
           name="theme-color"
