@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { HoverCard, HoverCardTrigger, HoverCardContent } from "./hover-card";
+import { expect, describe, it } from "vitest";
 
 describe("<HoverCard/>", () => {
   it("renders correctly", () => {

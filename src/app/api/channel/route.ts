@@ -2,25 +2,31 @@ import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const slug = searchParams.get("slug");
+  const page = searchParams.get("page") || "1";
+  const perPage = searchParams.get("perPage") || "12";
 
-  if (!slug) {
-    return NextResponse.json(
-      { error: "Channel slug is required" },
-      { status: 400 },
-    );
-  }
-
-  const channelUrl = `https://api.are.na/v2/channels/${slug}/contents?per=20`;
+  const bookshelfUrl = `https://api.are.na/v2/channels/tom-s-bookshelf?page=${page}&per_page=${perPage}`;
 
   try {
-    const response = await fetch(channelUrl);
+    const response = await fetch(bookshelfUrl, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      return NextResponse.json(
+        { error: "Failed to fetch bookshelf data" },
+        { status: 500 },
+      );
+    }
+
     const data = await response.json();
     return NextResponse.json(data);
   } catch (error) {
-    console.error("Error fetching Are.na channel:", error);
+    console.error("Error fetching bookshelf data:", error);
     return NextResponse.json(
-      { error: "Failed to fetch Are.na channel" },
+      { error: "Failed to fetch bookshelf data" },
       { status: 500 },
     );
   }

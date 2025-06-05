@@ -1,4 +1,26 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<HoverCard/> > renders HoverCardContent correctly 1`] = `<DocumentFragment />`;
+
+exports[`<HoverCard/> > renders HoverCardTrigger correctly 1`] = `
+<DocumentFragment>
+  <a
+    data-state="closed"
+  >
+    Hover me
+  </a>
+</DocumentFragment>
+`;
+
+exports[`<HoverCard/> > renders correctly 1`] = `
+<DocumentFragment>
+  <a
+    data-state="closed"
+  >
+    Hover me
+  </a>
+</DocumentFragment>
+`;
 
 exports[`<HoverCard/> renders HoverCardContent correctly 1`] = `<DocumentFragment />`;
 

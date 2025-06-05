@@ -1,9 +1,10 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { Banner, BannerProps } from "./banner";
+import { expect, describe, it, vi } from "vitest";
 
 // Mock the Lucide React component
-jest.mock("lucide-react", () => ({
+vi.mock("lucide-react", () => ({
   AlertCircle: () => <div data-testid="mock-alert-circle" />,
 }));
 

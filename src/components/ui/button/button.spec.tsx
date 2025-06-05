@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { Button, ButtonProps } from "./button";
+import { expect, describe, it } from "vitest";
 
 describe("<Button/>", () => {
   const defaultProps: ButtonProps = {

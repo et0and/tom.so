@@ -1,4 +1,15 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<SkipLink/> > renders correctly 1`] = `
+<div>
+  <a
+    class="absolute px-4 py-2 underline transition duration-75 transform -translate-x-1/2 -translate-y-full bg-white dark:bg-inherit border border-t-0 border-black sr-only left-1/2 focus:translate-y-0 focus:px-4 focus:py-2 focus:not-sr-only"
+    href="#main"
+  >
+    Skip to content
+  </a>
+</div>
+`;
 
 exports[`<SkipLink/> renders correctly 1`] = `
 <div>

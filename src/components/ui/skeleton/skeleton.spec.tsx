@@ -2,6 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import { Skeleton } from "./skeleton";
 import "@testing-library/jest-dom";
+import { expect, describe, it } from "vitest";
 
 describe("<Skeleton/>", () => {
   it("renders correctly", () => {

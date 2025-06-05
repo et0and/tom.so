@@ -1,5 +1,6 @@
 import { render } from "@testing-library/react";
 import ArenaWrapper from "./arena-wrapper";
+import { expect, describe, it } from "vitest";
 
 describe("<ArenaWrapper />", () => {
   it("renders correctly with channel slug", () => {

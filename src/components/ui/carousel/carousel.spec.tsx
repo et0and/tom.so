@@ -8,23 +8,23 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "./carousel";
+import { expect, describe, it, vi } from "vitest";
 
-// Mock the embla-carousel-react module
-jest.mock("embla-carousel-react", () => {
+// Mock the embla-carousel-react module using Vitest
+vi.mock("embla-carousel-react", () => {
   return {
-    __esModule: true,
-    default: jest.fn(() => {
+    default: vi.fn(() => {
       // Return a mock implementation of useEmblaCarousel hook
       // First element is a ref function, second is the API
       return [
-        jest.fn(), // carouselRef
+        vi.fn(), // carouselRef
         {
-          canScrollPrev: jest.fn().mockReturnValue(true),
-          canScrollNext: jest.fn().mockReturnValue(true),
-          scrollPrev: jest.fn(),
-          scrollNext: jest.fn(),
-          on: jest.fn(),
-          off: jest.fn(),
+          canScrollPrev: vi.fn().mockReturnValue(true),
+          canScrollNext: vi.fn().mockReturnValue(true),
+          scrollPrev: vi.fn(),
+          scrollNext: vi.fn(),
+          on: vi.fn(),
+          off: vi.fn(),
         },
       ];
     }),

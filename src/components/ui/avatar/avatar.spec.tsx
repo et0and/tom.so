@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { Avatar, AvatarImage, AvatarFallback } from "./avatar";
+import { expect, describe, it } from "vitest";
 
 describe("<Avatar/>", () => {
   it("renders Avatar correctly", () => {

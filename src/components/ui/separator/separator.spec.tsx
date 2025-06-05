@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { Separator } from "./separator";
+import { expect, describe, it, vi } from "vitest";
 
 describe("<Separator/>", () => {
   it("renders correctly with default props", () => {

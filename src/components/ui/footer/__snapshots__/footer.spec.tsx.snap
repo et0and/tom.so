@@ -1,0 +1,30 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Footer/> > renders correctly 1`] = `
+<div>
+  <footer
+    class="flex items-center tracking-tighter justify-between px-6 dark:bg-stone-900 dark:text-white py-4 lg:text-md sm:text-lg text-sm text-black"
+  >
+    <p>
+      © 
+      2025
+       
+      <a
+        class="link"
+        href="/accessibility"
+      >
+        Accessibility
+      </a>
+      . This site is part of a
+       
+      <a
+        class="link"
+        href="https://webring.xxiivv.com/#random"
+      >
+        webring
+      </a>
+      .
+    </p>
+  </footer>
+</div>
+`;
