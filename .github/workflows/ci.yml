@@ -10,7 +10,7 @@ on:
       - "*/*"
 
 jobs:
-  lint_and_test:
+  CI:
     runs-on: ubuntu-latest
     env:
       KEYSTATIC_GITHUB_CLIENT_ID: ${{ secrets.KEYSTATIC_GITHUB_CLIENT_ID }}
