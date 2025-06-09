@@ -54,6 +54,7 @@ const commonComponents = {
           { label: "Python", value: "python" },
           { label: "HTML", value: "html" },
           { label: "CSS", value: "css" },
+          { label: "Bash, value: "bash" },
         ],
         defaultValue: "javascript",
       }),
