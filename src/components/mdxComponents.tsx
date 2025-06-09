@@ -12,6 +12,7 @@ import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-jsx";
+import "prismjs/components/prism-bash";
 import {
   Carousel,
   CarouselContent,
