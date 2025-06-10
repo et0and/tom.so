@@ -40,6 +40,7 @@ export function CustomMDX(props: Readonly<MDXRemoteProps>) {
         Carousel: Carousel,
         YoutubeEmbed: YouTubeEmbed,
         Arena: ArenaWrapper,
+        Code: convertedClientComponents.Code,
       }}
     />
   );

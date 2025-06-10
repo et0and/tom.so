@@ -196,27 +196,34 @@ function ConsCard({ title, cons }: ConsCardProps) {
 }
 
 interface CodeProps extends React.HTMLAttributes<HTMLPreElement> {
-  children: string;
+  children?: string;
+  code?: string;
   language?: string;
 }
 
-function Code({ children, language = "javascript", ...props }: CodeProps) {
+function Code({
+  children,
+  code,
+  language = "javascript",
+  ...props
+}: CodeProps) {
   const codeRef = React.useRef<HTMLElement>(null);
+  const codeContent = code || children || "";
 
   React.useEffect(() => {
     if (codeRef.current) {
       Prism.highlightElement(codeRef.current);
     }
-  }, [children, language]);
+  }, [codeContent, language]);
 
   return (
     <pre className="relative overflow-x-auto p-4 bg-gray-800 rounded-lg">
       <code ref={codeRef} className={`language-${language}`}>
-        {children}
+        {codeContent}
       </code>
       <button
         className="absolute top-2 right-2 text-white bg-gray-700 px-2 py-1 rounded"
-        onClick={() => navigator.clipboard.writeText(children)}
+        onClick={() => navigator.clipboard.writeText(codeContent)}
       >
         Copy
       </button>
@@ -278,6 +285,7 @@ export const clientComponents = {
   ProsCard,
   ConsCard,
   code: Code,
+  Code: Code,
   Table,
   Arena: ArenaWrapper,
   ArenaCarousel: ({ channelSlug }: { channelSlug: string }) => (
