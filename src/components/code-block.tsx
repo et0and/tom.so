@@ -24,7 +24,7 @@ export async function CodeBlock({
     });
 
     return (
-      <div className="my-6 overflow-x-auto rounded-lg [&_pre]:!p-4 [&_pre]:!m-0 [&_pre]:!bg-[#0d1117] [&_pre]:!rounded-lg">
+      <div className="my-6 w-full max-w-full overflow-x-auto rounded-lg [&_pre]:!p-4 [&_pre]:!m-0 [&_pre]:!bg-[#0d1117] [&_pre]:!rounded-lg [&_pre]:!w-full [&_pre]:!max-w-full">
         <div dangerouslySetInnerHTML={{ __html: html }} />
       </div>
     );
