@@ -3,11 +3,15 @@ title: Sikemap
 summary: A simple CLI tool for generating sitemaps and archives of websites
 publishedAt: 2025-04-04
 ---
+
 I created this tool to help me generate sitemaps for websites that didn't have them, as part of a larger piece of reporting work I am doing to record the accessibility issues of various websites at my current day job. As a fun extra, I added the ability to archive all pages of a given website in HTML format as well.
 
 To run Sikemap, simple run it with&#x20;
 
-<Code language="bash" code="npx sikemap https://example.com --max 400 --output urls.txt" />
+<Code
+  language="bash"
+  code="npx sikemap https://example.com --max 400 --output urls.txt"
+/>
 
 to execute. The max flag is for the maximum number of URLs to capture in your sitemap (by default it is 400), and the output flag specifies what you want to call your text list of URLs.
 

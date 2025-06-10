@@ -7,12 +7,6 @@ import { YouTubeEmbed } from "@next/third-parties/google";
 import { InViewImagesGrid } from "./ui/in-view/in-view-images-grid";
 import { ArenaCarousel } from "./ui/carousel/arena-carousel";
 import ArenaWrapper from "./ui/arena-wrapper/arena-wrapper";
-import Prism from "prismjs";
-import "prismjs/themes/prism-tomorrow.css";
-import "prismjs/components/prism-javascript";
-import "prismjs/components/prism-typescript";
-import "prismjs/components/prism-jsx";
-import "prismjs/components/prism-bash";
 import {
   Carousel,
   CarouselContent,
@@ -207,26 +201,14 @@ function Code({
   language = "javascript",
   ...props
 }: CodeProps) {
-  const codeRef = React.useRef<HTMLElement>(null);
   const codeContent = code || children || "";
 
-  React.useEffect(() => {
-    if (codeRef.current) {
-      Prism.highlightElement(codeRef.current);
-    }
-  }, [codeContent, language]);
-
   return (
-    <pre className="relative overflow-x-auto p-4 bg-gray-800 rounded-lg">
-      <code ref={codeRef} className={`language-${language}`}>
-        {codeContent}
-      </code>
-      <button
-        className="absolute top-2 right-2 text-white bg-gray-700 px-2 py-1 rounded"
-        onClick={() => navigator.clipboard.writeText(codeContent)}
-      >
-        Copy
-      </button>
+    <pre
+      className="overflow-x-auto p-4 bg-gray-800 text-gray-100 rounded-lg my-6"
+      {...props}
+    >
+      <code>{codeContent}</code>
     </pre>
   );
 }

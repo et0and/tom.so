@@ -7,6 +7,7 @@ import { InViewImagesGrid } from "./ui/in-view/in-view-images-grid";
 import { Carousel } from "./ui/carousel/carousel";
 import { YouTubeEmbed } from "@next/third-parties/google";
 import ArenaWrapper from "./ui/arena-wrapper/arena-wrapper";
+import { CodeBlock } from "./code-block";
 
 // Define a type for the components that matches MDXRemote's expectations
 type MDXComponents = {
@@ -40,7 +41,7 @@ export function CustomMDX(props: Readonly<MDXRemoteProps>) {
         Carousel: Carousel,
         YoutubeEmbed: YouTubeEmbed,
         Arena: ArenaWrapper,
-        Code: convertedClientComponents.Code,
+        Code: CodeBlock,
       }}
     />
   );
