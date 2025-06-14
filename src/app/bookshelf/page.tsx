@@ -103,6 +103,7 @@ export default async function BookshelfPage({
           <Link
             href={`/bookshelf?page=${currentPage - 1}`}
             className="px-4 py-2 link"
+            prefetch={true}
           >
             Previous
           </Link>
