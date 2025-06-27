@@ -71,6 +71,7 @@
     "@types/react-dom": "^18",
     "@types/rss": "^0.0.32",
     "autoprefixer": "^10.4.20",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "husky": "^9.1.6",
