@@ -40,15 +40,10 @@ jobs:
       - name: Build project
         run: bun run build
 
-      - name: Setup Node.js for semantic-release
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-
       - name: Install semantic-release
-        run: npm install -g semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/github
+        run: bun add -g semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/github @semantic-release/commit-analyzer
 
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
+        run: bunx semantic-release
