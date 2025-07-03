@@ -68,11 +68,6 @@ export default function RootLayout({
     >
       <head>
         <script
-          src="https://app.rybbit.io/api/script.js"
-          data-site-id="1211"
-          defer
-        ></script>
-        <script
           defer
           src="https://sibyl.tom.so/script.js"
           data-website-id="ba3db00d-7ec8-4f95-a801-2a93e4802951"
