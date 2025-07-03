@@ -5,6 +5,7 @@ import Navbar from "@/components/ui/navbar/navbar";
 import Footer from "@/components/ui/footer/footer";
 import "./globals.css";
 import { SkipLink } from "@/components/ui/skiplink/skiplink";
+import Script from "next/script";
 
 export const viewport: Viewport = {
   themeColor: "white",
@@ -116,6 +117,11 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Script
+          src="https://app.rybbit.io/api/script.js"
+          data-site-id="1211"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
