@@ -1,22 +1,19 @@
-import { getPaginatedBlogPosts } from "@/app/db/blog";
-import { getPaginatedWorkPosts } from "@/app/db/work";
-import { getPaginatedCataloguePosts } from "@/app/db/catalogue";
+import { getPaginatedPosts } from "../actions/getPaginatedPosts";
+import { ContentType } from "@/types/contentType";
 
 const POSTS_PER_PAGE = 10;
-
-export type ContentType = "blog" | "work" | "catalogue";
 
 export async function fetchPaginatedContent(
   contentType: ContentType,
   page: number,
 ) {
   switch (contentType) {
-    case "blog":
-      return getPaginatedBlogPosts(page, POSTS_PER_PAGE);
+    case "posts":
+      return getPaginatedPosts(page, POSTS_PER_PAGE, contentType);
     case "work":
-      return getPaginatedWorkPosts(page, POSTS_PER_PAGE);
+      return getPaginatedPosts(page, POSTS_PER_PAGE, contentType);
     case "catalogue":
-      return getPaginatedCataloguePosts(page, POSTS_PER_PAGE);
+      return getPaginatedPosts(page, POSTS_PER_PAGE, contentType);
     default:
       throw new Error(`Unknown content type: ${contentType}`);
   }

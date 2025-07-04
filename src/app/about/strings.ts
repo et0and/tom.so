@@ -13,7 +13,7 @@ const phrases = {
     " where I also briefly taught the first and second year studio programme.",
   "about.findMe": "Find me on ",
   "about.irc":
-    "Sometimes, I am on IRC as @tomupom on Libera Chat and Rizon networks. You can also find me on",
+    ". Sometimes, I am on IRC as @tomupom on Libera Chat and Rizon networks. You can also find me on",
   "about.urbitId": "as ~worbur-dorneb.",
   "about.socialMedia":
     "I have accounts on other popular social media sites, but rarely use them.",

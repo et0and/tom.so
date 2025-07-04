@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Post } from "./postFetcher";
+import { Post } from "@/types/postType";
 
 export async function generatePostMetadata(
   post: Post,

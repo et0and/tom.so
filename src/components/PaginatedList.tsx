@@ -1,15 +1,7 @@
 import Link from "next/link";
+import { PostItem } from "@/types/postType";
 
 export const revalidate = 3600;
-
-export interface PostItem {
-  slug: string;
-  metadata: {
-    title: string;
-    summary: string;
-    publishedAt?: string;
-  };
-}
 
 interface PaginatedListProps {
   posts: PostItem[];

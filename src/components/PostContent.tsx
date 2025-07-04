@@ -1,7 +1,7 @@
 import { CustomMDX } from "@/components/mdx";
 import { Separator } from "@/components/ui/separator/separator";
 import { formatDate } from "@/utils/dateFormatter";
-import { Post } from "@/app/utils/postFetcher";
+import { Post } from "@/types/postType";
 
 interface PostContentProps {
   post: Post;

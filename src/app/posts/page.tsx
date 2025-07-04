@@ -8,7 +8,7 @@ export const metadata = {
 };
 
 async function BlogList({ page }: Readonly<{ page: number }>) {
-  const { posts, totalPages } = await fetchPaginatedContent("blog", page);
+  const { posts, totalPages } = await fetchPaginatedContent("posts", page);
   return (
     <PaginatedList
       posts={posts}

@@ -1,11 +1,10 @@
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 import { PostContent } from "@/components/PostContent";
-import { ContentType, getPostBySlug, generateBasePath } from "./postFetcher";
+import { generateBasePath } from "./postFetcher";
+import { ContentType } from "@/types/contentType";
 import { generatePostMetadata } from "./metadataGenerator";
-import { getBlogPosts } from "../db/blog";
-import { getCataloguePosts } from "../db/catalogue";
-import { getWorkPosts } from "../db/work";
+import { getContentPosts } from "../actions/getPosts";
+import { getPostBySlug } from "../actions/getPostsBySlug";
 
 export function createPostPageMetadata(type: ContentType) {
   return async function generateMetadata({
@@ -23,21 +22,8 @@ export function createPostPageMetadata(type: ContentType) {
 
 export function createPostPageStaticParams(type: ContentType) {
   return async function generateStaticParams() {
-    let posts;
-
-    switch (type) {
-      case "blog":
-        posts = getBlogPosts();
-        break;
-      case "work":
-        posts = getWorkPosts();
-        break;
-      case "catalogue":
-        posts = getCataloguePosts();
-        break;
-      default:
-        throw new Error(`Woops, unknown content type: ${type}`);
-    }
+    const getPostsFunction = await getContentPosts(type);
+    const posts = getPostsFunction();
 
     return posts.map((post) => ({
       slug: post.slug,

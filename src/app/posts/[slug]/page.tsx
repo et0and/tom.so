@@ -4,6 +4,6 @@ import {
   createPostPageStaticParams,
 } from "@/app/utils/createPostPage";
 
-export const generateMetadata = createPostPageMetadata("blog");
-export const generateStaticParams = createPostPageStaticParams("blog");
-export default createPostPage("blog");
+export const generateMetadata = createPostPageMetadata("posts");
+export const generateStaticParams = createPostPageStaticParams("posts");
+export default createPostPage("posts");

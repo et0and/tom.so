@@ -1,44 +1,19 @@
-import { getBlogPosts } from "@/app/db/blog";
-import { getWorkPosts } from "@/app/db/work";
-import { getCataloguePosts } from "@/app/db/catalogue";
 import { cache } from "react";
-
-export interface Post {
-  slug: string;
-  content: string;
-  metadata: {
-    title: string;
-    publishedAt: string;
-    summary: string;
-    image?: string;
-  };
-}
-
-export type ContentType = "blog" | "work" | "catalogue";
-
-const getContentPosts = (type: ContentType) => {
-  switch (type) {
-    case "blog":
-      return getBlogPosts();
-    case "work":
-      return getWorkPosts();
-    case "catalogue":
-      return getCataloguePosts();
-    default:
-      throw new Error(`Unknown content type: ${type}`);
-  }
-};
+import { getContentPosts } from "../actions/getPosts";
+import { ContentType } from "@/types/contentType";
+import { MDXData } from "@/types/mdxData";
 
 export const getPostBySlug = cache(
-  async (type: ContentType, slug: string): Promise<Post | undefined> => {
-    const posts = getContentPosts(type);
+  async (type: ContentType, slug: string): Promise<MDXData | undefined> => {
+    const getPostsFunction = await getContentPosts(type);
+    const posts = getPostsFunction();
     return posts.find((post) => post.slug === slug);
   },
 );
 
 export function generateBasePath(type: ContentType): string {
   switch (type) {
-    case "blog":
+    case "posts":
       return "/posts";
     case "work":
       return "/work";

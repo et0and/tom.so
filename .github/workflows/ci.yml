@@ -40,7 +40,3 @@ jobs:
 
       - name: Check formatting
         run: bunx prettier --check "./**/*.{ts,tsx}"
-      
-      - name: Create release
-        if: github.ref == 'refs/heads/main'
-        run: bunx pkg-pr-new publish
