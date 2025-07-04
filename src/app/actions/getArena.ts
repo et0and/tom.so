@@ -1,16 +1,12 @@
 "use server";
 import { ArenaChannel } from "@/types/arena";
+import { baseUrl } from "@/lib/url";
 
 export async function getArenaData(
   slug: string,
   page: number = 1,
   perPage: number = 12,
 ): Promise<ArenaChannel> {
-  const baseUrl =
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:3000"
-      : "https://tom.so";
-
   const res = await fetch(
     `${baseUrl}/api/channel?slug=${slug}&page=${page}&perPage=${perPage}`,
     {

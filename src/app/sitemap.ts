@@ -1,9 +1,8 @@
 import { MetadataRoute } from "next";
 import { getContentPosts } from "./actions/getPosts";
+import { baseUrl } from "@/lib/url";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://tom.so";
-
   // Static routes
   let routes = ["", "/posts", "/about", "/work"].map((route) => ({
     url: `${baseUrl}${route}`,
