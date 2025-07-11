@@ -15,6 +15,11 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    env:
+      KEYSTATIC_GITHUB_CLIENT_ID: ${{ secrets.KEYSTATIC_GITHUB_CLIENT_ID }}
+      KEYSTATIC_GITHUB_CLIENT_SECRET: ${{ secrets.KEYSTATIC_GITHUB_CLIENT_SECRET }}
+      KEYSTATIC_SECRET: ${{ secrets.KEYSTATIC_SECRET }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
