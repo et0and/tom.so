@@ -27,7 +27,7 @@ export const Banner = ({
   linkUrl,
 }: BannerProps) => {
   const outer = "leading-none relative my-4 w-full rounded-lg border px-4 py-4";
-  const inner = "max-w-3xl w-full m-auto";
+  const inner = "max-w-3xl w-full";
 
   const getIcon = () => {
     switch (variant) {
