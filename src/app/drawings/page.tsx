@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { Separator } from "@/components/ui/separator/separator";
 import Image from "next/image";
 import { formatDate } from "@/utils/dateFormatter";
-import { getArenaData } from "../actions/getArena";
+import { ArenaService } from "@/lib/services/arena";
 import { Pagination } from "@/components/ui/pagination/pagination";
 
 export default async function DrawingsPage({
@@ -12,7 +12,7 @@ export default async function DrawingsPage({
 }>) {
   const perPage = 12;
   const currentPage = searchParams.page ? parseInt(searchParams.page) : 1;
-  const data = await getArenaData("tom-s-drawings", currentPage, perPage);
+  const data = await ArenaService.getChannelData("tom-s-drawings", currentPage, perPage);
 
   const totalPages = Math.ceil(data.length / perPage);
 

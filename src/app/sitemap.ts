@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { getContentPosts } from "./actions/getPosts";
+import { ContentService } from "@/lib/services/content";
 import { baseUrl } from "@/lib/url";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -10,15 +10,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // Blog posts
-  const getPostsFunction = await getContentPosts("posts");
-  const blogPosts = getPostsFunction().map((post) => ({
+  const blogPosts = ContentService.getPosts("posts")().map((post) => ({
     url: `${baseUrl}/posts/${post.slug}`,
     lastModified: new Date(post.metadata.publishedAt),
   }));
 
   // Work posts
-  const getWorkPostsFunction = await getContentPosts("work");
-  const workPosts = getWorkPostsFunction().map((post) => ({
+  const workPosts = ContentService.getPosts("work")().map((post) => ({
     url: `${baseUrl}/work/${post.slug}`,
     lastModified: new Date(post.metadata.publishedAt),
   }));
