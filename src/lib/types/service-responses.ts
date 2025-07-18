@@ -25,8 +25,8 @@ export interface PaginatedResponse<T> {
  * Content service specific types
  */
 export interface ContentServiceOptions {
-  sortBy?: 'title' | 'publishedAt';
-  sortOrder?: 'asc' | 'desc';
+  sortBy?: "title" | "publishedAt";
+  sortOrder?: "asc" | "desc";
   includeUnpublished?: boolean;
 }
 

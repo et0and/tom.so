@@ -12,7 +12,11 @@ export default async function DrawingsPage({
 }>) {
   const perPage = 12;
   const currentPage = searchParams.page ? parseInt(searchParams.page) : 1;
-  const data = await ArenaService.getChannelData("tom-s-drawings", currentPage, perPage);
+  const data = await ArenaService.getChannelData(
+    "tom-s-drawings",
+    currentPage,
+    perPage,
+  );
 
   const totalPages = Math.ceil(data.length / perPage);
 

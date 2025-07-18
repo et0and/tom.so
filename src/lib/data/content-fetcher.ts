@@ -1,6 +1,9 @@
 import { ContentType } from "@/types/contentType";
 import { ContentService } from "@/lib/services/content";
-import { ContentServiceOptions, PaginatedResponse } from "@/lib/types/service-responses";
+import {
+  ContentServiceOptions,
+  PaginatedResponse,
+} from "@/lib/types/service-responses";
 import { MDXData } from "@/types/mdxData";
 
 /**
@@ -16,7 +19,12 @@ export async function fetchPaginatedContent(
   page: number,
   options?: ContentServiceOptions,
 ): Promise<PaginatedResponse<MDXData>> {
-  return ContentService.getPaginatedPosts(contentType, page, POSTS_PER_PAGE, options);
+  return ContentService.getPaginatedPosts(
+    contentType,
+    page,
+    POSTS_PER_PAGE,
+    options,
+  );
 }
 
 /**

@@ -11,7 +11,7 @@ export class ServiceException extends Error {
     public statusCode?: number,
   ) {
     super(message);
-    this.name = 'ServiceException';
+    this.name = "ServiceException";
   }
 }
 
@@ -34,7 +34,9 @@ export function createSuccessResponse<T>(data: T): ServiceResponse<T> {
   };
 }
 
-export function createErrorResponse<T>(error: ServiceError): ServiceResponse<T> {
+export function createErrorResponse<T>(
+  error: ServiceError,
+): ServiceResponse<T> {
   return {
     error,
     success: false,
@@ -45,10 +47,10 @@ export function handleServiceError(error: unknown): ServiceError {
   if (error instanceof ServiceException) {
     return createServiceError(error.message, error.code, error.statusCode);
   }
-  
+
   if (error instanceof Error) {
     return createServiceError(error.message);
   }
-  
-  return createServiceError('An unknown error occurred');
+
+  return createServiceError("An unknown error occurred");
 }

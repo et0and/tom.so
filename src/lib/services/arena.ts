@@ -1,12 +1,10 @@
-"use server";
-
 import { ArenaChannel } from "@/types/arena";
 import { baseUrl } from "@/lib/url";
 import { ServiceException } from "@/lib/utils/error-handling";
 import { ArenaServiceOptions } from "@/lib/types/service-responses";
 
 /**
- * Arena service for managing Are.na API operations
+ * Are.na service for managing API operations
  */
 export class ArenaService {
   private static readonly DEFAULT_PER_PAGE = 12;
@@ -22,7 +20,10 @@ export class ArenaService {
     perPage: number = this.DEFAULT_PER_PAGE,
     options: ArenaServiceOptions = {},
   ): Promise<ArenaChannel> {
-    const { cacheRevalidate = this.DEFAULT_CACHE_REVALIDATE, timeout = this.DEFAULT_TIMEOUT } = options;
+    const {
+      cacheRevalidate = this.DEFAULT_CACHE_REVALIDATE,
+      timeout = this.DEFAULT_TIMEOUT,
+    } = options;
 
     try {
       const controller = new AbortController();
@@ -41,7 +42,7 @@ export class ArenaService {
       if (!res.ok) {
         throw new ServiceException(
           `Failed to fetch arena channel data for slug: ${slug}`,
-          'ARENA_FETCH_ERROR',
+          "ARENA_FETCH_ERROR",
           res.status,
         );
       }
@@ -51,64 +52,18 @@ export class ArenaService {
       if (error instanceof ServiceException) {
         throw error;
       }
-      
-      if (error instanceof Error && error.name === 'AbortError') {
+
+      if (error instanceof Error && error.name === "AbortError") {
         throw new ServiceException(
           `Request timeout while fetching arena channel: ${slug}`,
-          'ARENA_TIMEOUT_ERROR',
+          "ARENA_TIMEOUT_ERROR",
           408,
         );
       }
 
       throw new ServiceException(
         `Unexpected error fetching arena channel: ${slug}`,
-        'ARENA_UNKNOWN_ERROR',
-      );
-    }
-  }
-
-  /**
-   * Fetch galleries data
-   */
-  static async getGalleries(options: ArenaServiceOptions = {}): Promise<any> {
-    const { cacheRevalidate = this.DEFAULT_CACHE_REVALIDATE, timeout = this.DEFAULT_TIMEOUT } = options;
-
-    try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), timeout);
-
-      const res = await fetch(`${baseUrl}/api/galleries`, {
-        next: { revalidate: cacheRevalidate },
-        signal: controller.signal,
-      });
-
-      clearTimeout(timeoutId);
-
-      if (!res.ok) {
-        throw new ServiceException(
-          'Failed to fetch galleries',
-          'GALLERIES_FETCH_ERROR',
-          res.status,
-        );
-      }
-
-      return res.json();
-    } catch (error) {
-      if (error instanceof ServiceException) {
-        throw error;
-      }
-      
-      if (error instanceof Error && error.name === 'AbortError') {
-        throw new ServiceException(
-          'Request timeout while fetching galleries',
-          'GALLERIES_TIMEOUT_ERROR',
-          408,
-        );
-      }
-
-      throw new ServiceException(
-        'Unexpected error fetching galleries',
-        'GALLERIES_UNKNOWN_ERROR',
+        "ARENA_UNKNOWN_ERROR",
       );
     }
   }

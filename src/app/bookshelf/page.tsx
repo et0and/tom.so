@@ -13,7 +13,11 @@ export default async function BookshelfPage({
   const currentPage = searchParams.page ? parseInt(searchParams.page) : 1;
   const perPage = 12;
 
-  const data = await ArenaService.getChannelData("tom-s-bookshelf", currentPage, perPage);
+  const data = await ArenaService.getChannelData(
+    "tom-s-bookshelf",
+    currentPage,
+    perPage,
+  );
   const totalPages = Math.ceil(data.length / perPage);
 
   return (
