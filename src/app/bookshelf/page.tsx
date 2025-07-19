@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { Separator } from "@/components/ui/separator/separator";
 import Image from "next/image";
 import Link from "next/link";
-import { getArenaData } from "../actions/getArena";
+import { ArenaService } from "@/lib/services/arena";
 import { Pagination } from "@/components/ui/pagination/pagination";
 
 export default async function BookshelfPage({
@@ -13,7 +13,11 @@ export default async function BookshelfPage({
   const currentPage = searchParams.page ? parseInt(searchParams.page) : 1;
   const perPage = 12;
 
-  const data = await getArenaData("tom-s-bookshelf", currentPage, perPage);
+  const data = await ArenaService.getChannelData(
+    "tom-s-bookshelf",
+    currentPage,
+    perPage,
+  );
   const totalPages = Math.ceil(data.length / perPage);
 
   return (

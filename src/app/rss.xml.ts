@@ -1,5 +1,5 @@
 import RSS from "rss";
-import { getPosts } from "./actions/getPosts";
+import { ContentService } from "@/lib/services/content";
 
 export async function GET() {
   const site_url = "https://tom.so";
@@ -16,7 +16,7 @@ export async function GET() {
 
   const feed = new RSS(feedOptions);
 
-  const blogPosts = getPosts("posts")();
+  const blogPosts = ContentService.getPosts("posts")();
 
   blogPosts.forEach((post) => {
     feed.item({

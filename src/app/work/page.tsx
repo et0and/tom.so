@@ -11,7 +11,10 @@ export const metadata = {
 export const revalidate = 3600;
 
 async function WorkList({ page }: Readonly<{ page: number }>) {
-  const { posts, totalPages } = await fetchPaginatedContent("work", page);
+  const { items: posts, totalPages } = await fetchPaginatedContent(
+    "work",
+    page,
+  );
   return (
     <PaginatedList
       posts={posts}
