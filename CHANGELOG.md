@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/et0and/tom.so/compare/v1.0.0...v1.0.1) (2025-07-23)
+
+
+### Bug Fixes
+
+* srht mirror ([21d91b0](https://github.com/et0and/tom.so/commit/21d91b0a8aae35f0c65e46a59c8bf724bba7307e))
+* try with srht username ([c0a15a6](https://github.com/et0and/tom.so/commit/c0a15a6c59b669036f61ab640c8d4a6c8e682776))
+
 # 1.0.0 (2025-07-11)
 
 ### Bug Fixes
