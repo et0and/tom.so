@@ -1,4 +1,3 @@
-# .github/workflows/mirror-to-sourcehut.yml
 name: Mirror to SourceHut
 
 on:
@@ -19,6 +18,6 @@ jobs:
         env:
           SOURCEHUT_TOKEN: ${{ secrets.SOURCEHUT_TOKEN }}
         run: |
-          git remote add sourcehut https://$SOURCEHUT_TOKEN@git.sr.ht/~tomupom/tom-so
+          git remote add sourcehut https://tomupom:$SOURCEHUT_TOKEN@git.sr.ht/~tomupom/tom-so
           git push sourcehut --all --force
           git push sourcehut --tags --force
