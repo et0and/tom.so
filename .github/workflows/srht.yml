@@ -1,0 +1,24 @@
+# .github/workflows/mirror-to-sourcehut.yml
+name: Mirror to SourceHut
+
+on:
+  push:
+    branches: ['*']
+  delete:
+    branches: ['*']
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Mirror to SourceHut
+        env:
+          SOURCEHUT_TOKEN: ${{ secrets.SOURCEHUT_TOKEN }}
+        run: |
+          git remote add sourcehut https://oauth2:$SOURCEHUT_TOKEN@git.sr.ht/~tomupom/tom-so
+          git push sourcehut --all --force
+          git push sourcehut --tags --force
