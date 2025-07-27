@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/et0and/tom.so/compare/v1.0.1...v1.0.2) (2025-07-27)
+
+
+### Bug Fixes
+
+* srht ssh access ([3496ed5](https://github.com/et0and/tom.so/commit/3496ed58ff31abacfee77117aaed36ffb11a4336))
+
 ## [1.0.1](https://github.com/et0and/tom.so/compare/v1.0.0...v1.0.1) (2025-07-23)
 
 
