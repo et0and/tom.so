@@ -3,8 +3,6 @@ name: Mirror to SourceHut
 on:
   push:
     branches: ['*']
-  delete:
-    branches: ['*']
 
 jobs:
   mirror:
@@ -14,10 +12,17 @@ jobs:
         with:
           fetch-depth: 0
       
-      - name: Mirror to SourceHut
+      - name: Setup SSH
         env:
-          SOURCEHUT_TOKEN: ${{ secrets.SOURCEHUT_TOKEN }}
+          SSH_PRIVATE_KEY: ${{ secrets.SOURCEHUT_SSH_KEY }}
         run: |
-          git remote add sourcehut https://tomupom:$SOURCEHUT_TOKEN@git.sr.ht/~tomupom/tom-so
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan git.sr.ht >> ~/.ssh/known_hosts
+      
+      - name: Mirror to SourceHut
+        run: |
+          git remote add sourcehut git@git.sr.ht:~tomupom/tom-so
           git push sourcehut --all --force
           git push sourcehut --tags --force
