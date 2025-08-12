@@ -14,6 +14,7 @@ async function WorkList({ page }: Readonly<{ page: number }>) {
   const { items: posts, totalPages } = await fetchPaginatedContent(
     "work",
     page,
+    { sortBy: "title", sortOrder: "asc" },
   );
   return (
     <PaginatedList
