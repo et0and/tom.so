@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/et0and/tom.so/compare/v1.0.2...v1.0.3) (2025-08-12)
+
+
+### Bug Fixes
+
+* sort by title for work posts ([fb9e36a](https://github.com/et0and/tom.so/commit/fb9e36a9370897a8c8b746e6032230cc599b3507))
+
 ## [1.0.2](https://github.com/et0and/tom.so/compare/v1.0.1...v1.0.2) (2025-07-27)
 
 
